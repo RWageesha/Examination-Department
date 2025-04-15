@@ -1,0 +1,751 @@
+/* Font Declarations */
+@font-face {
+    font-family: 'YourMainFont';
+    src: url('fonts/yourfont.woff2') format('woff2'),
+         url('fonts/yourfont.woff') format('woff'),
+         url('fonts/yourfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; /* Ensures text remains visible during font loading */
+}
+
+@font-face {
+    font-family: 'YourHeadingFont';
+    src: url('fonts/headingfont.woff2') format('woff2'),
+         url('fonts/headingfont.woff') format('woff'),
+         url('fonts/headingfont.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+/* General Reset */
+body{
+    font-family: 'YourMainFont', Arial, sans-serif; /* Fallback fonts if custom font fails */
+    background-color: #f4f4f4; /* Light grey background */
+    color: #333; /* Dark grey text */
+    line-height: 1.6; /* Improved readability */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+} 
+
+
+h1, h2, ul, li, a {
+    font-family: 'YourHeadingFont', Georgia, serif; /* Fallback fonts if custom font fails */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header Styling */
+header {
+    background-color: #002244; /* Navy blue background */
+    color: white; /* White text */
+    padding: 10px 20px;
+    display: flex; /* Use flexbox to align items */
+    justify-content: space-between; /* Space between logo and navigation */
+    align-items: center; /* Vertically center items */
+}
+
+/* Logo styling */
+header img {
+    height: 80px;
+    margin-right: 20px;
+}
+
+/* Navigation styling */
+header nav {
+    flex-grow: 1; /* Allow navigation to take available space */
+}
+
+header nav ul {
+    list-style: none; /* Remove bullet points */
+    display: flex;
+    justify-content: flex-end; /* Align navigation items to the right */
+    gap: 30px; /* Space between links */
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+}
+
+header nav ul li a {
+    text-decoration: none; /* Remove underline */
+    color: white; /* White text */
+    font-weight: bold;
+    transition: color 0.3s ease; /* Smooth hover effect */
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between icon and text */
+}
+
+header nav ul li a:hover {
+    color: #ffcc00; /* Gold color on hover */
+}
+
+/* Icon styling in navigation */
+header nav ul li a i {
+    font-size: 1.1rem;
+}
+
+/* Make header responsive */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+    
+    header img {
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+    
+    header nav ul {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}
+
+/* Hero Slider Styles */
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Adjust height as needed */
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.slider-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    pointer-events: none; /* Prevent interaction with hidden slides */
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 2; /* Ensure active slide is on top */
+    pointer-events: auto; /* Allow interaction with active slide */
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(70%); /* Darken the image a bit to make text readable */
+}
+
+.slide-content {
+    position: absolute;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    max-width: 80%;
+    z-index: 2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.slide-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.slide-content p {
+    font-size: 1.2rem;
+}
+
+/* Navigation Arrows */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 10 !important; 
+    border-radius: 50%;
+    outline: none;
+    transition: background 0.3s ease;
+}
+
+.prev-arrow {
+    left: 20px;
+}
+
+.next-arrow {
+    right: 20px;
+}
+
+slider-arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Dot indicators */
+.dots-container {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 10 !important;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.dot.active {
+    background: white;
+}
+
+/* Animation for slider auto-play */
+@keyframes slideShow {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Auto-play animation class */
+.slide.auto-animate {
+    animation: slideShow 5s ease forwards;
+}
+
+/* Talk to AR Floating Button */
+.talk-to-ar-button {
+    position: fixed;
+    bottom: 30px;
+    right:  30px;
+    z-index: 1000;
+}
+
+#talk-to-ar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #004080; /* Navy blue to match header */
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+#talk-to-ar i {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+#talk-to-ar:hover {
+    background-color: #002244; /* Darker blue on hover */
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Animation for subtle attention */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+#talk-to-ar {
+    animation: pulse 2s infinite;
+}
+
+#talk-to-ar:hover {
+    animation: none;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .talk-to-ar-button {
+        bottom: 20px;
+        left: 20px;
+    }
+    
+    #talk-to-ar {
+        width: 70px;
+        height: 70px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Home Section Styling */
+#home {
+    width: 60%;
+    margin: 0;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+#home h2 {
+    color: #002244;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #004080;
+    padding-bottom: 10px;
+}
+
+#home p {
+    text-align: justify;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* Media query for tablets and mobile devices */
+@media (max-width: 992px) {
+    #home {
+        width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    #home {
+        width: 100%;
+    }
+}
+/* Certificate Button Section Styling */
+#certificate-button-section {
+    position: absolute;
+    right: 30px;
+    top: 650px; /* Adjust based on where you want it to appear */
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+}
+
+/* Certificate Button Section Styling - Updated for Square Shape */
+.certificate-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 200px;
+    border-radius: 10px; /* Changed from 50% (circle) to 10px for slightly rounded corners */
+    background-color: #002244;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    border: 3px solid #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.certificate-button i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.certificate-button span {
+    font-size: 1.3rem;
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+.certificate-button:hover {
+    transform: scale(1.05);
+    background-color: #004080;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Media query for responsive design */
+@media (max-width: 992px) {
+    #certificate-button-section {
+        position: static;
+        width: 100%;
+        margin: 20px 0;
+    }
+}
+
+/* Notices Section Styling */
+#notices {
+    width: 95%;
+    margin: 0 auto 30px;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#notices h2 {
+    color: #002244;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #004080;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.notices-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.notice {
+    flex: 1 1 300px;
+    background-color: #f9f9f9;
+    border-left: 4px solid #004080;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.notice:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.notice-date {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+    font-weight: 500;
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 3px 10px;
+    border-radius: 12px;
+}
+
+.notice h3 {
+    font-size: 1.3rem;
+    color: #002244;
+    margin-bottom: 10px;
+}
+
+.notice p {
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.notice-link {
+    display: inline-block;
+    color: #004080;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.notice-link:after {
+    content: " →";
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    transform: translateX(-5px);
+}
+
+.notice-link:hover {
+    color: #002244;
+}
+
+.notice-link:hover:after {
+    opacity: 1;
+    transform: translateX(3px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    #notices {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    #notices {
+        width: 100%;
+        padding: 20px;
+    }
+    
+    .notices-container {
+        flex-direction: column;
+    }
+    
+    .notice {
+        margin-bottom: 15px;
+    }
+}
+
+/* Student Guidance Section Styling */
+#student-guidance {
+    width: 95%;
+    margin: 0 auto 30px;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#student-guidance h2 {
+    color: #002244;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #004080;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.guidance-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.guidance-item {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 4px solid #002244;
+}
+
+.guidance-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.guidance-item i {
+    font-size: 2.5rem;
+    color: #004080;
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: rgba(0, 64, 128, 0.1);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.guidance-item:hover i {
+    background-color: #004080;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.guidance-item h3 {
+    font-size: 1.3rem;
+    color: #002244;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.guidance-item p {
+    color: #555;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    #student-guidance {
+        width: 90%;
+    }
+    
+    .guidance-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    #student-guidance {
+        width: 100%;
+        padding: 20px;
+    }
+    
+    .guidance-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .guidance-item {
+        padding: 20px 15px;
+    }
+}
+
+/* Footer Styling */
+footer {
+    background-color: #002244;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 40px;
+    position: relative;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.footer-logo {
+    flex: 1 1 250px;
+    text-align: left;
+}
+
+.footer-logo img {
+    height: 80px;
+    margin-bottom: 15px;
+}
+
+.footer-links {
+    flex: 1 1 250px;
+    text-align: left;
+}
+
+.footer-links h3 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 8px;
+}
+
+.footer-links ul li a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.footer-links ul li a:hover {
+    color: #ffcc00;
+}
+
+.footer-contact {
+    flex: 1 1 250px;
+    text-align: left;
+}
+
+.footer-contact h3 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+}
+
+.footer-contact p {
+    margin: 5px 0;
+    color: rgba(255,255,255,0.8);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+
+.footer-contact i {
+    margin-right: 10px;
+    width: 20px;
+    color: rgba(255,255,255,0.6);
+}
+
+.footer-social {
+    margin-top: 20px;
+}
+
+.footer-social a {
+    display: inline-block;
+    margin: 0 10px;
+    color: white;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: #ffcc00;
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-logo, .footer-links, .footer-contact {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .footer-contact p {
+        justify-content: center;
+    }
+}
