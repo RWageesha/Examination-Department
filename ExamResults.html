@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Results - KDU Examination Department</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/ExamResults.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- SheetJS library to read Excel files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <!-- PapaParse for CSV parsing (alternative option) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+</head>
+<body>
+    <div class="bg-overlay"></div>
+    <!-- Header (same as index.html) -->
+    <header>
+        <img src="./assets/images/Main-logo.png" alt="KDU Logo" style="height: 80px;">
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="staff.html"><i class="fas fa-users"></i> Staff</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle"><i class="fas fa-download"></i> Downloads <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="downloads-staff.html"><i class="fas fa-user-tie"></i> Staff</a></li>
+                        <li><a href="downloads-students.html"><i class="fas fa-user-graduate"></i> Students</a></li>
+                        <li><a href="downloads-exams.html"><i class="fas fa-calendar-alt"></i> Exam Hall Schedules</a></li>
+                    </ul>
+                </li>
+                <li><a href="contactUs.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="results-main">
+        <section class="results-header">
+            <h1>Exam Results Portal</h1>
+            <p>Access your examination results by entering your registration number and password</p>
+        </section>
+
+        <section class="results-container">
+            <!-- Login Form -->
+            <div id="login-section" class="login-section">
+                <div class="login-form-container">
+                    <div class="form-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h2>Student Login</h2>
+                    <form id="loginForm" class="login-form">
+                        <div class="form-group">
+                            <label for="regNumber"><i class="fas fa-id-card"></i> Registration Number</label>
+                            <input type="text" id="regNumber" name="regNumber" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password"><i class="fas fa-lock"></i> Password</label>
+                            <input type="password" id="password" name="password" required>
+                            <span toggle="#password" class="password-toggle"><i class="fas fa-eye"></i></span>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="login-button">
+                                <i class="fas fa-sign-in-alt"></i> View Results
+                            </button>
+                        </div>
+                        <div class="form-links">
+                            <a href="#" id="forgotPassword">Forgot Password?</a>
+                            <span class="separator">|</span>
+                            <a href="contactUs.html">Need Help?</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="login-notice">
+                    <p><i class="fas fa-info-circle"></i> For demonstration purposes, use:</p>
+                    <p>Registration: <strong>KDU12345</strong></p>
+                    <p>Password: <strong>password123</strong></p>
+                </div>
+            </div>
+
+            <!-- Results Display Section (Initially Hidden) -->
+            <div id="results-section" class="results-section" style="display: none;">
+                <div class="student-info">
+                    <div class="student-photo">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="student-details">
+                        <h3 id="studentName">Student Name</h3>
+                        <p id="studentReg">Registration Number: <span></span></p>
+                        <p id="studentFaculty">Faculty: <span></span></p>
+                        <p id="studentDegree">Degree Program: <span></span></p>
+                    </div>
+                </div>
+
+                <div class="results-navigation">
+                    <div class="nav-title">Select Semester:</div>
+                    <select id="semesterSelect" class="semester-select">
+                        <!-- Semesters will be dynamically added here -->
+                    </select>
+                    <button id="printResults" class="print-button">
+                        <i class="fas fa-print"></i> Print Results
+                    </button>
+                </div>
+
+                <div id="results-table-container" class="results-table-container">
+                    <!-- Results table will be dynamically inserted here -->
+                </div>
+
+                <div class="results-summary">
+                    <div class="summary-item">
+                        <div class="summary-label">Semester GPA:</div>
+                        <div id="semesterGPA" class="summary-value">0.00</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Overall GPA:</div>
+                        <div id="overallGPA" class="summary-value">0.00</div>
+                    </div>
+                </div>
+
+                <button id="backToLogin" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Log Out
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (same as index.html) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="./assets/images/Main-logo.png" alt="KDU Logo">
+                <p>Examination Department<br>General Sir John Kotelawala Defence University</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="staff.html">Staff</a></li>
+                    <li><a href="downloads-staff.html">Downloads</a></li>
+                    <li><a href="contactUs.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Kandawala Estate, Ratmalana, Sri Lanka</p>
+                <p><i class="fas fa-phone"></i> +94 11 263 8656</p>
+                <p><i class="fas fa-envelope"></i> exams@kdu.ac.lk</p>
+                
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 KDU Examination Department. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for the results page functionality -->
+    <script src="./assets/js/examResults.js"></script>
+</body>
+</html>

@@ -1,0 +1,379 @@
+/* Talk to AR Page Styling */
+
+/* Main layout */
+.talk-ar-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Header section styling */
+.talk-ar-header {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+.talk-ar-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.talk-ar-title h1 {
+    color: #002244;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.talk-ar-title p {
+    color: #555;
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* AR profile styling */
+.ar-profile {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+    background-color: #f8fbff;
+    border-radius: 8px;
+}
+
+.ar-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #004080;
+    flex-shrink: 0;
+}
+
+.ar-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ar-info h2 {
+    color: #002244;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.ar-title {
+    color: #004080;
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.ar-contact-info {
+    color: #555;
+}
+
+.ar-contact-info p {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.ar-contact-info i {
+    width: 20px;
+    color: #004080;
+    margin-right: 10px;
+}
+
+/* Contact options styling */
+.contact-options {
+    margin-bottom: 40px;
+}
+
+.option-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.option-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.option-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.phone-option .option-icon {
+    background-color: #e3f2fd;
+}
+
+.phone-option .option-icon i {
+    color: #0277bd;
+    font-size: 2rem;
+}
+
+.email-option .option-icon {
+    background-color: #e8f5e9;
+}
+
+.email-option .option-icon i {
+    color: #2e7d32;
+    font-size: 2rem;
+}
+
+.option-card h3 {
+    color: #002244;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.option-card p {
+    color: #555;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.option-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 6px;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin: 10px auto;
+    width: fit-content;
+    min-width: 140px;
+    text-align: center;
+}
+
+.phone-button {
+    background-color: #0277bd;
+}
+
+.phone-button:hover {
+    background-color: #01579b;
+    transform: translateY(-3px);
+}
+
+.email-button {
+    background-color: #2e7d32;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.email-button:hover {
+    background-color: #1b5e20;
+    transform: translateY(-3px);
+}
+
+.option-note {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.option-note i {
+    color: #004080;
+    margin-right: 5px;
+}
+
+/* Email form styling */
+.email-form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #004080;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 64, 128, 0.1);
+}
+
+.required {
+    color: #e74c3c;
+}
+
+.form-attachment input {
+    padding: 8px 0;
+}
+
+.file-note {
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: 5px;
+    text-align: left !important;
+}
+
+/* Success message */
+.success-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 30px;
+    text-align: center;
+}
+
+.success-message i {
+    color: #2e7d32;
+    font-size: 3rem;
+}
+
+.success-message p {
+    color: #333;
+    font-size: 1.1rem;
+}
+
+/* Guidelines section styling */
+.talk-ar-guidelines {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+.talk-ar-guidelines h2 {
+    color: #002244;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.talk-ar-guidelines h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #004080;
+}
+
+.guidelines-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.guideline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.guideline-item i {
+    font-size: 1.3rem;
+    margin-top: 2px;
+}
+
+.guideline-item i.fa-check-circle {
+    color: #2e7d32;
+}
+
+.guideline-item i.fa-times-circle {
+    color: #c62828;
+}
+
+.guideline-item p {
+    color: #333;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.guideline-item a {
+    color: #004080;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.guideline-item a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .ar-profile {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .ar-contact-info p {
+        justify-content: center;
+    }
+    
+    .option-container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .talk-ar-main {
+        padding: 30px 15px;
+    }
+    
+    .talk-ar-title h1 {
+        font-size: 1.8rem;
+    }
+    
+    .guideline-item {
+        padding: 12px;
+    }
+    
+    .guidelines-container {
+        grid-template-columns: 1fr;
+    }
+}

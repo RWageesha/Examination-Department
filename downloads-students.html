@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Downloads - KDU Examination Department</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/downloads.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="bg-overlay"></div>
+    <!-- Header (same as index.html) -->
+    <header>
+        <img src="./assets/images/Main-logo.png" alt="KDU Logo" style="height: 80px;">
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="staff.html"><i class="fas fa-users"></i> Staff</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle"><i class="fas fa-download"></i> Downloads <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="downloads-staff.html"><i class="fas fa-user-tie"></i> Staff</a></li>
+                        <li><a href="downloads-students.html" class="active"><i class="fas fa-user-graduate"></i> Students</a></li>
+                        <li><a href="downloads-exams.html"><i class="fas fa-calendar-alt"></i> Exam Hall Schedules</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="downloads-header">
+            <h1>Student Downloads</h1>
+            <p>Access and download important forms, guidelines, and resources related to your examinations and certification needs.</p>
+        </section>
+
+        <!-- Search and filter bar -->
+        <section class="search-filter">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search documents...">
+                <button type="button"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="filter-options">
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="forms">Forms</option>
+                    <option value="guides">Guides & Resources</option>
+                    <option value="certificates">Certificate Requests</option>
+                    <option value="regulations">Regulations</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Main downloads section -->
+        <section class="downloads-container">
+            <!-- Forms Category -->
+            <div class="download-category">
+                <div class="category-header">
+                    <h2><i class="fas fa-file-alt"></i> Forms</h2>
+                </div>
+                <div class="download-items">
+                    <div class="download-item" data-category="forms">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Special Consideration Application</h3>
+                            <p>Application for special consideration due to illness or misadventure</p>
+                            <span class="download-meta">PDF • 320KB • Updated: March 22, 2025</span>
+                        </div>
+                        <a href="./downloads/students/special_consideration_form.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="forms">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Examination Deferral Request</h3>
+                            <p>Form to request examination deferral due to exceptional circumstances</p>
+                            <span class="download-meta">PDF • 245KB • Updated: February 15, 2025</span>
+                        </div>
+                        <a href="./downloads/students/exam_deferral_form.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="forms">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Examination Appeal Form</h3>
+                            <p>Form for appealing examination results or grade review</p>
+                            <span class="download-meta">PDF • 198KB • Updated: April 5, 2025</span>
+                        </div>
+                        <a href="./downloads/students/exam_appeal_form.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Guides Category -->
+            <div class="download-category">
+                <div class="category-header">
+                    <h2><i class="fas fa-book"></i> Guides & Resources</h2>
+                </div>
+                <div class="download-items">
+                    <div class="download-item" data-category="guides">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Examination Preparation Guide</h3>
+                            <p>Comprehensive guide to help students prepare for KDU examinations</p>
+                            <span class="download-meta">PDF • 1.5MB • Updated: March 10, 2025</span>
+                        </div>
+                        <a href="./downloads/students/exam_preparation_guide.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="guides">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Online Examination Guide</h3>
+                            <p>Instructions for accessing and completing online examinations</p>
+                            <span class="download-meta">PDF • 780KB • Updated: April 12, 2025</span>
+                        </div>
+                        <a href="./downloads/students/online_exam_guide.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="guides">
+                        <div class="download-icon doc">
+                            <i class="fas fa-file-word"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Academic Writing Guidelines</h3>
+                            <p>Guidelines for proper academic writing and citation formats</p>
+                            <span class="download-meta">DOCX • 456KB • Updated: January 25, 2025</span>
+                        </div>
+                        <a href="./downloads/students/academic_writing_guidelines.docx" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Certificate Requests Category -->
+            <div class="download-category">
+                <div class="category-header">
+                    <h2><i class="fas fa-certificate"></i> Certificate Requests</h2>
+                </div>
+                <div class="download-items">
+                    <div class="download-item" data-category="certificates">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Transcript Request Form</h3>
+                            <p>Application for official academic transcript</p>
+                            <span class="download-meta">PDF • 210KB • Updated: February 28, 2025</span>
+                        </div>
+                        <a href="./downloads/students/transcript_request_form.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="certificates">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Detailed Degree Certificate Request</h3>
+                            <p>Form for requesting detailed degree certificate</p>
+                            <span class="download-meta">PDF • 235KB • Updated: March 15, 2025</span>
+                        </div>
+                        <a href="./downloads/students/degree_certificate_request.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="certificates">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Certificate Replacement Form</h3>
+                            <p>Application for replacement of lost or damaged certificates</p>
+                            <span class="download-meta">PDF • 225KB • Updated: January 20, 2025</span>
+                        </div>
+                        <a href="./downloads/students/certificate_replacement_form.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Regulations Category -->
+            <div class="download-category">
+                <div class="category-header">
+                    <h2><i class="fas fa-gavel"></i> Regulations</h2>
+                </div>
+                <div class="download-items">
+                    <div class="download-item" data-category="regulations">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Student Examination Rules</h3>
+                            <p>Complete rules and regulations for examinations</p>
+                            <span class="download-meta">PDF • 1.2MB • Updated: February 5, 2025</span>
+                        </div>
+                        <a href="./downloads/students/exam_rules.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="regulations">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Academic Misconduct Policy</h3>
+                            <p>University policy on plagiarism and other academic misconduct</p>
+                            <span class="download-meta">PDF • 680KB • Updated: March 20, 2025</span>
+                        </div>
+                        <a href="./downloads/students/academic_misconduct_policy.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="regulations">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Grade Appeal Procedures</h3>
+                            <p>Official process for appealing grades and examination results</p>
+                            <span class="download-meta">PDF • 520KB • Updated: April 8, 2025</span>
+                        </div>
+                        <a href="./downloads/students/grade_appeal_procedures.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Information box -->
+        <section class="downloads-info-box">
+            <div class="info-box">
+                <div class="info-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="info-content">
+                    <h3>Need Assistance?</h3>
+                    <p>If you require help with any forms or applications, please contact the Student Examination Support desk at <a href="mailto:student.exams@kdu.ac.lk">student.exams@kdu.ac.lk</a> or visit the Examination Department during office hours (8:30 AM - 4:00 PM, Monday to Friday).</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (same as index.html) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="./assets/images/Main-logo.png" alt="KDU Logo">
+                <p>Examination Department<br>General Sir John Kotelawala Defence University</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="staff.html">Staff</a></li>
+                    <li><a href="downloads-students.html">Downloads</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Kandawala Estate, Ratmalana, Sri Lanka</p>
+                <p><i class="fas fa-phone"></i> +94 11 263 8656</p>
+                <p><i class="fas fa-envelope"></i> exams@kdu.ac.lk</p>
+                
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 KDU Examination Department. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript for search and filter functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const categoryFilter = document.getElementById('categoryFilter');
+            const downloadItems = document.querySelectorAll('.download-item');
+            
+            // Search functionality
+            searchInput.addEventListener('input', filterItems);
+            
+            // Category filter functionality
+            categoryFilter.addEventListener('change', filterItems);
+            
+            function filterItems() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const categoryValue = categoryFilter.value;
+                
+                downloadItems.forEach(item => {
+                    const title = item.querySelector('h3').textContent.toLowerCase();
+                    const description = item.querySelector('p').textContent.toLowerCase();
+                    const category = item.dataset.category;
+                    
+                    // Check if item matches both search term and category filter
+                    const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+                    const matchesCategory = categoryValue === 'all' || category === categoryValue;
+                    
+                    if (matchesSearch && matchesCategory) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Handle dropdown on mobile
+            const dropdowns = document.querySelectorAll('.dropdown-toggle');
+            
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        this.parentElement.classList.toggle('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

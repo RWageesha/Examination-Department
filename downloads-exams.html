@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Hall Schedules - KDU Examination Department</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/downloads.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="bg-overlay"></div>
+    <!-- Header (same as index.html) -->
+    <header>
+        <img src="./assets/images/Main-logo.png" alt="KDU Logo" style="height: 80px;">
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="staff.html"><i class="fas fa-users"></i> Staff</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle"><i class="fas fa-download"></i> Downloads <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="downloads-staff.html"><i class="fas fa-user-tie"></i> Staff</a></li>
+                        <li><a href="downloads-students.html"><i class="fas fa-user-graduate"></i> Students</a></li>
+                        <li><a href="downloads-exams.html" class="active"><i class="fas fa-calendar-alt"></i> Exam Hall Schedules</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="downloads-header">
+            <h1>Exam Hall Schedules</h1>
+            <p>Access and download examination timetables, seating plans, and venue allocations for upcoming examinations.</p>
+        </section>
+
+        <!-- Search and filter bar -->
+        <section class="search-filter">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search schedules...">
+                <button type="button"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="filter-options">
+                <select id="categoryFilter">
+                    <option value="all">All Faculties</option>
+                    <option value="engineering">Engineering</option>
+                    <option value="computing">Computing</option>
+                    <option value="management">Management & Social Sciences</option>
+                    <option value="law">Law</option>
+                    <option value="graduate">Graduate Studies</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Main downloads section -->
+        <section class="downloads-container">
+            <!-- Engineering Faculty -->
+            <div class="download-category">
+                <div class="category-header">
+                    <h2><i class="fas fa-cogs"></i> Faculty of Engineering</h2>
+                </div>
+                <div class="download-items">
+                    <div class="download-item" data-category="engineering">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Engineering Final Examinations Schedule - 2025</h3>
+                            <p>Final examination timetable for all engineering departments</p>
+                            <span class="download-meta">PDF • 420KB • Updated: April 10, 2025</span>
+                        </div>
+                        <a href="./downloads/exams/engineering_final_exams_2025.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="engineering">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Engineering Mid-Semester Examinations - 2025</h3>
+                            <p>Mid-semester examination timetable for engineering students</p>
+                            <span class="download-meta">PDF • 380KB • Updated: March 15, 2025</span>
+                        </div>
+                        <a href="./downloads/exams/engineering_mid_exams_2025.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="engineering">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Engineering Exam Venues & Seating Plan</h3>
+                            <p>Venue allocations and seating arrangements for engineering examinations</p>
+                            <span class="download-meta">PDF • 520KB • Updated: April 15, 2025</span>
+                        </div>
+                        <a href="./downloads/exams/engineering_seating_plan_2025.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Computing Faculty -->
+            <div class="download-category">
+                <div class="category-header">
+                    <h2><i class="fas fa-laptop-code"></i> Faculty of Computing</h2>
+                </div>
+                <div class="download-items">
+                    <div class="download-item" data-category="computing">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Computing Final Examinations Schedule - 2025</h3>
+                            <p>Final examination timetable for all computing degree programs</p>
+                            <span class="download-meta">PDF • 385KB • Updated: April 12, 2025</span>
+                        </div>
+                        <a href="./downloads/exams/computing_final_exams_2025.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="computing">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Computing Mid-Semester Examinations - 2025</h3>
+                            <p>Mid-semester examination timetable for computing students</p>
+                            <span class="download-meta">PDF • 310KB • Updated: March 18, 2025</span>
+                        </div>
+                        <a href="./downloads/exams/computing_mid_exams_2025.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="computing">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Computing Practical Examination Schedule</h3>
+                            <p>Timetable for practical and laboratory examinations</p>
+                            <span class="download-meta">PDF • 290KB • Updated: April 5, 2025</span>
+                        </div>
+                        <a href="./downloads/exams/computing_practical_exams_2025.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Management Faculty -->
+            <div class="download-category">
+                <div class="category-header">
+                    <h2><i class="fas fa-chart-line"></i> Faculty of Management & Social Sciences</h2>
+                </div>
+                <div class="download-items">
+                    <div class="download-item" data-category="management">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Management Final Examinations Schedule - 2025</h3>
+                            <p>Final examination timetable for management and social sciences</p>
+                            <span class="download-meta">PDF • 405KB • Updated: April 8, 2025</span>
+                        </div>
+                        <a href="./downloads/exams/management_final_exams_2025.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="management">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Management Mid-Semester Examinations - 2025</h3>
+                            <p>Mid-semester examination timetable for management students</p>
+                            <span class="download-meta">PDF • 356KB • Updated: March 12, 2025</span>
+                        </div>
+                        <a href="./downloads/exams/management_mid_exams_2025.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="management">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Management Exam Venues & Seating Plan</h3>
+                            <p>Venue allocations and seating arrangements for management examinations</p>
+                            <span class="download-meta">PDF • 480KB • Updated: April 10, 2025</span>
+                        </div>
+                        <a href="./downloads/exams/management_seating_plan_2025.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Law Faculty -->
+            <div class="download-category">
+                <div class="category-header">
+                    <h2><i class="fas fa-gavel"></i> Faculty of Law</h2>
+                </div>
+                <div class="download-items">
+                    <div class="download-item" data-category="law">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Law Final Examinations Schedule - 2025</h3>
+                            <p>Final examination timetable for all law programs</p>
+                            <span class="download-meta">PDF • 375KB • Updated: April 5, 2025</span>
+                        </div>
+                        <a href="./downloads/exams/law_final_exams_2025.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="law">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Law Mid-Semester Examinations - 2025</h3>
+                            <p>Mid-semester examination timetable for law students</p>
+                            <span class="download-meta">PDF • 320KB • Updated: March 10, 2025</span>
+                        </div>
+                        <a href="./downloads/exams/law_mid_exams_2025.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="law">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Law Exam Venues & Seating Plan</h3>
+                            <p>Venue allocations and seating arrangements for law examinations</p>
+                            <span class="download-meta">PDF • 450KB • Updated: April 7, 2025</span>
+                        </div>
+                        <a href="./downloads/exams/law_seating_plan_2025.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Graduate Studies -->
+            <div class="download-category">
+                <div class="category-header">
+                    <h2><i class="fas fa-user-graduate"></i> Faculty of Graduate Studies</h2>
+                </div>
+                <div class="download-items">
+                    <div class="download-item" data-category="graduate">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Graduate Studies Examination Schedule - 2025</h3>
+                            <p>Examination timetable for all postgraduate programs</p>
+                            <span class="download-meta">PDF • 390KB • Updated: April 14, 2025</span>
+                        </div>
+                        <a href="./downloads/exams/graduate_exams_2025.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="graduate">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Graduate Research Presentations Schedule</h3>
+                            <p>Timetable for research presentations and viva examinations</p>
+                            <span class="download-meta">PDF • 310KB • Updated: April 3, 2025</span>
+                        </div>
+                        <a href="./downloads/exams/graduate_presentations_2025.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="graduate">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Graduate Studies Venues & Seating Plan</h3>
+                            <p>Venue allocations and seating arrangements for graduate examinations</p>
+                            <span class="download-meta">PDF • 400KB • Updated: April 12, 2025</span>
+                        </div>
+                        <a href="./downloads/exams/graduate_seating_plan_2025.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Information box -->
+        <section class="downloads-info-box">
+            <div class="info-box">
+                <div class="info-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="info-content">
+                    <h3>Important Notice</h3>
+                    <p>Please check exam schedules regularly for any updates or changes. All students must arrive at least 30 minutes before the scheduled examination time and bring their student ID card. For any queries regarding exam scheduling, please contact your faculty examination coordinator or the Examination Department at <a href="mailto:exams@kdu.ac.lk">exams@kdu.ac.lk</a>.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (same as index.html) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="./assets/images/Main-logo.png" alt="KDU Logo">
+                <p>Examination Department<br>General Sir John Kotelawala Defence University</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="staff.html">Staff</a></li>
+                    <li><a href="downloads-exams.html">Downloads</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Kandawala Estate, Ratmalana, Sri Lanka</p>
+                <p><i class="fas fa-phone"></i> +94 11 263 8656</p>
+                <p><i class="fas fa-envelope"></i> exams@kdu.ac.lk</p>
+                
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 KDU Examination Department. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript for search and filter functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const categoryFilter = document.getElementById('categoryFilter');
+            const downloadItems = document.querySelectorAll('.download-item');
+            
+            // Search functionality
+            searchInput.addEventListener('input', filterItems);
+            
+            // Category filter functionality
+            categoryFilter.addEventListener('change', filterItems);
+            
+            function filterItems() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const categoryValue = categoryFilter.value;
+                
+                downloadItems.forEach(item => {
+                    const title = item.querySelector('h3').textContent.toLowerCase();
+                    const description = item.querySelector('p').textContent.toLowerCase();
+                    const category = item.dataset.category;
+                    
+                    // Check if item matches both search term and category filter
+                    const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+                    const matchesCategory = categoryValue === 'all' || category === categoryValue;
+                    
+                    if (matchesSearch && matchesCategory) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Handle dropdown on mobile
+            const dropdowns = document.querySelectorAll('.dropdown-toggle');
+            
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        this.parentElement.classList.toggle('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talk to AR - KDU Examination Department</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/TalktoAR.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="bg-overlay"></div>
+    
+    <!-- Header (same as index.html) -->
+    <header>
+        <img src="./assets/images/Main-logo.png" alt="KDU Logo" style="height: 80px;">
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="staff.html"><i class="fas fa-users"></i> Staff</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle"><i class="fas fa-download"></i> Downloads <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="downloads-staff.html"><i class="fas fa-user-tie"></i> Staff</a></li>
+                        <li><a href="downloads-students.html"><i class="fas fa-user-graduate"></i> Students</a></li>
+                        <li><a href="downloads-exams.html"><i class="fas fa-calendar-alt"></i> Exam Hall Schedules</a></li>
+                    </ul>
+                </li>
+                <li><a href="contactUs.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="talk-ar-main">
+        <section class="talk-ar-header">
+            <div class="talk-ar-title">
+                <h1>Talk to Assistant Registrar</h1>
+                <p>Get direct assistance from our Assistant Registrar for urgent examination matters</p>
+            </div>
+            <div class="ar-profile">
+                <div class="ar-image">
+                    <img src="./assets/images/staff/head.jpg" alt="Mr. Champika Gunasekara">
+                </div>
+                <div class="ar-info">
+                    <h2>Mr. Champika Gunasekara</h2>
+                    <p class="ar-title">Senior Assistant Registrar - Examination</p>
+                    <div class="ar-contact-info">
+                        <p><i class="fas fa-envelope"></i> champika.g@kdu.ac.lk</p>
+                        <p><i class="fas fa-phone"></i> +94 11 263 8656</p>
+                        <p><i class="fas fa-clock"></i> Available: Mon-Fri, 9:00 AM - 3:00 PM</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-options">
+            <div class="option-container">
+                <div class="option-card phone-option">
+                    <div class="option-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Call Directly</h3>
+                    <p>Speak with the Assistant Registrar for urgent matters that require immediate attention.</p>
+                    <a href="tel:+94112638656" class="option-button phone-button">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                    <div class="option-note">
+                        <p><i class="fas fa-info-circle"></i> Available during office hours only</p>
+                    </div>
+                </div>
+
+                <div class="option-card email-option">
+                    <div class="option-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Send Email</h3>
+                    <p>Write a detailed message for matters that require documentation or aren't time-sensitive.</p>
+                    <div class="email-form">
+                        <form id="arEmailForm">
+                            <div class="form-group">
+                                <label for="name">Your Name <span class="required">*</span></label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Your Email <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="studentId">Student/Staff ID <span class="required">*</span></label>
+                                <input type="text" id="studentId" name="studentId" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject <span class="required">*</span></label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message <span class="required">*</span></label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            
+                            <div class="form-group form-attachment">
+                                <label for="attachment">Attachment (if any)</label>
+                                <input type="file" id="attachment" name="attachment">
+                                <p class="file-note">Max file size: 5MB (PDF, DOC, DOCX, JPG)</p>
+                            </div>
+                            
+                            <button type="submit" class="option-button email-button">
+                                <i class="fas fa-paper-plane"></i> Send Email
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="talk-ar-guidelines">
+            <h2>When to Contact the Assistant Registrar</h2>
+            <div class="guidelines-container">
+                <div class="guideline-item">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Urgent certificate requests for employment or higher studies</p>
+                </div>
+                <div class="guideline-item">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Special examination arrangements due to medical circumstances</p>
+                </div>
+                <div class="guideline-item">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Emergency grade appeals or result verification</p>
+                </div>
+                <div class="guideline-item">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Official examination documentation for external purposes</p>
+                </div>
+                <div class="guideline-item">
+                    <i class="fas fa-times-circle"></i>
+                    <p>General inquiries (please use the <a href="contactUs.html">Contact Us</a> page instead)</p>
+                </div>
+                <div class="guideline-item">
+                    <i class="fas fa-times-circle"></i>
+                    <p>Course-specific questions (contact your faculty coordinator)</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (same as index.html) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="./assets/images/Main-logo.png" alt="KDU Logo">
+                <p>Examination Department<br>General Sir John Kotelawala Defence University</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="staff.html">Staff</a></li>
+                    <li><a href="downloads-staff.html">Downloads</a></li>
+                    <li><a href="contactUs.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Kandawala Estate, Ratmalana, Sri Lanka</p>
+                <p><i class="fas fa-phone"></i> +94 11 263 8656</p>
+                <p><i class="fas fa-envelope"></i> exams@kdu.ac.lk</p>
+                
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 KDU Examination Department. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Email form submission
+            const emailForm = document.getElementById('arEmailForm');
+            if (emailForm) {
+                emailForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // In a real implementation, you'd send this to a server
+                    // For demo purposes, we'll just simulate success
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    
+                    // Create success message
+                    const successMsg = document.createElement('div');
+                    successMsg.className = 'success-message';
+                    successMsg.innerHTML = `
+                        <i class="fas fa-check-circle"></i>
+                        <p>Thank you, ${name}! Your message has been sent to the Assistant Registrar. 
+                        You'll receive a confirmation email at ${email} shortly.</p>
+                    `;
+                    
+                    // Replace form with success message
+                    emailForm.innerHTML = '';
+                    emailForm.appendChild(successMsg);
+                });
+            }
+            
+            // Handle dropdown on mobile
+            const dropdowns = document.querySelectorAll('.dropdown-toggle');
+            
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        this.parentElement.classList.toggle('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

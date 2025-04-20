@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Downloads - KDU Examination Department</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/downloads.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="bg-overlay"></div>
+    <!-- Header (same as index.html) -->
+    <header>
+        <img src="./assets/images/Main-logo.png" alt="KDU Logo" style="height: 80px;">
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="staff.html"><i class="fas fa-users"></i> Staff</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle"><i class="fas fa-download"></i> Downloads <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="downloads-staff.html" class="active"><i class="fas fa-user-tie"></i> Staff</a></li>
+                        <li><a href="downloads-students.html"><i class="fas fa-user-graduate"></i> Students</a></li>
+                        <li><a href="downloads-exams.html"><i class="fas fa-calendar-alt"></i> Exam Hall Schedules</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="downloads-header">
+            <h1>Staff Downloads</h1>
+            <p>Access and download important documents, forms and resources for examination-related activities.</p>
+        </section>
+
+        <!-- Search and filter bar -->
+        <section class="search-filter">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search documents...">
+                <button type="button"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="filter-options">
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="forms">Forms</option>
+                    <option value="guidelines">Guidelines</option>
+                    <option value="templates">Templates</option>
+                    <option value="policies">Policies</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Main downloads section -->
+        <section class="downloads-container">
+            <!-- Forms Category -->
+            <div class="download-category">
+                <div class="category-header">
+                    <h2><i class="fas fa-file-alt"></i> Forms</h2>
+                </div>
+                <div class="download-items">
+                    <div class="download-item" data-category="forms">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Examination Submission Form</h3>
+                            <p>Form for submitting final examination papers to the department</p>
+                            <span class="download-meta">PDF • 245KB • Updated: April 15, 2025</span>
+                        </div>
+                        <a href="./downloads/staff/examination_submission_form.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="forms">
+                        <div class="download-icon doc">
+                            <i class="fas fa-file-word"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Grade Change Request</h3>
+                            <p>Official form for requesting correction to student grades</p>
+                            <span class="download-meta">DOCX • 137KB • Updated: March 10, 2025</span>
+                        </div>
+                        <a href="./downloads/staff/grade_change_request.docx" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="forms">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Special Considerations Form</h3>
+                            <p>Form for special assessment arrangements and considerations</p>
+                            <span class="download-meta">PDF • 198KB • Updated: February 22, 2025</span>
+                        </div>
+                        <a href="./downloads/staff/special_considerations_form.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Guidelines Category -->
+            <div class="download-category">
+                <div class="category-header">
+                    <h2><i class="fas fa-book"></i> Guidelines</h2>
+                </div>
+                <div class="download-items">
+                    <div class="download-item" data-category="guidelines">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Examination Paper Preparation Guide</h3>
+                            <p>Comprehensive guidelines for preparing examination papers</p>
+                            <span class="download-meta">PDF • 1.2MB • Updated: April 5, 2025</span>
+                        </div>
+                        <a href="./downloads/staff/exam_paper_guide.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="guidelines">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Invigilation Procedures</h3>
+                            <p>Official guidelines for invigilating examinations at KDU</p>
+                            <span class="download-meta">PDF • 856KB • Updated: March 25, 2025</span>
+                        </div>
+                        <a href="./downloads/staff/invigilation_procedures.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="guidelines">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Marking and Moderation Policy</h3>
+                            <p>Guidelines for consistent marking and moderation of examinations</p>
+                            <span class="download-meta">PDF • 420KB • Updated: January 12, 2025</span>
+                        </div>
+                        <a href="./downloads/staff/marking_moderation_policy.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Templates Category -->
+            <div class="download-category">
+                <div class="category-header">
+                    <h2><i class="fas fa-file-alt"></i> Templates</h2>
+                </div>
+                <div class="download-items">
+                    <div class="download-item" data-category="templates">
+                        <div class="download-icon doc">
+                            <i class="fas fa-file-word"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Examination Paper Template</h3>
+                            <p>Official template for creating examination papers</p>
+                            <span class="download-meta">DOCX • 125KB • Updated: February 10, 2025</span>
+                        </div>
+                        <a href="./downloads/staff/exam_paper_template.docx" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="templates">
+                        <div class="download-icon xls">
+                            <i class="fas fa-file-excel"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Grade Recording Sheet</h3>
+                            <p>Excel template for recording and calculating student grades</p>
+                            <span class="download-meta">XLSX • 235KB • Updated: March 18, 2025</span>
+                        </div>
+                        <a href="./downloads/staff/grade_recording_sheet.xlsx" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="templates">
+                        <div class="download-icon ppt">
+                            <i class="fas fa-file-powerpoint"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Results Presentation Template</h3>
+                            <p>PowerPoint template for presenting examination results</p>
+                            <span class="download-meta">PPTX • 1.8MB • Updated: April 2, 2025</span>
+                        </div>
+                        <a href="./downloads/staff/results_presentation.pptx" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Policies Category -->
+            <div class="download-category">
+                <div class="category-header">
+                    <h2><i class="fas fa-gavel"></i> Policies</h2>
+                </div>
+                <div class="download-items">
+                    <div class="download-item" data-category="policies">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Examination Policy Handbook</h3>
+                            <p>Complete examination policies and procedures for KDU</p>
+                            <span class="download-meta">PDF • 3.4MB • Updated: January 5, 2025</span>
+                        </div>
+                        <a href="./downloads/staff/exam_policy_handbook.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="policies">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Academic Integrity Policy</h3>
+                            <p>University policy on academic integrity and misconduct</p>
+                            <span class="download-meta">PDF • 780KB • Updated: February 15, 2025</span>
+                        </div>
+                        <a href="./downloads/staff/academic_integrity_policy.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item" data-category="policies">
+                        <div class="download-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h3>Results Publication Guidelines</h3>
+                            <p>Official process for publishing and announcing examination results</p>
+                            <span class="download-meta">PDF • 560KB • Updated: March 8, 2025</span>
+                        </div>
+                        <a href="./downloads/staff/results_publication_guidelines.pdf" class="download-button">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Information box -->
+        <section class="downloads-info-box">
+            <div class="info-box">
+                <div class="info-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="info-content">
+                    <h3>Need Additional Resources?</h3>
+                    <p>If you require any other examination-related documents or have special requests, please contact the Examination Department at <a href="mailto:exams@kdu.ac.lk">exams@kdu.ac.lk</a> or call +94 11 263 8656.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (same as index.html) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="./assets/images/Main-logo.png" alt="KDU Logo">
+                <p>Examination Department<br>General Sir John Kotelawala Defence University</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="staff.html">Staff</a></li>
+                    <li><a href="downloads-staff.html">Downloads</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Kandawala Estate, Ratmalana, Sri Lanka</p>
+                <p><i class="fas fa-phone"></i> +94 11 263 8656</p>
+                <p><i class="fas fa-envelope"></i> exams@kdu.ac.lk</p>
+                
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 KDU Examination Department. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript for search and filter functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const categoryFilter = document.getElementById('categoryFilter');
+            const downloadItems = document.querySelectorAll('.download-item');
+            
+            // Search functionality
+            searchInput.addEventListener('input', filterItems);
+            
+            // Category filter functionality
+            categoryFilter.addEventListener('change', filterItems);
+            
+            function filterItems() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const categoryValue = categoryFilter.value;
+                
+                downloadItems.forEach(item => {
+                    const title = item.querySelector('h3').textContent.toLowerCase();
+                    const description = item.querySelector('p').textContent.toLowerCase();
+                    const category = item.dataset.category;
+                    
+                    // Check if item matches both search term and category filter
+                    const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+                    const matchesCategory = categoryValue === 'all' || category === categoryValue;
+                    
+                    if (matchesSearch && matchesCategory) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Handle dropdown on mobile
+            const dropdowns = document.querySelectorAll('.dropdown-toggle');
+            
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        this.parentElement.classList.toggle('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

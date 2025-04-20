@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - KDU Examination Department</title>
+    <link rel="stylesheet" href="../assets/css/admin-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../assets/images/Main-logo.png" alt="KDU Logo">
+                <h2>Admin Panel</h2>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="#dashboard" data-section="dashboard">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#notices" data-section="notices">
+                            <i class="fas fa-bullhorn"></i> Notices
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#images" data-section="images">
+                            <i class="fas fa-images"></i> Image Gallery
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#users" data-section="users">
+                            <i class="fas fa-users-cog"></i> User Management
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#settings" data-section="settings">
+                            <i class="fas fa-cog"></i> Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="../index.html" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> View Website
+                </a>
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="admin-header">
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="header-title">
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="user-profile">
+                    <span class="user-name">Admin User</span>
+                    <div class="user-avatar">
+                        <img src="../assets/images/admin-avatar.png" alt="Admin">
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Content Sections -->
+            <div class="content-wrapper">
+                <!-- Dashboard Section -->
+                <section id="dashboard" class="content-section active">
+                    <div class="section-header">
+                        <h2>Dashboard</h2>
+                        <p>Welcome to the KDU Examination Department Admin Panel</p>
+                    </div>
+                    
+                    <div class="stats-container">
+                        <div class="stat-card">
+                            <div class="stat-icon blue">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Notices</h3>
+                                <p class="stat-number">12</p>
+                                <p class="stat-desc">Active notices</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon green">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Downloads</h3>
+                                <p class="stat-number">48</p>
+                                <p class="stat-desc">Available files</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon orange">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Users</h3>
+                                <p class="stat-number">5</p>
+                                <p class="stat-desc">Admin users</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon purple">
+                                <i class="fas fa-image"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Images</h3>
+                                <p class="stat-number">24</p>
+                                <p class="stat-desc">Uploaded images</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <div class="section-header">
+                            <h3>Recent Activity</h3>
+                        </div>
+                        <ul class="activity-list">
+                            <li class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-plus-circle"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <p class="activity-desc">New notice added: "Final Examination Schedule"</p>
+                                    <p class="activity-time">Today, 10:45 AM</p>
+                                </div>
+                            </li>
+                            <li class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-edit"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <p class="activity-desc">Edited notice: "Result Publication"</p>
+                                    <p class="activity-time">Yesterday, 3:20 PM</p>
+                                </div>
+                            </li>
+                            <li class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-upload"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <p class="activity-desc">Uploaded new images to gallery</p>
+                                    <p class="activity-time">Apr 18, 2025, 9:15 AM</p>
+                                </div>
+                            </li>
+                            <li class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <p class="activity-desc">Added new admin user: "Sarah"</p>
+                                    <p class="activity-time">Apr 16, 2025, 11:30 AM</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Notices Section -->
+                <section id="notices" class="content-section">
+                    <div class="section-header">
+                        <h2>Manage Notices</h2>
+                        <button id="addNoticeBtn" class="btn-primary">
+                            <i class="fas fa-plus"></i> Add New Notice
+                        </button>
+                    </div>
+                    
+                    <div class="search-filter-bar">
+                        <div class="search-box">
+                            <input type="text" id="noticeSearch" placeholder="Search notices...">
+                            <button type="button"><i class="fas fa-search"></i></button>
+                        </div>
+                        <div class="filter-options">
+                            <select id="noticeFilter">
+                                <option value="all">All Notices</option>
+                                <option value="active">Active</option>
+                                <option value="draft">Draft</option>
+                                <option value="archived">Archived</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="data-table" id="noticesTable">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Final Examination Schedule</td>
+                                    <td>May 15, 2025</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td class="actions">
+                                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Result Publication</td>
+                                    <td>May 10, 2025</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td class="actions">
+                                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Examination Guidelines Update</td>
+                                    <td>May 05, 2025</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td class="actions">
+                                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Special Examination Arrangements</td>
+                                    <td>April 28, 2025</td>
+                                    <td><span class="status-badge draft">Draft</span></td>
+                                    <td class="actions">
+                                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Previous Semester Results Analysis</td>
+                                    <td>April 15, 2025</td>
+                                    <td><span class="status-badge archived">Archived</span></td>
+                                    <td class="actions">
+                                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <!-- Images Section -->
+                <section id="images" class="content-section">
+                    <div class="section-header">
+                        <h2>Image Gallery</h2>
+                        <button id="uploadImagesBtn" class="btn-primary">
+                            <i class="fas fa-upload"></i> Upload Images
+                        </button>
+                    </div>
+                    
+                    <div class="search-filter-bar">
+                        <div class="search-box">
+                            <input type="text" id="imageSearch" placeholder="Search images...">
+                            <button type="button"><i class="fas fa-search"></i></button>
+                        </div>
+                        <div class="filter-options">
+                            <select id="imageFilter">
+                                <option value="all">All Images</option>
+                                <option value="slider">Slider Images</option>
+                                <option value="gallery">Gallery Images</option>
+                                <option value="other">Other Images</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="image-gallery">
+                        <div class="image-card">
+                            <div class="image-preview">
+                                <img src="../assets/images/slide-1.jpg" alt="KDU Campus">
+                            </div>
+                            <div class="image-details">
+                                <h4>KDU Campus</h4>
+                                <p>Used in: Homepage Slider</p>
+                            </div>
+                            <div class="image-actions">
+                                <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="image-card">
+                            <div class="image-preview">
+                                <img src="../assets/images/slide-2.jpg" alt="Examination Hall">
+                            </div>
+                            <div class="image-details">
+                                <h4>Examination Hall</h4>
+                                <p>Used in: Homepage Slider</p>
+                            </div>
+                            <div class="image-actions">
+                                <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="image-card">
+                            <div class="image-preview">
+                                <img src="../assets/images/slide-3.jpg" alt="Graduation Ceremony">
+                            </div>
+                            <div class="image-details">
+                                <h4>Graduation Ceremony</h4>
+                                <p>Used in: Homepage Slider</p>
+                            </div>
+                            <div class="image-actions">
+                                <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="image-card">
+                            <div class="image-preview">
+                                <img src="../assets/images/gallery-1.jpg" alt="Gallery Image">
+                            </div>
+                            <div class="image-details">
+                                <h4>Gallery Image 1</h4>
+                                <p>Used in: Photo Gallery</p>
+                            </div>
+                            <div class="image-actions">
+                                <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Users Management Section -->
+                <section id="users" class="content-section">
+                    <div class="section-header">
+                        <h2>User Management</h2>
+                        <button id="addUserBtn" class="btn-primary">
+                            <i class="fas fa-user-plus"></i> Add New User
+                        </button>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="data-table" id="usersTable">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Full Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>admin</td>
+                                    <td>Admin User</td>
+                                    <td>admin@kdu.ac.lk</td>
+                                    <td>Administrator</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td class="actions">
+                                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>sarah</td>
+                                    <td>Sarah Johnson</td>
+                                    <td>sarah@kdu.ac.lk</td>
+                                    <td>Editor</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td class="actions">
+                                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>mike</td>
+                                    <td>Mike Peterson</td>
+                                    <td>mike@kdu.ac.lk</td>
+                                    <td>Editor</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td class="actions">
+                                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>lisa</td>
+                                    <td>Lisa Wong</td>
+                                    <td>lisa@kdu.ac.lk</td>
+                                    <td>Contributor</td>
+                                    <td><span class="status-badge inactive">Inactive</span></td>
+                                    <td class="actions">
+                                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>john</td>
+                                    <td>John Smith</td>
+                                    <td>john@kdu.ac.lk</td>
+                                    <td>Contributor</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td class="actions">
+                                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <!-- Settings Section -->
+                <section id="settings" class="content-section">
+                    <div class="section-header">
+                        <h2>Site Settings</h2>
+                        <button id="saveSettingsBtn" class="btn-primary">
+                            <i class="fas fa-save"></i> Save Changes
+                        </button>
+                    </div>
+                    
+                    <div class="settings-container">
+                        <div class="settings-card">
+                            <h3>General Settings</h3>
+                            <form id="generalSettingsForm" class="settings-form">
+                                <div class="form-group">
+                                    <label for="siteName">Site Name</label>
+                                    <input type="text" id="siteName" name="siteName" value="KDU Examination Department">
+                                </div>
+                                <div class="form-group">
+                                    <label for="siteDescription">Site Description</label>
+                                    <textarea id="siteDescription" name="siteDescription" rows="3">Official website of the Examination Department at General Sir John Kotelawala Defence University</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactEmail">Contact Email</label>
+                                    <input type="email" id="contactEmail" name="contactEmail" value="exams@kdu.ac.lk">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactPhone">Contact Phone</label>
+                                    <input type="text" id="contactPhone" name="contactPhone" value="+94 11 263 8656">
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="settings-card">
+                            <h3>Homepage Settings</h3>
+                            <form id="homepageSettingsForm" class="settings-form">
+                                <div class="form-group">
+                                    <label for="sliderAutoplay">Slider Autoplay</label>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="sliderAutoplay" name="sliderAutoplay" checked>
+                                        <label for="sliderAutoplay"></label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sliderDelay">Slider Delay (seconds)</label>
+                                    <input type="number" id="sliderDelay" name="sliderDelay" value="5" min="1" max="10">
+                                </div>
+                                <div class="form-group">
+                                    <label for="noticesCount">Number of Notices to Show</label>
+                                    <input type="number" id="noticesCount" name="noticesCount" value="3" min="1" max="10">
+                                </div>
+                                <div class="form-group">
+                                    <label for="featuredNotice">Featured Notice</label>
+                                    <select id="featuredNotice" name="featuredNotice">
+                                        <option value="1" selected>Final Examination Schedule</option>
+                                        <option value="2">Result Publication</option>
+                                        <option value="3">Examination Guidelines Update</option>
+                                        <option value="4">Special Examination Arrangements</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="settings-card">
+                            <h3>Social Media Settings</h3>
+                            <form id="socialSettingsForm" class="settings-form">
+                                <div class="form-group">
+                                    <label for="facebookUrl">Facebook URL</label>
+                                    <input type="url" id="facebookUrl" name="facebookUrl" value="https://facebook.com/kdu">
+                                </div>
+                                <div class="form-group">
+                                    <label for="twitterUrl">Twitter URL</label>
+                                    <input type="url" id="twitterUrl" name="twitterUrl" value="https://twitter.com/kdu">
+                                </div>
+                                <div class="form-group">
+                                    <label for="linkedinUrl">LinkedIn URL</label>
+                                    <input type="url" id="linkedinUrl" name="linkedinUrl" value="https://linkedin.com/company/kdu">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Modals -->
+    <!-- Add Notice Modal -->
+    <div id="addNoticeModal" class="modal">
+        <div class="modal-content large-modal">
+            <span class="close-modal">&times;</span>
+            <h2>Add New Notice</h2>
+            <form id="addNoticeForm" class="form-horizontal">
+                <div class="form-group">
+                    <label for="noticeTitle">Title</label>
+                    <input type="text" id="noticeTitle" name="noticeTitle" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="noticeDate">Date</label>
+                        <input type="date" id="noticeDate" name="noticeDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="noticeStatus">Status</label>
+                        <select id="noticeStatus" name="noticeStatus">
+                            <option value="active">Active</option>
+                            <option value="draft">Draft</option>
+                            <option value="archived">Archived</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="noticeContent">Content</label>
+                    <textarea id="noticeContent" name="noticeContent" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="noticeLink">Link (Optional)</label>
+                    <input type="url" id="noticeLink" name="noticeLink" placeholder="https://">
+                </div>
+                <div class="form-group">
+                    <label for="noticeLinkText">Link Text (Optional)</label>
+                    <input type="text" id="noticeLinkText" name="noticeLinkText" placeholder="Read More">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary cancel-modal">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Notice</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Upload Images Modal -->
+    <div id="uploadImagesModal" class="modal">
+        <div class="modal-content large-modal">
+            <span class="close-modal">&times;</span>
+            <h2>Upload Images</h2>
+            <form id="uploadImagesForm" class="form-horizontal">
+                <div class="form-group">
+                    <label for="imageCategory">Image Category</label>
+                    <select id="imageCategory" name="imageCategory">
+                        <option value="slider">Slider Images</option>
+                        <option value="gallery">Gallery Images</option>
+                        <option value="other">Other Images</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="imageTitle">Image Title</label>
+                    <input type="text" id="imageTitle" name="imageTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="imageDescription">Image Description (Optional)</label>
+                    <input type="text" id="imageDescription" name="imageDescription">
+                </div>
+                <div class="form-group file-upload">
+                    <label for="imageFile">Select Image</label>
+                    <input type="file" id="imageFile" name="imageFile" accept="image/*" required>
+                    <div class="file-preview">
+                        <img id="imagePreview" src="#" alt="Preview" style="display: none;">
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary cancel-modal">Cancel</button>
+                    <button type="submit" class="btn-primary">Upload Image</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Add User Modal -->
+    <div id="addUserModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Add New User</h2>
+            <form id="addUserForm" class="form-horizontal">
+                <div class="form-group">
+                    <label for="userName">Username</label>
+                    <input type="text" id="userName" name="userName" required>
+                </div>
+                <div class="form-group">
+                    <label for="userFullName">Full Name</label>
+                    <input type="text" id="userFullName" name="userFullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="userEmail">Email</label>
+                    <input type="email" id="userEmail" name="userEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="userPassword">Password</label>
+                    <input type="password" id="userPassword" name="userPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="userRole">Role</label>
+                    <select id="userRole" name="userRole">
+                        <option value="administrator">Administrator</option>
+                        <option value="editor">Editor</option>
+                        <option value="contributor">Contributor</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="userStatus">Status</label>
+                    <select id="userStatus" name="userStatus">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary cancel-modal">Cancel</button>
+                    <button type="submit" class="btn-primary">Add User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteConfirmModal" class="modal">
+        <div class="modal-content small-modal">
+            <span class="close-modal">&times;</span>
+            <h2>Confirm Deletion</h2>
+            <p>Are you sure you want to delete this item? This action cannot be undone.</p>
+            <div class="form-actions">
+                <button type="button" class="btn-secondary cancel-modal">Cancel</button>
+                <button id="confirmDelete" type="button" class="btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/admin-panel.js"></script>
+</body>
+</html>

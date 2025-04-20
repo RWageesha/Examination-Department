@@ -240,45 +240,70 @@ slider-arrow:hover {
 /* Talk to AR Floating Button */
 .talk-to-ar-button {
     position: fixed;
-    bottom: 30px;
-    right:  30px;
+    bottom: 20px;
+    right: 20px;
     z-index: 1000;
 }
 
 #talk-to-ar {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background-color: #004080; /* Navy blue to match header */
-    color: white;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background-color: #004080; /* Navy blue */
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.8rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
-    font-size: 0.9rem;
+    overflow: hidden;
+    position: relative;
 }
 
-#talk-to-ar i {
-    font-size: 1.8rem;
-    margin-bottom: 5px;
+#talk-to-ar img {
+    width: 170px;
+    height: 170px;
+    margin-bottom: 2px;
+    transition: transform 0.3s ease;
+    border-radius: 100%;
+}
+
+#talk-to-ar span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+    transition: opacity 0.3s ease;
 }
 
 #talk-to-ar:hover {
-    background-color: #002244; /* Darker blue on hover */
-    transform: scale(1.05);
+    background-color: #002244; /* Darker navy blue */
+    transform: scale(1.1);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* Animation for subtle attention */
+#talk-to-ar:hover img {
+    transform: scale(1.1);
+}
+
+#talk-to-ar:hover span {
+    opacity: 1;
+}
+
+/* Add subtle animation for attention */
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 #talk-to-ar {
@@ -289,17 +314,17 @@ slider-arrow:hover {
     animation: none;
 }
 
-/* Media query for smaller screens */
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    .talk-to-ar-button {
-        bottom: 20px;
-        left: 20px;
-    }
-    
     #talk-to-ar {
-        width: 70px;
-        height: 70px;
-        font-size: 0.8rem;
+        width: 60px;
+        height: 60px;
+        font-size: 0.7rem;
+    }
+
+    #talk-to-ar img {
+        width: 30px;
+        height: 30px;
     }
 }
 
@@ -359,7 +384,7 @@ slider-arrow:hover {
     align-items: center;
     justify-content: center;
     width: 400px;
-    height: 200px;
+    height: 100px;
     border-radius: 10px; /* Changed from 50% (circle) to 10px for slightly rounded corners */
     background-color: #002244;
     color: white;
@@ -394,6 +419,237 @@ slider-arrow:hover {
         position: static;
         width: 100%;
         margin: 20px 0;
+    }
+}
+
+/* Certificate Services Section Styling */
+#certificate-services {
+    position: absolute;
+    right: 10px;
+    top: 650px; /* Adjust this value based on your layout */
+    width: 35%;
+    z-index: 5;
+}
+
+.certificate-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#certificate-services .certificate-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 145px;
+    padding: 15px 20px;
+    background-color: #002244;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    border: none;
+    border-left: 5px solid #ffcc00;
+}
+
+#certificate-services .certificate-button i {
+    font-size: 2rem;
+    margin-right: 15px;
+    margin-bottom: 0;
+}
+
+#certificate-services .certificate-button span {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+#certificate-services .certificate-button:hover {
+    background-color: #004080;
+    transform: translateX(-5px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    #certificate-services {
+        position: static;
+        width: 95%;
+        margin: 30px auto;
+    }
+    
+    .certificate-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    #certificate-services .certificate-button {
+        width: calc(33.33% - 20px);
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        border-left: none;
+        border-top: 5px solid #ffcc00;
+    }
+    
+    #certificate-services .certificate-button i {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    #certificate-services .certificate-button {
+        width: 100%;
+    }
+}
+/* Vision & Mission Section Styling */
+#vision-mission {
+    width: 95%;
+    margin: 0 auto 30px;
+    padding: 20px;
+}
+
+.vision-mission-container {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+}
+
+.vision-box, .mission-box {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.vision-box {
+    border-top: 4px solid #004080;
+}
+
+/* Hover Effects */
+.vision-box:hover, .mission-box:hover {
+    box-shadow: 0 8px 24px rgba(0,64,128,0.15);
+    transform: translateY(-6px) scale(1.03);
+    z-index: 2;
+}
+
+.vision-box:hover .vision-icon,
+.mission-box:hover .mission-icon {
+    background-color: #004080;
+    box-shadow: 0 6px 18px rgba(0,64,128,0.12);
+}
+
+.vision-box:hover .vision-icon i {
+    color: #fff;
+    transform: rotateY(180deg);
+    transition: color 0.3s, transform 0.5s;
+}
+
+.mission-box:hover .mission-icon i {
+    color: #fff;
+    transform: rotateY(180deg);
+    transition: color 0.3s, transform 0.5s;
+}
+
+.mission-box {
+    border-top: 4px solid #ffcc00;
+}
+
+.vision-icon, .mission-icon {
+    width: 70px;
+    height: 70px;
+    background-color: #f9f9f9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.vision-icon i, .mission-icon i {
+    font-size: 2rem;
+    color: #004080;
+}
+
+.mission-icon i {
+    color: #002244;
+}
+
+.vision-box h2, .mission-box h2 {
+    color: #002244;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.vision-box h2:after, .mission-box h2:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+}
+
+.vision-box h2:after {
+    background-color: #004080;
+}
+
+.mission-box h2:after {
+    background-color: #ffcc00;
+}
+
+.vision-box p, .mission-box p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* Design element for visual interest */
+.vision-box:before, .mission-box:before {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: rgba(0,64,128,0.03);
+    top: -75px;
+    right: -75px;
+    z-index: 0;
+}
+
+.mission-box:before {
+    background-color: rgba(255,204,0,0.03);
+    left: -75px;
+    right: auto;
+}
+
+/* Responsive styling */
+@media (max-width: 992px) {
+    .vision-mission-container {
+        flex-direction: column;
+    }
+    
+    .vision-box, .mission-box {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    #vision-mission {
+        width: 100%;
+        padding: 10px;
     }
 }
 
@@ -612,6 +868,193 @@ slider-arrow:hover {
     
     .guidance-item {
         padding: 20px 15px;
+    }
+}
+
+/* Dropdown Menu Styling - Professional Black Theme */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 4px 4px 0 0;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown:hover .dropdown-toggle {
+    background-color: #000;
+    color: #fff;
+}
+
+.dropdown-toggle .fa-caret-down {
+    margin-left: 6px;
+    transition: transform 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.dropdown:hover .fa-caret-down {
+    transform: rotate(180deg);
+}
+
+/* Black professional dropdown */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0; /* Changed from right:0 to left:0 for better alignment */
+    background-color: #000; /* Changed to black */
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    border-radius: 0 0 6px 6px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+    list-style: none;
+    padding: 0;
+    border-top: 2px solid #ffcc00; /* Gold accent */
+    display: flex;
+    flex-direction: row; /* Show items in a row */
+    flex-wrap: wrap; /* Allow wrapping for many items */
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    border-right: 1px solid rgba(255,255,255,0.1);
+    width: auto; /* Auto width for horizontal layout */
+    flex: 1; /* Equal width for all items */
+    min-width: 140px; /* Ensure minimum width */
+}
+
+.dropdown-menu li:last-child {
+    border-right: none;
+}
+
+.dropdown-menu a {
+    padding: 14px 18px;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+    background-color: #222; /* Dark gray hover state */
+    color: #ffcc00;
+}
+
+.dropdown-menu i {
+    margin-right: 8px;
+    width: 16px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* Responsive adjustments for dropdown */
+@media (max-width: 992px) {
+    .dropdown-menu {
+        flex-direction: column; /* Stack vertically on smaller screens */
+    }
+    
+    .dropdown-menu li {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        width: 100%;
+    }
+    
+    .dropdown-menu a {
+        text-align: left;
+    }
+}
+
+@media (max-width: 768px) {
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        width: 100%;
+        display: none;
+        background-color: #000;
+        box-shadow: none;
+        border-top: none;
+    }
+    
+    .dropdown.active .dropdown-menu {
+        display: block;
+    }
+    
+    .dropdown-toggle .fa-caret-down {
+        float: right;
+        margin-top: 5px;
+    }
+}
+
+/* Exam Results Button Styling */
+.exam-results-button {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+.exam-results-button .results-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #004080;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.exam-results-button .results-link:hover {
+    background-color: #002244;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.exam-results-button i {
+    font-size: 1.2rem;
+}
+
+/* Make the button responsive */
+@media (max-width: 768px) {
+    .exam-results-button {
+        bottom: 70px; /* Position above the dots on mobile */
+    }
+    
+    .exam-results-button .results-link {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .exam-results-button i {
+        font-size: 1rem;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+    .exam-results-button {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 70px;
     }
 }
 

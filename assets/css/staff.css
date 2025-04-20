@@ -1,0 +1,165 @@
+/* Staff Page Styling */
+#staff-intro {
+    width: 95%;
+    margin: 0 auto;
+    padding: 40px 20px 20px;
+    text-align: center;
+}
+
+#staff-intro h1 {
+    color: #002244;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+#staff-intro p {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#staff-profiles {
+    width: 95%;
+    margin: 0 auto 40px;
+    padding: 20px;
+}
+
+.staff-category {
+    margin-bottom: 40px;
+}
+
+.staff-category h2 {
+    color: #002244;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #004080;
+}
+
+.staff-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.staff-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.staff-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.staff-card.featured {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: row;
+}
+
+.staff-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.staff-card.featured .staff-image {
+    width: 40%;
+    height: auto;
+}
+
+.staff-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.staff-card:hover .staff-image img {
+    transform: scale(1.05);
+}
+
+.staff-info {
+    padding: 20px;
+}
+
+.staff-card.featured .staff-info {
+    width: 60%;
+    padding: 30px;
+}
+
+.staff-info h3 {
+    color: #002244;
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+
+.staff-title {
+    color: #004080;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.staff-qualification {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.staff-contact {
+    margin: 15px 0;
+    font-size: 0.9rem;
+}
+
+.staff-contact p {
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.staff-contact i {
+    margin-right: 8px;
+    color: #004080;
+}
+
+.staff-bio {
+    color: #444;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .staff-card.featured {
+        grid-column: span 1;
+        flex-direction: column;
+    }
+    
+    .staff-card.featured .staff-image,
+    .staff-card.featured .staff-info {
+        width: 100%;
+    }
+    
+    .staff-card.featured .staff-image {
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    #staff-profiles {
+        width: 100%;
+        padding: 10px;
+    }
+    
+    .staff-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .staff-image {
+        height: 180px;
+    }
+}
