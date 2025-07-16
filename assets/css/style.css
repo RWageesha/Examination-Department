@@ -37,7 +37,140 @@ h1, h2, ul, li, a {
     box-sizing: border-box;
 }
 
-/* Header Styling */
+/* Updated Header Styling */
+header {
+    background: linear-gradient(135deg, #002244 0%, #004080 100%);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+header img {
+    height: 70px;
+    transition: transform 0.3s ease;
+}
+
+header img:hover {
+    transform: scale(1.05);
+}
+
+/* Navigation styling */
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+}
+
+header nav ul li {
+    position: relative;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+header nav ul li a i {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+header nav ul li a.active {
+    background-color: #ffcc00;
+    color: #002244;
+}
+
+/* Dropdown menu styling */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-toggle i.fa-caret-down {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown:hover .fa-caret-down {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    min-width: 220px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    width: 100%;
+}
+
+.dropdown-menu li a {
+    padding: 12px 20px;
+    color: #002244;
+    display: flex;
+    align-items: center;
+    border-left: 3px solid transparent;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f0f7ff;
+    color: #004080;
+    border-left-color: #004080;
+    transform: none;
+}
+
+.dropdown-menu li a i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* General Header Styles */
 header {
     background-color: #002244; /* Navy blue background */
     color: white; /* White text */
@@ -51,43 +184,6 @@ header {
 header img {
     height: 80px;
     margin-right: 20px;
-}
-
-/* Navigation styling */
-header nav {
-    flex-grow: 1; /* Allow navigation to take available space */
-}
-
-header nav ul {
-    list-style: none; /* Remove bullet points */
-    display: flex;
-    justify-content: flex-end; /* Align navigation items to the right */
-    gap: 30px; /* Space between links */
-    padding: 0;
-    margin: 0;
-}
-
-header nav ul li {
-    display: inline-block;
-}
-
-header nav ul li a {
-    text-decoration: none; /* Remove underline */
-    color: white; /* White text */
-    font-weight: bold;
-    transition: color 0.3s ease; /* Smooth hover effect */
-    display: flex;
-    align-items: center;
-    gap: 5px; /* Space between icon and text */
-}
-
-header nav ul li a:hover {
-    color: #ffcc00; /* Gold color on hover */
-}
-
-/* Icon styling in navigation */
-header nav ul li a i {
-    font-size: 1.1rem;
 }
 
 /* Make header responsive */
@@ -114,17 +210,23 @@ header nav ul li a i {
 .hero-slider {
     position: relative;
     width: 100%;
-    height: 500px; /* Adjust height as needed */
+    height: 500px;
     overflow: hidden;
     margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    perspective: 1200px;
+    transform-style: preserve-3d;
 }
 
 .slider-container {
     width: 100%;
     height: 100%;
     position: relative;
+    transform-style: preserve-3d;
 }
 
+/* Base slide styling */
 .slide {
     position: absolute;
     top: 0;
@@ -132,27 +234,70 @@ header nav ul li a i {
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: opacity 1s ease;
+    visibility: hidden;
+    z-index: 1;
+    overflow: hidden;
+    transform-style: preserve-3d;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1;
-    pointer-events: none; /* Prevent interaction with hidden slides */
 }
 
-.slide.active {
-    opacity: 1;
-    z-index: 2; /* Ensure active slide is on top */
-    pointer-events: auto; /* Allow interaction with active slide */
-}
-
+/* Image styling with gradient overlays */
 .slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(70%); /* Darken the image a bit to make text readable */
+    filter: brightness(80%);
+    transform: scale(1);
+    transition: transform 7s ease-out; /* Slow zoom effect */
 }
 
+.slide:nth-child(1) img {
+    filter: brightness(80%);
+}
+
+.slide:nth-child(2) img {
+    filter: brightness(75%) sepia(20%);
+}
+
+.slide:nth-child(3) img {
+    filter: brightness(75%) contrast(110%);
+}
+
+.slide:nth-child(4) img {
+    filter: brightness(80%) saturate(110%);
+}
+
+/* Modern gradient overlays */
+.slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.slide:nth-child(1)::after {
+    background: linear-gradient(135deg, rgba(0,34,68,0.7) 0%, rgba(0,0,0,0.4) 100%);
+}
+
+.slide:nth-child(2)::after {
+    background: linear-gradient(135deg, rgba(0,64,128,0.6) 0%, rgba(0,0,0,0.5) 100%);
+}
+
+.slide:nth-child(3)::after {
+    background: linear-gradient(135deg, rgba(25,25,112,0.6) 0%, rgba(0,0,0,0.5) 100%);
+}
+
+.slide:nth-child(4)::after {
+    background: linear-gradient(135deg, rgba(0,40,100,0.6) 0%, rgba(0,0,0,0.5) 100%);
+}
+
+/* Content styling */
 .slide-content {
     position: absolute;
     text-align: center;
@@ -161,15 +306,39 @@ header nav ul li a i {
     max-width: 80%;
     z-index: 2;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition-delay: 0.3s;
 }
 
 .slide-content h1 {
     font-size: 2.5rem;
     margin-bottom: 15px;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    transition-delay: 0.4s;
 }
 
 .slide-content p {
     font-size: 1.2rem;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    transition-delay: 0.6s;
+}
+
+/* Active slide content animation */
+.slide.active .slide-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide.active .slide-content h1,
+.slide.active .slide-content p {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 /* Navigation Arrows */
@@ -180,13 +349,18 @@ header nav ul li a i {
     background: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
-    padding: 10px 15px;
+    width: 50px;
+    height: 50px;
     cursor: pointer;
-    font-size: 18px;
-    z-index: 10 !important; 
+    font-size: 20px;
+    z-index: 10;
     border-radius: 50%;
     outline: none;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
 }
 
 .prev-arrow {
@@ -197,44 +371,357 @@ header nav ul li a i {
     right: 20px;
 }
 
-slider-arrow:hover {
+.slider-arrow:hover {
     background: rgba(0, 0, 0, 0.8);
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
 }
 
-/* Dot indicators */
+/* Dots/circles */
 .dots-container {
     position: absolute;
     bottom: 20px;
     width: 100%;
     display: flex;
     justify-content: center;
-    z-index: 10 !important;
+    z-index: 10;
 }
 
 .dot {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    margin: 0 5px;
+    background: rgba(255, 255, 255, 0.4);
+    margin: 0 6px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    border: 2px solid transparent;
 }
+
+.dot:hover {
+    transform: scale(1.2);
+}
+
 .dot.active {
     background: white;
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
-/* Animation for slider auto-play */
-@keyframes slideShow {
-    0% { opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { opacity: 0; }
+/* Grid styling for true Mosaic Reveal */
+.slide-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none;
 }
 
-/* Auto-play animation class */
-.slide.auto-animate {
-    animation: slideShow 5s ease forwards;
+.grid-item {
+    position: absolute; /* Changed from grid to absolute positioning */
+    overflow: hidden;
+    transform-origin: center;
+}
+
+.grid-item-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    transform: scale(0);
+    opacity: 0;
+    transform-origin: center;
+}
+
+/* Mosaic Reveal Animation */
+@keyframes mosaicItemIn {
+    0% {
+        transform: scale(0) rotateZ(5deg);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) rotateZ(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes mosaicItemOut {
+    0% {
+        transform: scale(1) rotateZ(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0) rotateZ(-5deg);
+        opacity: 0;
+    }
+}
+
+/* TRANSITION ANIMATIONS */
+
+/* 1. Horizontal Slide */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+/* 2. Vertical Slide */
+@keyframes slideInUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutDown {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+/* 3. 3D Flip X */
+@keyframes flipInX {
+    from {
+        transform: rotateX(-90deg);
+        opacity: 0;
+    }
+    to {
+        transform: rotateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes flipOutX {
+    from {
+        transform: rotateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: rotateX(90deg);
+        opacity: 0;
+    }
+}
+
+/* 4. 3D Flip Y */
+@keyframes flipInY {
+    from {
+        transform: rotateY(-90deg);
+        opacity: 0;
+    }
+    to {
+        transform: rotateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes flipOutY {
+    from {
+        transform: rotateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: rotateY(90deg);
+        opacity: 0;
+    }
+}
+
+/* 5. Zoom Fade */
+@keyframes zoomIn {
+    from {
+        transform: scale(1.3);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes zoomOut {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+}
+
+/* 6. Grid Item Animation for Tile Effect */
+@keyframes gridItemIn {
+    0% {
+        transform: scale(0) rotate(10deg);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+}
+
+@keyframes gridItemOut {
+    0% {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0) rotate(-10deg);
+        opacity: 0;
+    }
+}
+
+/* Active slide animation variations */
+.slide.active.horizontal-slide {
+    animation: slideInRight 1s forwards;
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+}
+
+.slide.active.vertical-slide {
+    animation: slideInUp 1s forwards;
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+}
+
+.slide.active.flip-x {
+    animation: flipInX 1.2s forwards;
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+    transform-origin: center center;
+}
+
+.slide.active.flip-y {
+    animation: flipInY 1.2s forwards;
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+    transform-origin: center center;
+}
+
+.slide.active.zoom-fade {
+    animation: zoomIn 1.5s forwards;
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+}
+
+/* Exit animations */
+.slide.exit.horizontal-slide {
+    animation: slideOutLeft 1s forwards;
+    z-index: 1;
+}
+
+.slide.exit.vertical-slide {
+    animation: slideOutDown 1s forwards;
+    z-index: 1;
+}
+
+.slide.exit.flip-x {
+    animation: flipOutX 1.2s forwards;
+    z-index: 1;
+    transform-origin: center center;
+}
+
+.slide.exit.flip-y {
+    animation: flipOutY 1.2s forwards;
+    z-index: 1;
+    transform-origin: center center;
+}
+
+.slide.exit.zoom-fade {
+    animation: zoomOut 1.5s forwards;
+    z-index: 1;
+}
+
+/* Grid/Tile transition */
+.slide.active.grid-explode .slide-grid {
+    opacity: 1;
+}
+
+.slide.active.grid-explode .grid-item-inner {
+    animation: gridItemIn 0.5s forwards;
+}
+
+.slide.exit.grid-explode .grid-item-inner {
+    animation: gridItemOut 0.5s forwards;
+}
+
+/* Update the Grid/Tile transition classes */
+.slide.active.mosaic-reveal .slide-grid {
+    opacity: 1;
+}
+
+.slide.active.mosaic-reveal .grid-item-inner {
+    animation: mosaicItemIn 0.8s forwards cubic-bezier(0.25, 0.1, 0.25, 1.4);
+}
+
+.slide.exit.mosaic-reveal .grid-item-inner {
+    animation: mosaicItemOut 0.6s forwards cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-slider {
+        height: 400px;
+    }
+    
+    .slide-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .slide-content p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-slider {
+        height: 300px;
+    }
+    
+    .slide-content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .slider-arrow {
+        width: 35px;
+        height: 35px;
+    }
 }
 
 /* Talk to AR Floating Button */
@@ -1001,7 +1488,7 @@ slider-arrow:hover {
     }
 }
 
-/* Exam Results Button Styling */
+/* --- Exam Results Button Styling (Removed as per request) ---
 .exam-results-button {
     position: absolute;
     bottom: 20px;
@@ -1033,10 +1520,9 @@ slider-arrow:hover {
     font-size: 1.2rem;
 }
 
-/* Make the button responsive */
 @media (max-width: 768px) {
     .exam-results-button {
-        bottom: 70px; /* Position above the dots on mobile */
+        bottom: 70px;
     }
     
     .exam-results-button .results-link {
@@ -1049,7 +1535,6 @@ slider-arrow:hover {
     }
 }
 
-/* For very small screens */
 @media (max-width: 480px) {
     .exam-results-button {
         left: 50%;
@@ -1057,6 +1542,7 @@ slider-arrow:hover {
         bottom: 70px;
     }
 }
+--- End Exam Results Button Styling --- */
 
 /* Footer Styling */
 footer {

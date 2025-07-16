@@ -100,7 +100,7 @@
 <!-- Modified Hero Section with added Exam Results Button -->
 <section class="hero-slider">
     <div class="slider-container">
-        <div class="slide active">
+        <div class="slide">
             <img src="./assets/images/slide-1.jpg" alt="KDU Campus">
             <div class="slide-content">
                 <h1>Welcome to KDU Examination Department</h1>
@@ -129,14 +129,14 @@
             </div>
         </div>
         
-        <!-- Exam Results Button (Added) -->
+        <!-- Exam Results Button (Removed as per request)
         <div class="exam-results-button">
             <a href="ExamResults.html" class="results-link">
                 <i class="fas fa-chart-bar"></i>
                 <span>Exam Results</span>
             </a>
         </div>
-        
+-->
         <!-- Navigation arrows -->
         <button class="slider-arrow prev-arrow">&#10094;</button>
         <button class="slider-arrow next-arrow">&#10095;</button>
@@ -260,7 +260,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="./assets/images/Main-logo.png" alt="KDU Logo">
+                <img src="./assets/images/LOGO_White.png" alt="KDU Logo">
                 <p>Examination Department<br>General Sir John Kotelawala Defence University</p>
             </div>
             
@@ -300,62 +300,268 @@
             const prevArrow = document.querySelector('.prev-arrow');
             const nextArrow = document.querySelector('.next-arrow');
             const dots = document.querySelectorAll('.dot');
-            let currentSlide = 0;
-            const slideCount = slides.length;
             
-            // Function to show a specific slide
-            function showSlide(index) {
+            // Define transition types - Replace 'grid-explode' with 'mosaic-reveal'
+            const transitionTypes = [
+                'horizontal-slide',  // Slide left/right
+                'vertical-slide',    // Slide up/down
+                'flip-x',            // 3D flip on X axis
+                'flip-y',            // 3D flip on Y axis
+                'zoom-fade',         // Zoom in/out with fade
+                'mosaic-reveal'      // Grid Slice / Mosaic Reveal effect (renamed from grid-explode)
+            ];
+            
+            let currentSlide = 0;
+            let currentTransition = 0;
+            const slideCount = slides.length;
+            let slideInterval;
+            let isAnimating = false;
+            
+            // Initialize grid for tile transitions
+            function createGrids() {
+                slides.forEach((slide) => {
+                    // Create grid container
+                    const slideGrid = document.createElement('div');
+                    slideGrid.className = 'slide-grid';
+                    
+                    // Get slide image information
+                    const slideImg = slide.querySelector('img');
+                    const imgSrc = slideImg.src;
+                    const imgWidth = slideImg.naturalWidth;
+                    const imgHeight = slideImg.naturalHeight;
+                    
+                    // Define grid parameters - 8 columns, 6 rows = 48 pieces
+                    const columns = 8;
+                    const rows = 6;
+                    
+                    // Create grid items
+                    for (let y = 0; y < rows; y++) {
+                        for (let x = 0; x < columns; x++) {
+                            const gridItem = document.createElement('div');
+                            gridItem.className = 'grid-item';
+                            
+                            // Calculate size for each grid item
+                            const itemWidth = 100 / columns;
+                            const itemHeight = 100 / rows;
+                            
+                            // Set position and size in percentage (responsive)
+                            gridItem.style.width = `${itemWidth}%`;
+                            gridItem.style.height = `${itemHeight}%`;
+                            gridItem.style.top = `${y * itemHeight}%`;
+                            gridItem.style.left = `${x * itemWidth}%`;
+                            
+                            // Calculate the distance from center for animation sequencing
+                            const centerX = columns / 2 - 0.5;
+                            const centerY = rows / 2 - 0.5;
+                            const distanceFromCenter = Math.sqrt(
+                                Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2)
+                            );
+                            const maxDistance = Math.sqrt(
+                                Math.pow(centerX, 2) + Math.pow(centerY, 2)
+                            );
+                            const normalizedDistance = distanceFromCenter / maxDistance;
+                            
+                            // Create inner content with slice of the image
+                            const gridItemInner = document.createElement('div');
+                            gridItemInner.className = 'grid-item-inner';
+                            
+                            // Set background position to show only this piece of the image
+                            // These percentages ensure each grid-item-inner shows exactly its portion of the image
+                            const bgPosX = (x * 100) / (columns - 1);
+                            const bgPosY = (y * 100) / (rows - 1);
+                            
+                            // Set positioning of the background image
+                            gridItemInner.style.backgroundImage = `url(${imgSrc})`;
+                            gridItemInner.style.backgroundSize = `${columns * 100}% ${rows * 100}%`;
+                            gridItemInner.style.backgroundPosition = `${bgPosX}% ${bgPosY}%`;
+                            
+                            // Set delay based on distance from center
+                            const animDelay = (normalizedDistance * 0.7).toFixed(2);
+                            gridItemInner.style.animationDelay = `${animDelay}s`;
+                            
+                            gridItem.appendChild(gridItemInner);
+                            slideGrid.appendChild(gridItem);
+                        }
+                    }
+                    
+                    // Add grid to slide
+                    slide.appendChild(slideGrid);
+                });
+            }
+            
+            // Call grid creation
+            createGrids();
+            
+            // Function to show a specific slide with a specific transition
+            function showSlide(index, direction = 'next') {
+                // Prevent rapid clicking during animation
+                if (isAnimating) return;
+                isAnimating = true;
+                
                 // Handle index bounds
                 if (index < 0) index = slideCount - 1;
                 if (index >= slideCount) index = 0;
                 
-                // Hide all slides and deactivate all dots
-                slides.forEach(slide => slide.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
+                // Get current and new slides
+                const currentSlideElement = slides[currentSlide];
+                const newSlideElement = slides[index];
                 
-                // Show the current slide and activate the corresponding dot
-                slides[index].classList.add('active');
+                // Remove all transition classes from slides
+                slides.forEach(slide => {
+                    slide.classList.remove(...transitionTypes, 'active', 'exit');
+                });
+                
+                // Choose transition type - cycle through them or pick random
+                const transitionType = transitionTypes[currentTransition];
+                
+                // Update transition for next time
+                currentTransition = (currentTransition + 1) % transitionTypes.length;
+                
+                // Set transition classes
+                currentSlideElement.classList.add('exit', transitionType);
+                newSlideElement.classList.add('active', transitionType);
+                
+                // Make the new slide visible first
+                newSlideElement.style.visibility = 'visible';
+                newSlideElement.style.opacity = '1';
+                
+                // Update dots
+                dots.forEach(dot => dot.classList.remove('active'));
                 dots[index].classList.add('active');
                 
-                currentSlide = index;
+                // Special handling for grid/tile transition
+                if (transitionType === 'mosaic-reveal') {
+                    const currentGridItems = currentSlideElement.querySelectorAll('.grid-item-inner');
+                    const newGridItems = newSlideElement.querySelectorAll('.grid-item-inner');
+                    
+                    // Animation pattern: from center to edges for exit
+                    Array.from(currentGridItems).forEach((item) => {
+                        // Keep existing animation delays set in createGrids
+                    });
+                    
+                    // Animation pattern: from edges to center for entrance
+                    Array.from(newGridItems).forEach((item) => {
+                        const currentDelay = parseFloat(item.style.animationDelay);
+                        const newDelay = 0.7 - currentDelay + 0.3; // Invert pattern for entrance
+                        item.style.animationDelay = `${newDelay}s`;
+                    });
+                }
+                
+                // Update current slide index after animation finishes
+                setTimeout(() => {
+                    // Update current slide index
+                    currentSlide = index;
+                    
+                    // Allow new transitions
+                    isAnimating = false;
+                    
+                    // Hide the previous slide
+                    currentSlideElement.style.visibility = 'hidden';
+                    currentSlideElement.style.opacity = '0';
+                }, 1500); // Match the longest animation duration
             }
             
             // Event listeners for arrows
             prevArrow.addEventListener('click', () => {
-                showSlide(currentSlide - 1);
+                clearInterval(slideInterval); // Stop auto-rotation
+                showSlide(currentSlide - 1, 'prev');
+                restartSlideInterval(); // Restart auto-rotation
             });
             
             nextArrow.addEventListener('click', () => {
-                showSlide(currentSlide + 1);
+                clearInterval(slideInterval);
+                showSlide(currentSlide + 1, 'next');
+                restartSlideInterval();
             });
             
             // Event listeners for dots
-            dots.forEach(dot => {
+            dots.forEach((dot, index) => {
                 dot.addEventListener('click', () => {
-                    const slideIndex = parseInt(dot.getAttribute('data-index'));
-                    showSlide(slideIndex);
+                    if (currentSlide === index) return; // Don't do anything if clicking the current slide
+                    clearInterval(slideInterval);
+                    
+                    // Determine direction for animation
+                    const direction = index > currentSlide ? 'next' : 'prev';
+                    showSlide(index, direction);
+                    
+                    restartSlideInterval();
                 });
             });
             
-            // Auto-advance slides every 5 seconds
-            let slideInterval = setInterval(() => {
-                showSlide(currentSlide + 1);
-            }, 5000);
+            // Touch swipe functionality for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            const sliderContainer = document.querySelector('.slider-container');
+            
+            sliderContainer.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, {passive: true});
+            
+            sliderContainer.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, {passive: true});
+            
+            function handleSwipe() {
+                // Minimum swipe distance (px) to register as a swipe
+                const swipeThreshold = 50;
+                
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    // Swipe left - show next slide
+                    clearInterval(slideInterval);
+                    showSlide(currentSlide + 1, 'next');
+                    restartSlideInterval();
+                } 
+                
+                if (touchEndX > touchStartX + swipeThreshold) {
+                    // Swipe right - show previous slide
+                    clearInterval(slideInterval);
+                    showSlide(currentSlide - 1, 'prev');
+                    restartSlideInterval();
+                }
+            }
+            
+            // Auto-advance slides function
+            function startSlideInterval() {
+                slideInterval = setInterval(() => {
+                    showSlide(currentSlide + 1, 'next');
+                }, 6000); // Change slide every 6 seconds
+            }
+            
+            // Restart interval function
+            function restartSlideInterval() {
+                clearInterval(slideInterval);
+                startSlideInterval();
+            }
             
             // Pause slideshow when hovering over it
-            const sliderContainer = document.querySelector('.slider-container');
             sliderContainer.addEventListener('mouseenter', () => {
                 clearInterval(slideInterval);
             });
             
             sliderContainer.addEventListener('mouseleave', () => {
-                slideInterval = setInterval(() => {
-                    showSlide(currentSlide + 1);
-                }, 5000);
+                startSlideInterval();
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', e => {
+                if (e.key === 'ArrowLeft') {
+                    clearInterval(slideInterval);
+                    showSlide(currentSlide - 1, 'prev');
+                    restartSlideInterval();
+                } else if (e.key === 'ArrowRight') {
+                    clearInterval(slideInterval);
+                    showSlide(currentSlide + 1, 'next');
+                    restartSlideInterval();
+                }
             });
             
             // Initialize the first slide
-            showSlide(0);
+            slides[0].classList.add('active', transitionTypes[0]);
+            dots[0].classList.add('active');
+            
+            // Start auto-rotation
+            startSlideInterval();
         });
 
         // Handle dropdown on mobile
