@@ -870,9 +870,6 @@ header img {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 400px;
-    height: 100px;
-    border-radius: 10px; /* Changed from 50% (circle) to 10px for slightly rounded corners */
     background-color: #002244;
     color: white;
     text-decoration: none;
@@ -880,7 +877,14 @@ header img {
     transition: all 0.3s ease;
     border: 3px solid #fff;
     text-align: center;
+    border-radius: 10px;
     padding: 20px;
+}
+
+.certificate-button:hover {
+    transform: scale(1.05);
+    background-color: #004080;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
 
 .certificate-button i {
@@ -894,12 +898,6 @@ header img {
     line-height: 1.3;
 }
 
-.certificate-button:hover {
-    transform: scale(1.05);
-    background-color: #004080;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-}
-
 /* Media query for responsive design */
 @media (max-width: 992px) {
     #certificate-button-section {
@@ -909,6 +907,14 @@ header img {
     }
 }
 
+#image-container1{
+    position: absolute;
+    right: 10px;
+    top: 650px; /* Adjust this value based on your layout */
+    width: 35%;
+    z-index: 5;
+}
+
 /* Certificate Services Section Styling */
 #certificate-services {
     position: absolute;
@@ -916,6 +922,57 @@ header img {
     top: 650px; /* Adjust this value based on your layout */
     width: 35%;
     z-index: 5;
+}
+
+#vision-mission {
+    width: 90%; /* Match the width of the section above */
+    margin: 40px auto;
+    padding: 0;
+}
+
+.three-buttons-container {
+    display: flex;
+    /* This minimizes the gap between buttons */
+    gap: 20px; 
+    justify-content: center;
+}
+
+/* Targeting the buttons inside our new container to make them bigger */
+.three-buttons-container .certificate-button {
+    /* flex: 1 makes each button grow to fill available space */
+    flex: 1; 
+    /* Set a max-width to prevent them from becoming too wide on large screens */
+    max-width: 450px; 
+    /* Increased height for a bigger button */
+    height: 150px; 
+}
+
+/* Making the icon and text larger to match the bigger button */
+.three-buttons-container .certificate-button i {
+    font-size: 3.5rem; /* Increased icon size */
+    margin-bottom: 15px;
+}
+
+.three-buttons-container .certificate-button span {
+    font-size: 1.5rem; /* Increased font size */
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+
+/* Responsive adjustments for the three buttons */
+@media (max-width: 992px) {
+    .three-buttons-container {
+        /* Stack the buttons vertically on smaller screens */
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    .three-buttons-container .certificate-button {
+        width: 100%;
+        /* Remove max-width when stacked so they can be full-width */
+        max-width: none;
+    }
 }
 
 .certificate-buttons {
@@ -994,9 +1051,9 @@ header img {
 }
 /* Vision & Mission Section Styling */
 #vision-mission {
-    width: 95%;
-    margin: 0 auto 30px;
-    padding: 20px;
+    width: 90%; /* Match the width of the section above */
+    margin: 40px auto;
+    padding: 0;
 }
 
 .vision-mission-container {
