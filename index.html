@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KDU Examination Department</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
@@ -29,7 +29,6 @@
         </nav>
     </header>
 
-
     <style>
         body {
             background-image: url('./assets/images/KDU.jpeg');
@@ -45,145 +44,75 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.85); /* White overlay with 70% opacity */
+            background-color: rgba(255, 255, 255, 0.85);
             z-index: -1;
         }
     </style>
 
     <main>
-        
-        <!-- Hero Section with Image Slider -->
-<!--<section class="hero-slider">
-    <div class="slider-container">
-        <div class="slide active">
-            <img src="./assets/images/slide-1.jpg" alt="KDU Campus">
-            <div class="slide-content">
-                <h1>Welcome to KDU Examination Department</h1>
-                <p>Excellence in Academic Assessment and Certification</p>
+        <section class="hero-slider">
+            <div class="slider-container">
+                <div class="slide">
+                    <img src="./assets/images/slide-1.jpg" alt="KDU Campus">
+                    <div class="slide-content">
+                        <h1>Welcome to KDU Examination Department</h1>
+                        <p>Excellence in Academic Assessment and Certification</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="./assets/images/slide-2.jpg" alt="Examination Hall">
+                    <div class="slide-content">
+                        <h1>Transparent Examination Process</h1>
+                        <p>Ensuring fair evaluation for all students</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="./assets/images/slide-3.jpg" alt="Graduation Ceremony">
+                    <div class="slide-content">
+                        <h1>Supporting Academic Success</h1>
+                        <p>From enrollment to graduation</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="./assets/images/slide-4.jpg" alt="Academic Excellence">
+                    <div class="slide-content">
+                        <h1>Academic Excellence</h1>
+                        <p>Maintaining high standards in education</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation arrows -->
+                <button class="slider-arrow prev-arrow">&#10094;</button>
+                <button class="slider-arrow next-arrow">&#10095;</button>
+                
+                <!-- Dots/circles -->
+                <div class="dots-container">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                    <span class="dot" data-index="3"></span>
+                </div>
             </div>
-        </div>
-        <div class="slide">
-            <img src="./assets/images/slide-2.jpg" alt="Examination Hall">
-            <div class="slide-content">
-                <h1>Transparent Examination Process</h1>
-                <p>Ensuring fair evaluation for all students</p>
-            </div>
-        </div>
-        <div class="slide">
-            <img src="./assets/images/slide-3.jpg" alt="Graduation Ceremony">
-            <div class="slide-content">
-                <h1>Supporting Academic Success</h1>
-                <p>From enrollment to graduation</p>
-            </div>
-        </div>
-        <div class="slide">
-            <img src="./assets/images/slide-4.jpg" alt="Academic Excellence">
-            <div class="slide-content">
-                <h1>Academic Excellence</h1>
-                <p>Maintaining high standards in education</p>
-            </div>
-        </div>
-    -->
-        <!-- Navigation arrows --
-        <button class="slider-arrow prev-arrow">&#10094;</button>
-        <button class="slider-arrow next-arrow">&#10095;</button>
-        
-        <-- Dots/circles --
-        <div class="dots-container">
-            <span class="dot active" data-index="0"></span>
-            <span class="dot" data-index="1"></span>
-            <span class="dot" data-index="2"></span>
-            <span class="dot" data-index="3"></span>
-        </div>
-    </div>
-</section>-->
-<!-- Modified Hero Section with added Exam Results Button -->
-<section class="hero-slider">
-    <div class="slider-container">
-        <div class="slide">
-            <img src="./assets/images/slide-1.jpg" alt="KDU Campus">
-            <div class="slide-content">
-                <h1>Welcome to KDU Examination Department</h1>
-                <p>Excellence in Academic Assessment and Certification</p>
-            </div>
-        </div>
-        <div class="slide">
-            <img src="./assets/images/slide-2.jpg" alt="Examination Hall">
-            <div class="slide-content">
-                <h1>Transparent Examination Process</h1>
-                <p>Ensuring fair evaluation for all students</p>
-            </div>
-        </div>
-        <div class="slide">
-            <img src="./assets/images/slide-3.jpg" alt="Graduation Ceremony">
-            <div class="slide-content">
-                <h1>Supporting Academic Success</h1>
-                <p>From enrollment to graduation</p>
-            </div>
-        </div>
-        <div class="slide">
-            <img src="./assets/images/slide-4.jpg" alt="Academic Excellence">
-            <div class="slide-content">
-                <h1>Academic Excellence</h1>
-                <p>Maintaining high standards in education</p>
-            </div>
-        </div>
-        
-        <!-- Exam Results Button (Removed as per request)
-        <div class="exam-results-button">
-            <a href="ExamResults.html" class="results-link">
-                <i class="fas fa-chart-bar"></i>
-                <span>Exam Results</span>
-            </a>
-        </div>-->
-        <!-- Navigation arrows -->
-        <button class="slider-arrow prev-arrow">&#10094;</button>
-        <button class="slider-arrow next-arrow">&#10095;</button>
-        
-        <!-- Dots/circles -->
-        <div class="dots-container">
-            <span class="dot active" data-index="0"></span>
-            <span class="dot" data-index="1"></span>
-            <span class="dot" data-index="2"></span>
-            <span class="dot" data-index="3"></span>
-        </div>
-    </div>
-</section>
+        </section>
         <section id="home">
             <h2>Welcome to the Examination Department</h2>
             <p>The Examination Division of General Sir John Kotelawala Defence University (KDU) is the main authority responsible for conducting examinations, and issuing examination results of candidates from the Faculty of Engineering, Faculty of Law, Faculty of Computing and Faculty of Management, Humanities and Social Sciences. In addition to the above, the Examination Division monitors all examination- related matters of other faculties and affiliated institutions.
-                The diligent staff of the Division hold the sole responsibility of processing the results submitted by the examiners in accordance with the University by-laws, and conducting the Semester Pre-Results Board and Board of Examinations (BoE). After every BoE, results are sent to the relevant faculties to be published for their students’ information. Following this, the results are submitted to the Senate. In addition to semester results, the final Board of Examinations for every batch of students that graduates from KDU and affiliated institutes are also conducted by the Examination Division. Further, Board of Examinations of FGS, FBESS, FASH and FOM are conducted under the direct supervision of the Division, and all examination payments related to the conducting of examinations and marking are prepared by this Division.
-                Moreover, the Division provides assistance to the Registrar’s Office to conduct selection tests for the recruitment of Officers Cadets, Day Scholars, and other staff members.
+                The diligent staff of the Division hold the sole responsibility of processing the results submitted by the examiners in accordance with the University by-laws, and conducting the Semester Pre-Results Board and Board of Examinations (BoE). After every BoE, results are sent to the relevant faculties to be published for their students' information. Following this, the results are submitted to the Senate. In addition to semester results, the final Board of Examinations for every batch of students that graduates from KDU and affiliated institutes are also conducted by the Examination Division. Further, Board of Examinations of FGS, FBESS, FASH and FOM are conducted under the direct supervision of the Division, and all examination payments related to the conducting of examinations and marking are prepared by this Division.
+                Moreover, the Division provides assistance to the Registrar's Office to conduct selection tests for the recruitment of Officers Cadets, Day Scholars, and other staff members.
                 The Examination Division also issues detailed degree certificates, semester results sheets, and academic transcripts of all faculties and accredited institutions.
             </p>
         </section>
 
         <!-- Certificate Services Section -->
         <section id="certificate-services">
-            <!--<div class="certificate-buttons">-->
             <div class="image-container1">
                 <img src="./assets/images/KDU.jpeg" alt="Descriptive text for the image" class="image-container1">
             </div>
-
-                <!--<a href="#detailed-degree" class="certificate-button">
-                    <i class="fas fa-certificate"></i>
-                    <span>Detailed Degree</span>
-                </a>
-                <a href="#transcript" class="certificate-button">
-                    <i class="fas fa-file-alt"></i>
-                    <span>Transcript</span>
-                </a>
-                <a href="#degree-completion" class="certificate-button">
-                    <i class="fas fa-graduation-cap"></i>
-                    <span>Degree Completion</span>
-                </a>-->
-            <!--</div>-->
         </section>
 
         <!-- Vision & Mission Sections -->
-<section id="vision-mission">
-
-    <div class="three-buttons-container">
+        <section id="vision-mission">
+            <div class="three-buttons-container">
                 <a href="#detailed-degree" class="certificate-button">
                     <i class="fas fa-certificate"></i>
                     <span>Detailed Degree</span>
@@ -197,100 +126,57 @@
                     <span>Degree Completion</span>
                 </a>
             </div>
-    <!--<div class="vision-mission-container">
-        <div class="certificate-buttons">
-                <a href="#detailed-degree" class="certificate-button">
-                    <i class="fas fa-certificate"></i>
-                    <span>Detailed Degree</span>
-                </a>
-            </div>
-        
-        <div class="certificate-buttons">
-                <a href="#transcript" class="certificate-button">
-                    <i class="fas fa-file-alt"></i>
-                    <span>Transcript</span>
-                </a>
-            </div>
-
-            <div class="certificate-buttons">
-                <a href="#degree-completion" class="certificate-button">
-                    <i class="fas fa-graduation-cap"></i>
-                    <span>Degree Completion</span>
-                </a>
-            </div>
-    </div>-->
-</section>
-
-        <!-- Vision & Mission Sections -->
-<!--<section id="vision-mission">
-    <div class="vision-mission-container">
-        <div class="vision-box">
-            <div class="vision-icon">
-                <i class="fas fa-eye"></i>
-            </div>
-            <h2>Our Vision</h2>
-            <p>To be the premier examination authority committed to maintaining highest standards of academic assessment, ensuring integrity, accuracy and fairness in all evaluation processes.</p>
-        </div>
-        
-        <div class="mission-box">
-            <div class="mission-icon">
-                <i class="fas fa-bullseye"></i>
-            </div>
-            <h2>Our Mission</h2>
-            <p>To conduct examinations with transparency and efficiency, employ innovative assessment methodologies, and provide timely certification services that uphold the academic reputation of General Sir John Kotelawala Defence University.</p>
-        </div>
-    </div>
-</section> -->
+        </section>
 
         <section id="notices">
             <h2>Latest Notices</h2>
             <div class="notices-container">
-            <div class="notice">
-                <div class="notice-date">15 May 2025</div>
-                <h3>Final Examination Schedule</h3>
-                <p>Final examination schedule for Spring semester is now available for download.</p>
-                <a href="#" class="notice-link">View Details</a>
-            </div>
-            <div class="notice">
-                <div class="notice-date">10 May 2025</div>
-                <h3>Result Publication</h3>
-                <p>Results for Engineering Faculty Semester 1 are now published.</p>
-                <a href="#" class="notice-link">Check Results</a>
-            </div>
-            <div class="notice">
-                <div class="notice-date">05 May 2025</div>
-                <h3>Examination Guidelines Update</h3>
-                <p>Important updates to examination conduct guidelines for all students.</p>
-                <a href="#" class="notice-link">Read More</a>
-            </div>
+                <div class="notice">
+                    <div class="notice-date">15 May 2025</div>
+                    <h3>Final Examination Schedule</h3>
+                    <p>Final examination schedule for Spring semester is now available for download.</p>
+                    <a href="#" class="notice-link">View Details</a>
+                </div>
+                <div class="notice">
+                    <div class="notice-date">10 May 2025</div>
+                    <h3>Result Publication</h3>
+                    <p>Results for Engineering Faculty Semester 1 are now published.</p>
+                    <a href="#" class="notice-link">Check Results</a>
+                </div>
+                <div class="notice">
+                    <div class="notice-date">05 May 2025</div>
+                    <h3>Examination Guidelines Update</h3>
+                    <p>Important updates to examination conduct guidelines for all students.</p>
+                    <a href="#" class="notice-link">Read More</a>
+                </div>
             </div>
         </section>
 
         <section id="student-guidance">
             <h2>Student Guidance</h2>
             <div class="guidance-container">
-            <div class="guidance-item">
-                <i class="fas fa-calendar-alt"></i>
-                <h3>Examination Schedule</h3>
-                <p>Check the exam timetable at least two weeks before exam period. Arrive 30 minutes early on exam day.</p>
+                <div class="guidance-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Examination Schedule</h3>
+                    <p>Check the exam timetable at least two weeks before exam period. Arrive 30 minutes early on exam day.</p>
+                </div>
+                <div class="guidance-item">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h3>Examination Rules</h3>
+                    <p>Bring your student ID card, follow the invigilator's instructions, and adhere to all university examination policies.</p>
+                </div>
+                <div class="guidance-item">
+                    <i class="fas fa-question-circle"></i>
+                    <h3>Special Considerations</h3>
+                    <p>If you need special arrangements or face unexpected circumstances, contact the exam office immediately.</p>
+                </div>
+                <div class="guidance-item">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Results & Appeals</h3>
+                    <p>Results are published on the student portal. Appeals must be submitted within 14 days of result publication.</p>
+                </div>
             </div>
-            <div class="guidance-item">
-                <i class="fas fa-clipboard-check"></i>
-                <h3>Examination Rules</h3>
-                <p>Bring your student ID card, follow the invigilator's instructions, and adhere to all university examination policies.</p>
-            </div>
-            <div class="guidance-item">
-                <i class="fas fa-question-circle"></i>
-                <h3>Special Considerations</h3>
-                <p>If you need special arrangements or face unexpected circumstances, contact the exam office immediately.</p>
-            </div>
-            <div class="guidance-item">
-                <i class="fas fa-file-alt"></i>
-                <h3>Results & Appeals</h3>
-                <p>Results are published on the student portal. Appeals must be submitted within 14 days of result publication.</p>
-            </div>
-            </div>
-        </section></div>
+        </section>
     </main>
 
     <!-- Talk to DR floating button -->
@@ -344,14 +230,13 @@
             const nextArrow = document.querySelector('.next-arrow');
             const dots = document.querySelectorAll('.dot');
             
-            // Define transition types - Replace 'grid-explode' with 'mosaic-reveal'
+            // Define transition types
             const transitionTypes = [
                 'horizontal-slide',  // Slide left/right
                 'vertical-slide',    // Slide up/down
                 'flip-x',            // 3D flip on X axis
                 'flip-y',            // 3D flip on Y axis
-                'zoom-fade',         // Zoom in/out with fade
-                'mosaic-reveal'      // Grid Slice / Mosaic Reveal effect (renamed from grid-explode)
+                'zoom-fade'          // Zoom in/out with fade
             ];
             
             let currentSlide = 0;
@@ -359,81 +244,6 @@
             const slideCount = slides.length;
             let slideInterval;
             let isAnimating = false;
-            
-            // Initialize grid for tile transitions
-            function createGrids() {
-                slides.forEach((slide) => {
-                    // Create grid container
-                    const slideGrid = document.createElement('div');
-                    slideGrid.className = 'slide-grid';
-                    
-                    // Get slide image information
-                    const slideImg = slide.querySelector('img');
-                    const imgSrc = slideImg.src;
-                    const imgWidth = slideImg.naturalWidth;
-                    const imgHeight = slideImg.naturalHeight;
-                    
-                    // Define grid parameters - 8 columns, 6 rows = 48 pieces
-                    const columns = 8;
-                    const rows = 6;
-                    
-                    // Create grid items
-                    for (let y = 0; y < rows; y++) {
-                        for (let x = 0; x < columns; x++) {
-                            const gridItem = document.createElement('div');
-                            gridItem.className = 'grid-item';
-                            
-                            // Calculate size for each grid item
-                            const itemWidth = 100 / columns;
-                            const itemHeight = 100 / rows;
-                            
-                            // Set position and size in percentage (responsive)
-                            gridItem.style.width = `${itemWidth}%`;
-                            gridItem.style.height = `${itemHeight}%`;
-                            gridItem.style.top = `${y * itemHeight}%`;
-                            gridItem.style.left = `${x * itemWidth}%`;
-                            
-                            // Calculate the distance from center for animation sequencing
-                            const centerX = columns / 2 - 0.5;
-                            const centerY = rows / 2 - 0.5;
-                            const distanceFromCenter = Math.sqrt(
-                                Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2)
-                            );
-                            const maxDistance = Math.sqrt(
-                                Math.pow(centerX, 2) + Math.pow(centerY, 2)
-                            );
-                            const normalizedDistance = distanceFromCenter / maxDistance;
-                            
-                            // Create inner content with slice of the image
-                            const gridItemInner = document.createElement('div');
-                            gridItemInner.className = 'grid-item-inner';
-                            
-                            // Set background position to show only this piece of the image
-                            // These percentages ensure each grid-item-inner shows exactly its portion of the image
-                            const bgPosX = (x * 100) / (columns - 1);
-                            const bgPosY = (y * 100) / (rows - 1);
-                            
-                            // Set positioning of the background image
-                            gridItemInner.style.backgroundImage = `url(${imgSrc})`;
-                            gridItemInner.style.backgroundSize = `${columns * 100}% ${rows * 100}%`;
-                            gridItemInner.style.backgroundPosition = `${bgPosX}% ${bgPosY}%`;
-                            
-                            // Set delay based on distance from center
-                            const animDelay = (normalizedDistance * 0.7).toFixed(2);
-                            gridItemInner.style.animationDelay = `${animDelay}s`;
-                            
-                            gridItem.appendChild(gridItemInner);
-                            slideGrid.appendChild(gridItem);
-                        }
-                    }
-                    
-                    // Add grid to slide
-                    slide.appendChild(slideGrid);
-                });
-            }
-            
-            // Call grid creation
-            createGrids();
             
             // Function to show a specific slide with a specific transition
             function showSlide(index, direction = 'next') {
@@ -471,24 +281,6 @@
                 // Update dots
                 dots.forEach(dot => dot.classList.remove('active'));
                 dots[index].classList.add('active');
-                
-                // Special handling for grid/tile transition
-                if (transitionType === 'mosaic-reveal') {
-                    const currentGridItems = currentSlideElement.querySelectorAll('.grid-item-inner');
-                    const newGridItems = newSlideElement.querySelectorAll('.grid-item-inner');
-                    
-                    // Animation pattern: from center to edges for exit
-                    Array.from(currentGridItems).forEach((item) => {
-                        // Keep existing animation delays set in createGrids
-                    });
-                    
-                    // Animation pattern: from edges to center for entrance
-                    Array.from(newGridItems).forEach((item) => {
-                        const currentDelay = parseFloat(item.style.animationDelay);
-                        const newDelay = 0.7 - currentDelay + 0.3; // Invert pattern for entrance
-                        item.style.animationDelay = `${newDelay}s`;
-                    });
-                }
                 
                 // Update current slide index after animation finishes
                 setTimeout(() => {
@@ -608,18 +400,41 @@
         });
 
         // Handle dropdown on mobile
-document.addEventListener('DOMContentLoaded', function() {
-    const dropdowns = document.querySelectorAll('.dropdown-toggle');
-    
-    dropdowns.forEach(dropdown => {
-        dropdown.addEventListener('click', function(e) {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                this.parentElement.classList.toggle('active');
-            }
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.dropdown-toggle');
+            
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        this.parentElement.classList.toggle('active');
+                    }
+                });
+            });
         });
-    });
-});
+
+        // Add this to your existing DOMContentLoaded event handler
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the current page URL
+            const currentPage = window.location.pathname.split("/").pop();
+            
+            // Get all navigation links
+            const navLinks = document.querySelectorAll('header nav ul li a');
+            
+            // Check each link against current URL
+            navLinks.forEach(link => {
+                const linkHref = link.getAttribute('href');
+                
+                // If it's the home page with no specific file or index.html
+                if ((currentPage === '' || currentPage === 'index.html') && (linkHref === '#home' || linkHref === 'index.html')) {
+                    link.classList.add('active');
+                }
+                // For other pages
+                else if (linkHref === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
     </script>
 </body>
 </html>

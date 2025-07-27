@@ -12,7 +12,7 @@
     <div class="bg-overlay"></div>
     <!-- Header (same as index.html) -->
     <header>
-        <img src="./assets/images/Main-logo.png" alt="KDU Logo" style="height: 80px;">
+        <img src="./assets/images/LOGO_White.png" alt="KDU Logo" style="height: 80px;">
         <nav>
             <ul>
                 <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
@@ -25,7 +25,7 @@
                         <li><a href="downloads-exams.html"><i class="fas fa-calendar-alt"></i> Exam Hall Schedules</a></li>
                     </ul>
                 </li>
-                <li><a href="contactUs.html" class="active"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                <li><a href="contactUs.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
             </ul>
         </nav>
     </header>
@@ -277,6 +277,20 @@
                         this.parentElement.classList.toggle('active');
                     }
                 });
+            });
+
+            // Highlight active nav link
+            const currentPage = window.location.pathname.split("/").pop();
+            const navLinks = document.querySelectorAll('header nav ul li a');
+            
+            navLinks.forEach(link => {
+                const linkHref = link.getAttribute('href');
+                
+                if ((currentPage === '' || currentPage === 'index.html') && (linkHref === '#home' || linkHref === 'index.html')) {
+                    link.classList.add('active');
+                } else if (linkHref === currentPage) {
+                    link.classList.add('active');
+                }
             });
         });
     </script>

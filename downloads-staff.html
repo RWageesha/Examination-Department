@@ -12,7 +12,7 @@
     <div class="bg-overlay"></div>
     <!-- Header (same as index.html) -->
     <header>
-        <img src="./assets/images/Main-logo.png" alt="KDU Logo" style="height: 80px;">
+        <img src="./assets/images/LOGO_White.png" alt="KDU Logo" style="height: 80px;">
         <nav>
             <ul>
                 <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
@@ -20,12 +20,12 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle"><i class="fas fa-download"></i> Downloads <i class="fas fa-caret-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href="downloads-staff.html" class="active"><i class="fas fa-user-tie"></i> Staff</a></li>
+                        <li><a href="downloads-staff.html"><i class="fas fa-user-tie"></i> Staff</a></li>
                         <li><a href="downloads-students.html"><i class="fas fa-user-graduate"></i> Students</a></li>
                         <li><a href="downloads-exams.html"><i class="fas fa-calendar-alt"></i> Exam Hall Schedules</a></li>
                     </ul>
                 </li>
-                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                <li><a href="contactUs.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
             </ul>
         </nav>
     </header>
@@ -351,6 +351,23 @@
                         this.parentElement.classList.toggle('active');
                     }
                 });
+            });
+            
+            // Highlight active navigation link
+            const currentPage = window.location.pathname.split("/").pop();
+            const navLinks = document.querySelectorAll('header nav ul li a');
+            
+            navLinks.forEach(link => {
+                const linkHref = link.getAttribute('href');
+                
+                // If it's the home page with no specific file or index.html
+                if ((currentPage === '' || currentPage === 'index.html') && (linkHref === '#home' || linkHref === 'index.html')) {
+                    link.classList.add('active');
+                }
+                // For other pages
+                else if (linkHref === currentPage) {
+                    link.classList.add('active');
+                }
             });
         });
     </script>
