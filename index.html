@@ -9,239 +9,230 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <div class="bg-overlay"></div>
-    <header>
-        <img src="./assets/images/LOGO_White.png" alt="KDU Logo" style="height: 80px;">
-        <nav>
-            <ul>
-                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="staff.html"><i class="fas fa-users"></i> Staff</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle"><i class="fas fa-download"></i> Downloads <i class="fas fa-caret-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="downloads-staff.html"><i class="fas fa-user-tie"></i>For Staff</a></li>
-                        <li><a href="downloads-students.html"><i class="fas fa-user-graduate"></i>For Students</a></li>
-                        <li><a href="downloads-exams.html"><i class="fas fa-calendar-alt"></i> Exam Hall Schedules</a></li>
-                    </ul>
-                </li>
-                <li><a href="contactUs.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <style>
-        body {
-            background-image: url('./assets/images/KDU.jpeg');
-            background-size: cover;
-            background-attachment: scroll;
-            background-repeat: no-repeat;
-            position: relative;
-        }
-        
-        .bg-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.85);
-            z-index: -1;
-        }
-    </style>
+    <div class="parallax-background"></div>
+    
+    <div class="content-wrapper">
+        <header>
+            <img src="./assets/images/LOGO_White.png" alt="KDU Logo" style="height: 80px;">
+            <nav>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="staff.html"><i class="fas fa-users"></i> Staff</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle"><i class="fas fa-download"></i> Downloads <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="downloads-staff.html"><i class="fas fa-user-tie"></i>For Staff</a></li>
+                            <li><a href="downloads-students.html"><i class="fas fa-user-graduate"></i>For Students</a></li>
+                            <li><a href="downloads-exams.html"><i class="fas fa-calendar-alt"></i> Exam Hall Schedules</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contactUs.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
 
     <main>
-        <section class="hero-slider">
-            <div class="slider-container">
-                <div class="slide">
-                    <img src="./assets/images/slide-1.jpg" alt="KDU Campus">
-                    <div class="slide-content">
-                        <h1>Welcome to KDU Examination Division</h1>
-                        <p>Excellence in Academic Assessment and Certification</p>
+            <section class="hero-slider">
+                <div class="slider-container">
+                    <div class="slide">
+                        <img src="./assets/images/slide-1.jpg" alt="KDU Campus">
+                        <div class="slide-content">
+                            <h1>Welcome to KDU Examination Division</h1>
+                            <p>Excellence in Academic Assessment and Certification</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="./assets/images/slide-2.jpg" alt="Examination Hall">
+                        <div class="slide-content">
+                            <h1>Transparent Examination Process</h1>
+                            <p>Ensuring fair evaluation for all students</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="./assets/images/slide-3.jpg" alt="Graduation Ceremony">
+                        <div class="slide-content">
+                            <h1>Supporting Academic Success</h1>
+                            <p>From enrollment to graduation</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="./assets/images/slide-4.jpg" alt="Academic Excellence">
+                        <div class="slide-content">
+                            <h1>Academic Excellence</h1>
+                            <p>Maintaining high standards in education</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation arrows -->
+                    <button class="slider-arrow prev-arrow">&#10094;</button>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    
+                    <!-- Dots/circles -->
+                    <div class="dots-container">
+                        <span class="dot active" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
+                        <span class="dot" data-index="3"></span>
                     </div>
                 </div>
-                <div class="slide">
-                    <img src="./assets/images/slide-2.jpg" alt="Examination Hall">
-                    <div class="slide-content">
-                        <h1>Transparent Examination Process</h1>
-                        <p>Ensuring fair evaluation for all students</p>
+            </section>
+            
+            <section id="home-container">
+                <div class="home-content-wrapper">
+                    <section id="home">
+                        <h2>Welcome to the Examination Division</h2>
+                        <p>The Examination Division of General Sir John Kotelawala Defence University (KDU) is the main authority responsible for conducting examinations, and issuing examination results of candidates from the Faculty of Engineering, Faculty of Law, Faculty of Computing and Faculty of Management, Humanities and Social Sciences. In addition to the above, the Examination Division monitors all examination- related matters of other faculties and affiliated institutions.
+                            The diligent staff of the Division hold the sole responsibility of processing the results submitted by the examiners in accordance with the University by-laws, and conducting the Semester Pre-Results Board and Board of Examinations (BoE). After every BoE, results are sent to the relevant faculties to be published for their students' information. Following this, the results are submitted to the Senate. In addition to semester results, the final Board of Examinations for every batch of students that graduates from KDU and affiliated institutes are also conducted by the Examination Division. Further, Board of Examinations of FGS, FBESS, FASH and FOM are conducted under the direct supervision of the Division, and all examination payments related to the conducting of examinations and marking are prepared by this Division.
+                            Moreover, the Division provides assistance to the Registrar's Office to conduct selection tests for the recruitment of Officers Cadets, Day Scholars, and other staff members.
+                            The Examination Division also issues detailed degree certificates, semester results sheets, and academic transcripts of all faculties and accredited institutions.
+                        </p>
+                    </section>
+                    
+                    <!-- Welcome Image Section (previously Certificate Services) -->
+                    <section id="welcome-image">
+                        <div class="welcome-image-container">
+                            <img src="./assets/images/welcome.jpg" alt="KDU Examination Department" class="welcome-image">
+                        </div>
+                    </section>
+                </div>
+            </section>
+
+            <!-- Services Section with Modern Buttons -->
+            <section id="services-section">
+                <h2>Our Services</h2>
+                <div class="three-buttons-container">
+                    <a href="#detailed-degree" class="certificate-button">
+                        <i class="fas fa-certificate"></i>
+                        <span>Request Detailed Degree</span>
+                    </a>
+                    <a href="#transcript" class="certificate-button">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Request Transcript</span>
+                    </a>
+                    <a href="#degree-completion" class="certificate-button">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Request Degree Completion</span>
+                    </a>
+                </div>
+            </section>
+
+            <section id="notices">
+                <h2>Latest Notices</h2>
+                <div class="notices-container">
+                    <div class="notice">
+                        <div class="notice-date">15 May 2025</div>
+                        <h3>Final Examination Schedule</h3>
+                        <p>Final examination schedule for Spring semester is now available for download.</p>
+                        <a href="#" class="notice-link">View Details</a>
+                    </div>
+                    <div class="notice">
+                        <div class="notice-date">10 May 2025</div>
+                        <h3>Result Publication</h3>
+                        <p>Results for Engineering Faculty Semester 1 are now published.</p>
+                        <a href="#" class="notice-link">Check Results</a>
+                    </div>
+                    <div class="notice">
+                        <div class="notice-date">05 May 2025</div>
+                        <h3>Examination Guidelines Update</h3>
+                        <p>Important updates to examination conduct guidelines for all students.</p>
+                        <a href="#" class="notice-link">Read More</a>
                     </div>
                 </div>
-                <div class="slide">
-                    <img src="./assets/images/slide-3.jpg" alt="Graduation Ceremony">
-                    <div class="slide-content">
-                        <h1>Supporting Academic Success</h1>
-                        <p>From enrollment to graduation</p>
+            </section>
+
+            <section id="student-guidance">
+                <h2>Student Guidance</h2>
+                <div class="guidance-container">
+                    <div class="guidance-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h3>Examination Schedule</h3>
+                        <p>Check the exam timetable at least two weeks before exam period. Arrive 30 minutes early on exam day.</p>
+                    </div>
+                    <div class="guidance-item">
+                        <i class="fas fa-clipboard-check"></i>
+                        <h3>Examination Rules</h3>
+                        <p>Bring your student ID card, follow the invigilator's instructions, and adhere to all university examination policies.</p>
+                    </div>
+                    <div class="guidance-item">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>Special Considerations</h3>
+                        <p>If you need special arrangements or face unexpected circumstances, contact the exam office immediately.</p>
+                    </div>
+                    <div class="guidance-item">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>Results & Appeals</h3>
+                        <p>Results are published on the student portal. Appeals must be submitted within 14 days of result publication.</p>
                     </div>
                 </div>
-                <div class="slide">
-                    <img src="./assets/images/slide-4.jpg" alt="Academic Excellence">
-                    <div class="slide-content">
-                        <h1>Academic Excellence</h1>
-                        <p>Maintaining high standards in education</p>
-                    </div>
+            </section>
+        </main>
+
+        <!-- Talk to DR floating button -->
+        <div class="talk-to-dr-button">
+            <a href="TalktoDR.html" id="talk-to-dr">
+                <img src="./assets/images/TalktoDR.png" alt="Talk to DR">
+            </a>
+        </div>
+
+        <!-- Hotline floating button - add this before the closing body tag -->
+        <div class="hotline-button">
+            <a href="tel:+94112638656" class="hotline-link">
+                <div class="hotline-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="hotline-text">
+                    <span class="hotline-label">Exam Division Hotline</span>
+                    <span class="hotline-number">+94 11 263 8656</span>
+                </div>
+            </a>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="./assets/images/LOGO_White.png" alt="KDU Logo">
+                    <p>Examination Department<br>General Sir John Kotelawala Defence University</p>
                 </div>
                 
-                <!-- Navigation arrows -->
-                <button class="slider-arrow prev-arrow">&#10094;</button>
-                <button class="slider-arrow next-arrow">&#10095;</button>
-                
-                <!-- Dots/circles -->
-                <div class="dots-container">
-                    <span class="dot active" data-index="0"></span>
-                    <span class="dot" data-index="1"></span>
-                    <span class="dot" data-index="2"></span>
-                    <span class="dot" data-index="3"></span>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#staff">Staff</a></li>
+                        <li><a href="#Downloads">Downloads</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
                 </div>
-            </div>
-        </section>
-        
-        <section id="home-container">
-            <div class="home-content-wrapper">
-                <section id="home">
-                    <h2>Welcome to the Examination Division</h2>
-                    <p>The Examination Division of General Sir John Kotelawala Defence University (KDU) is the main authority responsible for conducting examinations, and issuing examination results of candidates from the Faculty of Engineering, Faculty of Law, Faculty of Computing and Faculty of Management, Humanities and Social Sciences. In addition to the above, the Examination Division monitors all examination- related matters of other faculties and affiliated institutions.
-                        The diligent staff of the Division hold the sole responsibility of processing the results submitted by the examiners in accordance with the University by-laws, and conducting the Semester Pre-Results Board and Board of Examinations (BoE). After every BoE, results are sent to the relevant faculties to be published for their students' information. Following this, the results are submitted to the Senate. In addition to semester results, the final Board of Examinations for every batch of students that graduates from KDU and affiliated institutes are also conducted by the Examination Division. Further, Board of Examinations of FGS, FBESS, FASH and FOM are conducted under the direct supervision of the Division, and all examination payments related to the conducting of examinations and marking are prepared by this Division.
-                        Moreover, the Division provides assistance to the Registrar's Office to conduct selection tests for the recruitment of Officers Cadets, Day Scholars, and other staff members.
-                        The Examination Division also issues detailed degree certificates, semester results sheets, and academic transcripts of all faculties and accredited institutions.
-                    </p>
-                </section>
                 
-                <!-- Welcome Image Section (previously Certificate Services) -->
-                <section id="welcome-image">
-                    <div class="welcome-image-container">
-                        <img src="./assets/images/welcome.jpg" alt="KDU Examination Department" class="welcome-image">
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Kandawala Estate, Ratmalana, Sri Lanka</p>
+                    <p><i class="fas fa-phone"></i> +94 11 263 8656</p>
+                    <p><i class="fas fa-envelope"></i> exams@kdu.ac.lk</p>
+                    
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
-                </section>
-            </div>
-        </section>
-
-        <!-- Services Section with Modern Buttons -->
-        <section id="services-section">
-            <h2>Our Services</h2>
-            <div class="three-buttons-container">
-                <a href="#detailed-degree" class="certificate-button">
-                    <i class="fas fa-certificate"></i>
-                    <span>Request Detailed Degree</span>
-                </a>
-                <a href="#transcript" class="certificate-button">
-                    <i class="fas fa-file-alt"></i>
-                    <span>Request Transcript</span>
-                </a>
-                <a href="#degree-completion" class="certificate-button">
-                    <i class="fas fa-graduation-cap"></i>
-                    <span>Request Degree Completion</span>
-                </a>
-            </div>
-        </section>
-
-        <section id="notices">
-            <h2>Latest Notices</h2>
-            <div class="notices-container">
-                <div class="notice">
-                    <div class="notice-date">15 May 2025</div>
-                    <h3>Final Examination Schedule</h3>
-                    <p>Final examination schedule for Spring semester is now available for download.</p>
-                    <a href="#" class="notice-link">View Details</a>
                 </div>
-                <div class="notice">
-                    <div class="notice-date">10 May 2025</div>
-                    <h3>Result Publication</h3>
-                    <p>Results for Engineering Faculty Semester 1 are now published.</p>
-                    <a href="#" class="notice-link">Check Results</a>
-                </div>
-                <div class="notice">
-                    <div class="notice-date">05 May 2025</div>
-                    <h3>Examination Guidelines Update</h3>
-                    <p>Important updates to examination conduct guidelines for all students.</p>
-                    <a href="#" class="notice-link">Read More</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="student-guidance">
-            <h2>Student Guidance</h2>
-            <div class="guidance-container">
-                <div class="guidance-item">
-                    <i class="fas fa-calendar-alt"></i>
-                    <h3>Examination Schedule</h3>
-                    <p>Check the exam timetable at least two weeks before exam period. Arrive 30 minutes early on exam day.</p>
-                </div>
-                <div class="guidance-item">
-                    <i class="fas fa-clipboard-check"></i>
-                    <h3>Examination Rules</h3>
-                    <p>Bring your student ID card, follow the invigilator's instructions, and adhere to all university examination policies.</p>
-                </div>
-                <div class="guidance-item">
-                    <i class="fas fa-question-circle"></i>
-                    <h3>Special Considerations</h3>
-                    <p>If you need special arrangements or face unexpected circumstances, contact the exam office immediately.</p>
-                </div>
-                <div class="guidance-item">
-                    <i class="fas fa-file-alt"></i>
-                    <h3>Results & Appeals</h3>
-                    <p>Results are published on the student portal. Appeals must be submitted within 14 days of result publication.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Talk to DR floating button -->
-    <div class="talk-to-dr-button">
-        <a href="TalktoDR.html" id="talk-to-dr">
-            <img src="./assets/images/TalktoDR.png" alt="Talk to DR">
-        </a>
-    </div>
-
-    <!-- Hotline floating button - add this before the closing body tag -->
-    <div class="hotline-button">
-        <a href="tel:+94112638656" class="hotline-link">
-            <div class="hotline-icon">
-                <i class="fas fa-phone-alt"></i>
-            </div>
-            <div class="hotline-text">
-                <span class="hotline-label">Exam Division Hotline</span>
-                <span class="hotline-number">+94 11 263 8656</span>
-            </div>
-        </a>
-    </div>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">
-                <img src="./assets/images/LOGO_White.png" alt="KDU Logo">
-                <p>Examination Department<br>General Sir John Kotelawala Defence University</p>
             </div>
             
-            <div class="footer-links">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#staff">Staff</a></li>
-                    <li><a href="#Downloads">Downloads</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <p>&copy; 2025 KDU Examination Department. All rights reserved.</p>
             </div>
-            
-            <div class="footer-contact">
-                <h3>Contact Us</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Kandawala Estate, Ratmalana, Sri Lanka</p>
-                <p><i class="fas fa-phone"></i> +94 11 263 8656</p>
-                <p><i class="fas fa-envelope"></i> exams@kdu.ac.lk</p>
-                
-                <div class="footer-social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2025 KDU Examination Department. All rights reserved.</p>
-        </div>
-    </footer>
+        </footer>
+    </div>
     
     <script>
+        // Parallax scrolling for background
+    window.addEventListener('scroll', function() {
+        const scrollPosition = window.pageYOffset;
+        const parallaxBackground = document.querySelector('.parallax-background');
+        // The divisor controls the speed - higher number = slower scrolling
+        parallaxBackground.style.transform = `translateY(${scrollPosition * 0.3}px)`;
+    });
+
         document.addEventListener('DOMContentLoaded', function() {
             // Get all slides, arrows and dots
             const slides = document.querySelectorAll('.slide');
@@ -454,6 +445,8 @@
                 }
             });
         });
+
+
     </script>
 </body>
 </html>
