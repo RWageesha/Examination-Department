@@ -209,7 +209,7 @@ header nav ul li a[href].active-page {
 .hero-slider {
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 500px; /* Fixed height as requested */
     overflow: hidden;
     margin-bottom: 30px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
@@ -218,11 +218,46 @@ header nav ul li a[href].active-page {
     transform-style: preserve-3d;
 }
 
+/* Add blurred KDU Hero background */
+.hero-slider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/KDU-hero.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: blur(8px);
+    z-index: -1;
+}
+
+/* Dark overlay to improve content visibility */
+.hero-slider::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+/* Keep slider container above background layers */
 .slider-container {
     width: 100%;
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
+    z-index: 2;
+}
+
+/* Make sure slides appear above the background */
+.slide {
+    z-index: 2;
 }
 
 /* Base slide styling */
