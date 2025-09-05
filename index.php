@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/navbar-static/">
 </head>
 <body>
     <div class="parallax-background"></div>
@@ -99,17 +100,17 @@
 
             <!-- Services Section with Modern Buttons -->
             <section id="services-section">
-                <h2>Our Services</h2>
+                <h2>Our Services</h2s>
                 <div class="three-buttons-container">
-                    <a href="#detailed-degree" class="certificate-button">
+                    <a href="degree_transcript/index.php" class="certificate-button">
                         <i class="fas fa-certificate"></i>
                         <span>Request Detailed Degree</span>
                     </a>
-                    <a href="#transcript" class="certificate-button">
+                    <a href="degree_transcript/index.php" class="certificate-button">
                         <i class="fas fa-file-alt"></i>
                         <span>Request Transcript</span>
                     </a>
-                    <a href="#degree-completion" class="certificate-button">
+                    <a href="degree_transcript/index.php" class="certificate-button">
                         <i class="fas fa-graduation-cap"></i>
                         <span>Request Degree Completion</span>
                     </a>
