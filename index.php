@@ -183,7 +183,7 @@
                 </div>
                 <div class="hotline-text">
                     <span class="hotline-label">Exam Division Hotline</span>
-                    <span class="hotline-number">+94 11 263 8656</span>
+                    <span class="hotline-number">+94 71 021 9533</span>
                 </div>
             </a>
         </div>

@@ -833,7 +833,7 @@ session_start(); ?>
 
                 <footer class="footer fixed-bottom bg-light">
                     <div class="d-flex justify-content-center">
-                        <div>© 2025 KDU Examination Division </div>
+                        <div>© 2025 KDU Examination</div>
                     </div>
 
                     <!-- Your footer content goes here -->
