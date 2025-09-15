@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KDU Examination Department</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="parallax-background"></div>
+    
+    <div class="content-wrapper">
+        <header>
+            <img src="./assets/images/LOGO_White.png" alt="KDU Logo" style="height: 80px;">
+            <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+            <nav id="primary-nav" class="primary-nav" aria-label="Main navigation">
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="staff.html"><i class="fas fa-users"></i> Staff</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" aria-expanded="false"><i class="fas fa-download"></i> Downloads <i class="fas fa-caret-down" aria-hidden="true"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="downloads-staff.html"><i class="fas fa-user-tie"></i>For Staff</a></li>
+                            <li><a href="downloads-students.html"><i class="fas fa-user-graduate"></i>For Students</a></li>
+                            <li><a href="downloads-exams.html"><i class="fas fa-calendar-alt"></i> Exam Hall Schedules</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contactUs.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="nav-overlay" tabindex="-1" hidden></div>
+        </header>
+
+    <main>
+            <section class="hero-slider">
+                <div class="slider-container">
+                    <div class="slide">
+                        <img src="./assets/images/slide-1.jpg" alt="KDU Campus">
+                        <div class="slide-content">
+                            <h1>Welcome to KDU Examination Division</h1>
+                            <p>Excellence in Academic Assessment and Certification</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="./assets/images/slide-2.jpg" alt="Examination Hall">
+                        <div class="slide-content">
+                            <h1>Transparent Examination Process</h1>
+                            <p>Ensuring fair evaluation for all students</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="./assets/images/slide-3.jpg" alt="Graduation Ceremony">
+                        <div class="slide-content">
+                            <h1>Supporting Academic Success</h1>
+                            <p>From enrollment to graduation</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="./assets/images/slide-4.jpg" alt="Academic Excellence">
+                        <div class="slide-content">
+                            <h1>Academic Excellence</h1>
+                            <p>Maintaining high standards in education</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation arrows -->
+                    <button class="slider-arrow prev-arrow">&#10094;</button>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    
+                    <!-- Dots/circles -->
+                    <div class="dots-container">
+                        <span class="dot active" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
+                        <span class="dot" data-index="3"></span>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="home-container">
+                <div class="home-content-wrapper">
+                    <section id="home">
+                        <h2>Welcome to the Examination Division</h2>
+                        <p>The Examination Division of General Sir John Kotelawala Defence University (KDU) is the main authority responsible for conducting examinations, and issuing examination results of candidates from the Faculty of Engineering, Faculty of Law, Faculty of Computing and Faculty of Management, Humanities and Social Sciences. In addition to the above, the Examination Division monitors all examination- related matters of other faculties and affiliated institutions.
+                            The diligent staff of the Division hold the sole responsibility of processing the results submitted by the examiners in accordance with the University by-laws, and conducting the Semester Pre-Results Board and Board of Examinations (BoE). After every BoE, results are sent to the relevant faculties to be published for their students' information. Following this, the results are submitted to the Senate. In addition to semester results, the final Board of Examinations for every batch of students that graduates from KDU and affiliated institutes are also conducted by the Examination Division. Further, Board of Examinations of FGS, FBESS, FASH and FOM are conducted under the direct supervision of the Division, and all examination payments related to the conducting of examinations and marking are prepared by this Division.
+                            Moreover, the Division provides assistance to the Registrar's Office to conduct selection tests for the recruitment of Officers Cadets, Day Scholars, and other staff members.
+                            The Examination Division also issues detailed degree certificates, semester results sheets, and academic transcripts of all faculties and accredited institutions.
+                        </p>
+                    </section>
+                    
+                    <!-- Welcome Image Section (previously Certificate Services) -->
+                    <section id="welcome-image">
+                        <div class="welcome-image-container">
+                            <img src="./assets/images/welcome.jpg" alt="KDU Examination Department" class="welcome-image">
+                        </div>
+                    </section>
+                </div>
+            </section>
+
+            <!-- Services Section with Modern Buttons -->
+            <section id="services-section">
+                <h2>Our Services</h2>
+                <div class="three-buttons-container">
+                    <a href="#detailed-degree" class="certificate-button">
+                        <i class="fas fa-certificate"></i>
+                        <span>Request Detailed Degree</span>
+                    </a>
+                    <a href="#transcript" class="certificate-button">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Request Transcript</span>
+                    </a>
+                    <a href="#degree-completion" class="certificate-button">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Request Degree Completion</span>
+                    </a>
+                </div>
+            </section>
+
+            <section id="notices">
+                <h2>Latest Notices</h2>
+                <div class="notices-container">
+                    <div class="notice">
+                        <div class="notice-date">15 May 2025</div>
+                        <h3>Final Examination Schedule</h3>
+                        <p>Final examination schedule for Spring semester is now available for download.</p>
+                        <a href="#" class="notice-link">View Details</a>
+                    </div>
+                    <div class="notice">
+                        <div class="notice-date">10 May 2025</div>
+                        <h3>Result Publication</h3>
+                        <p>Results for Engineering Faculty Semester 1 are now published.</p>
+                        <a href="#" class="notice-link">Check Results</a>
+                    </div>
+                    <div class="notice">
+                        <div class="notice-date">05 May 2025</div>
+                        <h3>Examination Guidelines Update</h3>
+                        <p>Important updates to examination conduct guidelines for all students.</p>
+                        <a href="#" class="notice-link">Read More</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="student-guidance">
+                <h2>Student Guidance</h2>
+                <div class="guidance-container">
+                    <div class="guidance-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h3>Examination Schedule</h3>
+                        <p>Check the exam timetable at least two weeks before exam period. Arrive 30 minutes early on exam day.</p>
+                    </div>
+                    <div class="guidance-item">
+                        <i class="fas fa-clipboard-check"></i>
+                        <h3>Examination Rules</h3>
+                        <p>Bring your student ID card, follow the invigilator's instructions, and adhere to all university examination policies.</p>
+                    </div>
+                    <div class="guidance-item">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>Special Considerations</h3>
+                        <p>If you need special arrangements or face unexpected circumstances, contact the exam office immediately.</p>
+                    </div>
+                    <div class="guidance-item">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>Results & Appeals</h3>
+                        <p>Results are published on the student portal. Appeals must be submitted within 14 days of result publication.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Talk to DR floating button -->
+        <div class="talk-to-dr-button">
+            <a href="TalktoDR.html" id="talk-to-dr">
+                <img src="./assets/images/TalktoDR.png" alt="Talk to DR">
+            </a>
+        </div>
+
+        <!-- Hotline floating button - add this before the closing body tag -->
+        <div class="hotline-button">
+            <a href="tel:+94112638656" class="hotline-link">
+                <div class="hotline-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="hotline-text">
+                    <span class="hotline-label">Exam Division Hotline</span>
+                    <span class="hotline-number">+94 11 263 8656</span>
+                </div>
+            </a>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="./assets/images/LOGO_White.png" alt="KDU Logo">
+                    <p>Examination Department<br>General Sir John Kotelawala Defence University</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#staff">Staff</a></li>
+                        <li><a href="#Downloads">Downloads</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Kandawala Estate, Ratmalana, Sri Lanka</p>
+                    <p><i class="fas fa-phone"></i> +94 11 263 8656</p>
+                    <p><i class="fas fa-envelope"></i> exams@kdu.ac.lk</p>
+                    
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 KDU Examination Department. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Parallax scrolling for background
+    window.addEventListener('scroll', function() {
+        const scrollPosition = window.pageYOffset;
+        const parallaxBackground = document.querySelector('.parallax-background');
+        // The divisor controls the speed - higher number = slower scrolling
+        parallaxBackground.style.transform = `translateY(${scrollPosition * 0.3}px)`;
+    });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all slides, arrows and dots
+            const slides = document.querySelectorAll('.slide');
+            const prevArrow = document.querySelector('.prev-arrow');
+            const nextArrow = document.querySelector('.next-arrow');
+            const dots = document.querySelectorAll('.dot');
+            
+            // Define transition types
+            const transitionTypes = [
+                'horizontal-slide',  // Slide left/right
+                'vertical-slide',    // Slide up/down
+                'flip-x',            // 3D flip on X axis
+                'flip-y',            // 3D flip on Y axis
+                'zoom-fade'          // Zoom in/out with fade
+            ];
+            
+            let currentSlide = 0;
+            let currentTransition = 0;
+            const slideCount = slides.length;
+            let slideInterval;
+            let isAnimating = false;
+            
+            // Function to show a specific slide with a specific transition
+            function showSlide(index, direction = 'next') {
+                // Prevent rapid clicking during animation
+                if (isAnimating) return;
+                isAnimating = true;
+                
+                // Handle index bounds
+                if (index < 0) index = slideCount - 1;
+                if (index >= slideCount) index = 0;
+                
+                // Get current and new slides
+                const currentSlideElement = slides[currentSlide];
+                const newSlideElement = slides[index];
+                
+                // Remove all transition classes from slides
+                slides.forEach(slide => {
+                    slide.classList.remove(...transitionTypes, 'active', 'exit');
+                });
+                
+                // Choose transition type - cycle through them or pick random
+                const transitionType = transitionTypes[currentTransition];
+                
+                // Update transition for next time
+                currentTransition = (currentTransition + 1) % transitionTypes.length;
+                
+                // Set transition classes
+                currentSlideElement.classList.add('exit', transitionType);
+                newSlideElement.classList.add('active', transitionType);
+                
+                // Make the new slide visible first
+                newSlideElement.style.visibility = 'visible';
+                newSlideElement.style.opacity = '1';
+                
+                // Update dots
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[index].classList.add('active');
+                
+                // Update current slide index after animation finishes
+                setTimeout(() => {
+                    // Update current slide index
+                    currentSlide = index;
+                    
+                    // Allow new transitions
+                    isAnimating = false;
+                    
+                    // Hide the previous slide
+                    currentSlideElement.style.visibility = 'hidden';
+                    currentSlideElement.style.opacity = '0';
+                }, 1500); // Match the longest animation duration
+            }
+            
+            // Event listeners for arrows
+            prevArrow.addEventListener('click', () => {
+                clearInterval(slideInterval); // Stop auto-rotation
+                showSlide(currentSlide - 1, 'prev');
+                restartSlideInterval(); // Restart auto-rotation
+            });
+            
+            nextArrow.addEventListener('click', () => {
+                clearInterval(slideInterval);
+                showSlide(currentSlide + 1, 'next');
+                restartSlideInterval();
+            });
+            
+            // Event listeners for dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    if (currentSlide === index) return; // Don't do anything if clicking the current slide
+                    clearInterval(slideInterval);
+                    
+                    // Determine direction for animation
+                    const direction = index > currentSlide ? 'next' : 'prev';
+                    showSlide(index, direction);
+                    
+                    restartSlideInterval();
+                });
+            });
+            
+            // Touch swipe functionality for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            const sliderContainer = document.querySelector('.slider-container');
+            
+            sliderContainer.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, {passive: true});
+            
+            sliderContainer.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, {passive: true});
+            
+            function handleSwipe() {
+                // Minimum swipe distance (px) to register as a swipe
+                const swipeThreshold = 50;
+                
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    // Swipe left - show next slide
+                    clearInterval(slideInterval);
+                    showSlide(currentSlide + 1, 'next');
+                    restartSlideInterval();
+                } 
+                
+                if (touchEndX > touchStartX + swipeThreshold) {
+                    // Swipe right - show previous slide
+                    clearInterval(slideInterval);
+                    showSlide(currentSlide - 1, 'prev');
+                    restartSlideInterval();
+                }
+            }
+            
+            // Auto-advance slides function
+            function startSlideInterval() {
+                slideInterval = setInterval(() => {
+                    showSlide(currentSlide + 1, 'next');
+                }, 6000); // Change slide every 6 seconds
+            }
+            
+            // Restart interval function
+            function restartSlideInterval() {
+                clearInterval(slideInterval);
+                startSlideInterval();
+            }
+            
+            // Pause slideshow when hovering over it
+            sliderContainer.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+            
+            sliderContainer.addEventListener('mouseleave', () => {
+                startSlideInterval();
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', e => {
+                if (e.key === 'ArrowLeft') {
+                    clearInterval(slideInterval);
+                    showSlide(currentSlide - 1, 'prev');
+                    restartSlideInterval();
+                } else if (e.key === 'ArrowRight') {
+                    clearInterval(slideInterval);
+                    showSlide(currentSlide + 1, 'next');
+                    restartSlideInterval();
+                }
+            });
+            
+            // Initialize the first slide
+            slides[0].classList.add('active', transitionTypes[0]);
+            dots[0].classList.add('active');
+            
+            // Start auto-rotation
+            startSlideInterval();
+        });
+
+        // Handle dropdown on mobile (inside nav when collapsed) + accessibility
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.dropdown-toggle');
+            dropdowns.forEach(dropdown => {
+                function activate(e){
+                    if (window.innerWidth <= 1050) {
+                        e.preventDefault();
+                        const parent = dropdown.parentElement;
+                        const expanded = dropdown.getAttribute('aria-expanded') === 'true';
+                        dropdown.setAttribute('aria-expanded', String(!expanded));
+                        parent.classList.toggle('active');
+                    }
+                }
+                dropdown.addEventListener('click', activate);
+                dropdown.addEventListener('keydown', (e)=>{
+                    if (e.key === 'Enter' || e.key === ' ') { activate(e); }
+                });
+            });
+        });
+
+        // Mobile navigation toggle (icon-based)
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.querySelector('.nav-toggle');
+            const nav = document.getElementById('primary-nav');
+            const overlay = document.querySelector('.nav-overlay');
+            const focusableSelectors = 'a, button';
+            let lastFocused = null;
+            const icon = toggle.querySelector('i');
+
+            function openNav() {
+                lastFocused = document.activeElement;
+                toggle.setAttribute('aria-expanded','true');
+                toggle.setAttribute('aria-label','Close navigation');
+                nav.classList.add('open');
+                overlay.hidden = false;
+                document.body.classList.add('no-scroll');
+                if (icon) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); }
+                // Focus first link
+                const firstLink = nav.querySelector('a');
+                if (firstLink) firstLink.focus();
+            }
+            function closeNav() {
+                toggle.setAttribute('aria-expanded','false');
+                toggle.setAttribute('aria-label','Open navigation');
+                nav.classList.remove('open');
+                overlay.hidden = true;
+                document.body.classList.remove('no-scroll');
+                if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+                if (lastFocused) lastFocused.focus();
+            }
+            toggle.addEventListener('click', () => {
+                const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                expanded ? closeNav() : openNav();
+            });
+            overlay.addEventListener('click', closeNav);
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && nav.classList.contains('open')) closeNav();
+                if (e.key === 'Tab' && nav.classList.contains('open')) {
+                    const focusable = nav.querySelectorAll(focusableSelectors);
+                    if (focusable.length === 0) return;
+                    const first = focusable[0];
+                    const last = focusable[focusable.length -1];
+                    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+                    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+                }
+            });
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 1050 && nav.classList.contains('open')) closeNav();
+            });
+        });
+
+        // Add this to your existing DOMContentLoaded event handler
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the current page URL
+            const currentPage = window.location.pathname.split("/").pop();
+            
+            // Get all navigation links & set item index custom property for animation
+            const navLinks = document.querySelectorAll('header nav ul li a');
+            document.querySelectorAll('header nav ul li').forEach((li,i)=> li.style.setProperty('--item-index', i));
+            
+            // Check each link against current URL
+            navLinks.forEach(link => {
+                const linkHref = link.getAttribute('href');
+                
+                // If it's the home page with no specific file or index.html
+                if ((currentPage === '' || currentPage === 'index.html') && (linkHref === '#home' || linkHref === 'index.html')) {
+                    link.classList.add('active');
+                }
+                // For other pages
+                else if (linkHref === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+
+    </script>
+</body>
+</html>
