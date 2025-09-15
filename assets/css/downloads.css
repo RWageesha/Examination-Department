@@ -1,24 +1,44 @@
 /* Downloads Page Styling */
 
 /* Main header styling */
+/* Unified hero header styling applied (matches contact header & staff intro) */
 .downloads-header {
-    background-color: #002244;
-    color: white;
-    padding: 40px 20px;
+    position: relative;
+    background: linear-gradient(135deg,#002244 0%,#004080 60%,#0a66c2 100%);
+    color: #ffffff;
+    padding: 56px 24px 60px;
     text-align: center;
-    margin-bottom: 30px;
+    margin: 0 0 42px 0;
+    overflow: hidden;
+    border-radius: 0 0 26px 26px;
+    box-shadow: 0 8px 28px -6px rgba(0,34,68,0.45), 0 4px 12px rgba(0,0,0,0.25);
 }
 
+.downloads-header:before, .downloads-header:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), rgba(255,255,255,0));
+    filter: blur(40px);
+    opacity: .35;
+    pointer-events: none;
+}
+.downloads-header:before { width: 420px; height: 420px; top: -160px; left: -120px; }
+.downloads-header:after { width: 360px; height: 360px; bottom: -140px; right: -100px; }
+
 .downloads-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
+    font-size: clamp(2.2rem, 4vw, 2.9rem);
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+    position: relative;
 }
 
 .downloads-header p {
-    font-size: 1.2rem;
-    max-width: 800px;
+    font-size: 1.1rem;
+    max-width: 780px;
     margin: 0 auto;
-    opacity: 0.9;
+    opacity: 0.95;
+    line-height: 1.65;
 }
 
 /* Search and filter bar */
@@ -270,13 +290,8 @@
 }
 
 @media (max-width: 768px) {
-    .downloads-header {
-        padding: 30px 15px;
-    }
-    
-    .downloads-header h1 {
-        font-size: 2rem;
-    }
+    .downloads-header { padding: 30px 15px; }
+    .downloads-header h1 { font-size: 2rem; }
     
     .download-item {
         flex-direction: column;

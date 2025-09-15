@@ -1,22 +1,41 @@
 /* Staff Page Styling */
 #staff-intro {
-    width: 95%;
-    margin: 0 auto;
-    padding: 40px 20px 20px;
+    position: relative;
+    background: linear-gradient(135deg,#002244 0%,#004080 60%,#0a66c2 100%);
+    color: #ffffff;
+    padding: 56px 24px 60px;
     text-align: center;
+    margin: 0 0 42px 0;
+    overflow: hidden;
+    border-radius: 0 0 26px 26px;
+    box-shadow: 0 8px 28px -6px rgba(0,34,68,0.45), 0 4px 12px rgba(0,0,0,0.25);
 }
 
+#staff-intro:before, #staff-intro:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), rgba(255,255,255,0));
+    filter: blur(40px);
+    opacity: .35;
+    pointer-events: none;
+}
+#staff-intro:before { width: 420px; height: 420px; top: -160px; left: -120px; }
+#staff-intro:after { width: 360px; height: 360px; bottom: -140px; right: -100px; }
+
 #staff-intro h1 {
-    color: #002244;
-    font-size: 2.5rem;
-    margin-bottom: 15px;
+    font-size: clamp(2.2rem, 4vw, 2.9rem);
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+    position: relative;
 }
 
 #staff-intro p {
-    font-size: 1.2rem;
-    color: #555;
-    max-width: 800px;
+    font-size: 1.1rem;
+    max-width: 780px;
     margin: 0 auto;
+    opacity: 0.95;
+    line-height: 1.65;
 }
 
 #staff-profiles {
@@ -43,77 +62,115 @@
     gap: 30px;
 }
 
+/* Modern Staff Card Styles */
+/* Distinct Staff Card Styles */
 .staff-card {
-    background-color: white;
-    border-radius: 8px;
+    background: #fff;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.staff-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 18px rgba(0, 32, 68, 0.10);
+    border-left: 7px solid #3b82f6;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+    transition: transform 0.3s cubic-bezier(.4,2,.3,1), box-shadow 0.3s cubic-bezier(.4,2,.3,1);
+    position: relative;
 }
 
 .staff-card.featured {
-    grid-column: span 2;
-    display: flex;
-    flex-direction: row;
+    border-left: 7px solid #3b82f6;
+    box-shadow: 0 4px 18px rgba(0, 32, 68, 0.10);
 }
 
+.staff-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 32px rgba(59, 130, 246, 0.18);
+    border-left-color: #2563eb;
+}
+
+/* Rectangular staff image style */
 .staff-image {
-    height: 200px;
+    width: 100%;
+    height: 240px;
+    margin: 0 auto;
+    border-radius: 16px 16px 0 0;
+    background: #e3eafc;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    box-shadow: 0 2px 12px rgba(59,130,246,0.08);
+    border-top: 4px solid #e0e7ff;
+    border-left: 4px solid #e0e7ff;
+    border-right: 4px solid #e0e7ff;
+    border-bottom: none;
     overflow: hidden;
 }
 
+/* Administrative staff images use same frame as regular */
 .staff-card.featured .staff-image {
-    width: 40%;
-    height: auto;
+    border-top: 4px solid #e0e7ff;
+    border-left: 4px solid #e0e7ff;
+    border-right: 4px solid #e0e7ff;
 }
 
+/* Staff image fills the frame */
 .staff-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    object-position: center top;
+    border-radius: 0;
+    box-shadow: none;
+    transition: transform 0.5s cubic-bezier(.4,2,.3,1);
 }
 
 .staff-card:hover .staff-image img {
-    transform: scale(1.05);
+    transform: scale(1.04);
 }
 
+/* Info area for staff card */
 .staff-info {
-    padding: 20px;
+    padding: 18px 18px 16px 18px;
+    background: rgba(245,247,255,0.92);
+    border-radius: 0 0 16px 16px;
+    min-height: 100px;
+    text-align: center;
 }
 
 .staff-card.featured .staff-info {
-    width: 60%;
-    padding: 30px;
+    width: 100%;
+    padding: 22px 18px 18px 18px;
+    border-radius: 0 0 16px 16px;
+    background: rgba(245,247,255,0.92);
+    text-align: center;
 }
 
 .staff-info h3 {
     color: #002244;
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     margin-bottom: 8px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
 .staff-title {
     color: #004080;
     font-weight: 600;
-    margin-bottom: 5px;
+    margin-bottom: 7px;
+    font-size: 1.08rem;
+    letter-spacing: 0.2px;
 }
 
 .staff-qualification {
     color: #666;
     font-style: italic;
     margin-bottom: 15px;
-    font-size: 0.9rem;
+    font-size: 0.92rem;
 }
 
 .staff-contact {
     margin: 15px 0;
-    font-size: 0.9rem;
+    font-size: 0.96rem;
 }
 
 .staff-contact p {
@@ -128,7 +185,7 @@
 
 .staff-bio {
     color: #444;
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     line-height: 1.6;
 }
 
@@ -137,29 +194,48 @@
     .staff-card.featured {
         grid-column: span 1;
         flex-direction: column;
+        border-left: 7px solid #ffd700;
+        border-top: none;
     }
-    
     .staff-card.featured .staff-image,
     .staff-card.featured .staff-info {
         width: 100%;
     }
-    
     .staff-card.featured .staff-image {
-        height: 200px;
+        height: 140px;
+        border-radius: 50%;
+        margin: 24px auto 0 auto;
+    }
+    .staff-card.featured .staff-info {
+        border-radius: 0 0 16px 16px;
     }
 }
 
 @media (max-width: 768px) {
+    #staff-intro { padding: 30px 15px; }
+    #staff-intro h1 { font-size: 2rem; }
     #staff-profiles {
         width: 100%;
         padding: 10px;
     }
-    
     .staff-cards {
         grid-template-columns: 1fr;
     }
-    
     .staff-image {
-        height: 180px;
+        height: 120px;
+        width: 120px;
+        border-radius: 50%;
+        margin: 18px auto 0 auto;
+    }
+    .staff-card {
+        border-radius: 12px;
+    }
+    .staff-card.featured {
+        border-radius: 12px;
+        border-left: 7px solid #ffd700;
+    }
+    .staff-card.featured .staff-image,
+    .staff-card.featured .staff-info {
+        border-radius: 12px;
     }
 }
