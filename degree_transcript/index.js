@@ -39,6 +39,12 @@
             }
 
             form.classList.add("was-validated");
+
+            // If validation passed (no preventDefault so far), redirect to payment instructions
+            if (!event.defaultPrevented) {
+              event.preventDefault();
+              window.location.href = 'pay_instructions.php';
+            }
           },
           false
         );
