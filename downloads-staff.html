@@ -44,11 +44,7 @@
             </div>
             <div class="filter-options">
                 <select id="categoryFilter">
-                    <option value="all">All Categories</option>
-                    <option value="forms">Forms</option>
-                    <option value="guidelines">Guidelines</option>
-                    <option value="templates">Templates</option>
-                    <option value="policies">Policies</option>
+                    <option value="all">All</option>
                 </select>
             </div>
         </section>
@@ -306,13 +302,13 @@
             <p>&copy; 2025 KDU Examination Department. All rights reserved.</p>
         </div>
     </footer>
-    
-    <!-- JavaScript for search and filter functionality -->
+    <script src="./assets/js/public-data.js"></script>
+    <!-- JavaScript for search and filter functionality (client-side filter still works on dynamic content) -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('searchInput');
             const categoryFilter = document.getElementById('categoryFilter');
-            const downloadItems = document.querySelectorAll('.download-item');
+            const getItems = () => document.querySelectorAll('.download-item');
             
             // Search functionality
             searchInput.addEventListener('input', filterItems);
@@ -324,7 +320,7 @@
                 const searchTerm = searchInput.value.toLowerCase();
                 const categoryValue = categoryFilter.value;
                 
-                downloadItems.forEach(item => {
+                getItems().forEach(item => {
                     const title = item.querySelector('h3').textContent.toLowerCase();
                     const description = item.querySelector('p').textContent.toLowerCase();
                     const category = item.dataset.category;

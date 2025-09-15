@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Sign Up - KDU Examination Department</title>
+  <link rel="stylesheet" href="../assets/css/admin-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    .admin-login-body .login-container { max-width: 520px; }
+  </style>
+  </head>
+<body class="admin-login-body">
+  <div class="login-container">
+    <div class="login-header">
+      <img src="../assets/images/LOGO_Blue.png" alt="KDU Logo" class="login-logo">
+      <h1>Create Super Admin</h1>
+      <p>Only available before first admin is created</p>
+    </div>
+    <form id="signupForm" class="login-form">
+      <div class="form-group">
+        <label for="name"><i class="fas fa-id-badge"></i> Full Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email"><i class="fas fa-envelope"></i> Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="username"><i class="fas fa-user"></i> Username (optional)</label>
+        <input type="text" id="username" name="username" placeholder="e.g., examinationdivision1">
+      </div>
+      <div class="form-group">
+        <label for="password"><i class="fas fa-lock"></i> Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="form-group">
+        <label for="confirm"><i class="fas fa-lock"></i> Confirm Password</label>
+        <input type="password" id="confirm" name="confirm" required>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn-login">
+          <i class="fas fa-user-plus"></i> Create Account
+        </button>
+      </div>
+      <div id="signupMessage" class="login-message"></div>
+      <div class="form-footer">
+        <a href="login.html">Back to Login</a>
+        <a href="../index.html">Back to Website</a>
+      </div>
+    </form>
+  </div>
+  <script src="../assets/js/admin-signup.js"></script>
+</body>
+</html>

@@ -9,43 +9,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const passwordToggle = document.querySelector('.password-toggle');
     const passwordField = document.getElementById('password');
     
-    // Check if user is already logged in
-    if (sessionStorage.getItem('adminLoggedIn') === 'true') {
-        window.location.href = 'index.html';
-    }
-    
-    // Sample admin credentials (in a real system, this would be server-side)
-    const adminCredentials = {
-        'admin': 'admin123',
-        'sarah': 'sarah123',
-        'mike': 'mike123'
-    };
+    // If already have a PHP session, backend will accept authenticated requests.
+    // We optimistically navigate after successful login only.
     
     // Handle login form submission
-    loginForm.addEventListener('submit', function(e) {
+    loginForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        const username = document.getElementById('username').value;
+    const identifier = document.getElementById('username').value.trim(); // email or username
         const password = document.getElementById('password').value;
-        
-        // Simple client-side validation (in a real app, this would be server-side)
-        if (adminCredentials[username] && adminCredentials[username] === password) {
-            // Show success message
+
+        loginMessage.className = 'login-message';
+        loginMessage.textContent = '';
+        try {
+            const res = await fetch('../backend/api/auth/login.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
+                body: JSON.stringify({ identifier, password })
+            });
+            const data = await res.json();
+            if (!res.ok || !data.ok) {
+                throw new Error(data.error || 'Login failed');
+            }
             loginMessage.className = 'login-message success';
             loginMessage.textContent = 'Login successful! Redirecting...';
-            
-            // Simulate storing session (in a real app, this would be a secure cookie/session)
-            sessionStorage.setItem('adminLoggedIn', 'true');
-            sessionStorage.setItem('adminUsername', username);
-            
-            // Redirect to admin panel
-            setTimeout(function() {
-                window.location.href = 'index.html';
-            }, 1000);
-        } else {
-            // Show error message
+            setTimeout(() => { window.location.href = 'index.html'; }, 500);
+        } catch (err) {
             loginMessage.className = 'login-message error';
-            loginMessage.textContent = 'Invalid username or password';
+            loginMessage.textContent = err.message;
         }
     });
     

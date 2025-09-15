@@ -17,7 +17,7 @@ if (!defined('APP_BASE')) define('APP_BASE', '/Examination-Department/');
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-primary mb-4">
   <div class="container-fluid">
-    <a class="navbar-brand" href="<?= APP_BASE ?>index.php">KDU Online Registration</a>
+  <a class="navbar-brand" href="<?= APP_BASE ?>index.html">KDU Online Registration</a>
   </div>
 </nav>
 

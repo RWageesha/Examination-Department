@@ -12,7 +12,7 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <img src="../assets/images/Main-logo.png" alt="KDU Logo">
+                <img src="../assets/images/LOGO_White.png" alt="KDU Logo">
                 <h2>Admin Panel</h2>
             </div>
             
@@ -26,6 +26,16 @@
                     <li>
                         <a href="#notices" data-section="notices">
                             <i class="fas fa-bullhorn"></i> Notices
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#guidance" data-section="guidance">
+                            <i class="fas fa-clipboard-list"></i> Student Guidance
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#downloads" data-section="downloads">
+                            <i class="fas fa-download"></i> Downloads
                         </a>
                     </li>
                     <li>
@@ -204,57 +214,59 @@
                                 <tr>
                                     <th>Title</th>
                                     <th>Date</th>
-                                    <th>Status</th>
+                                    <th>Link</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Final Examination Schedule</td>
-                                    <td>May 15, 2025</td>
-                                    <td><span class="status-badge active">Active</span></td>
-                                    <td class="actions">
-                                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Result Publication</td>
-                                    <td>May 10, 2025</td>
-                                    <td><span class="status-badge active">Active</span></td>
-                                    <td class="actions">
-                                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Examination Guidelines Update</td>
-                                    <td>May 05, 2025</td>
-                                    <td><span class="status-badge active">Active</span></td>
-                                    <td class="actions">
-                                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Special Examination Arrangements</td>
-                                    <td>April 28, 2025</td>
-                                    <td><span class="status-badge draft">Draft</span></td>
-                                    <td class="actions">
-                                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Previous Semester Results Analysis</td>
-                                    <td>April 15, 2025</td>
-                                    <td><span class="status-badge archived">Archived</span></td>
-                                    <td class="actions">
-                                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
+                                <!-- Populated by JS -->
                             </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Guidance Section -->
+                <section id="guidance" class="content-section">
+                    <div class="section-header">
+                        <h2>Student Guidance</h2>
+                        <button id="addGuidanceBtn" class="btn-primary">
+                            <i class="fas fa-plus"></i> Add Guidance
+                        </button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table" id="guidanceTable">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Attachment</th>
+                                    <th>Link</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody><!-- Populated by JS --></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Downloads Section -->
+                <section id="downloads" class="content-section">
+                    <div class="section-header">
+                        <h2>Downloads</h2>
+                        <button id="addDownloadBtn" class="btn-primary">
+                            <i class="fas fa-plus"></i> Add File/Link
+                        </button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table" id="downloadsTable">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Resource</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody><!-- Populated by JS --></tbody>
                         </table>
                     </div>
                 </section>
@@ -591,6 +603,72 @@
         </div>
     </div>
     
+    <!-- Add Guidance Modal -->
+    <div id="addGuidanceModal" class="modal">
+        <div class="modal-content large-modal">
+            <span class="close-modal">&times;</span>
+            <h2>Add Guidance</h2>
+            <form id="addGuidanceForm" class="form-horizontal">
+                <div class="form-group">
+                    <label for="guidanceTitle">Title</label>
+                    <input type="text" id="guidanceTitle" name="guidanceTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="guidanceContent">Description</label>
+                    <textarea id="guidanceContent" name="guidanceContent" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="guidanceLink">Link (Optional)</label>
+                    <input type="url" id="guidanceLink" name="guidanceLink" placeholder="https://">
+                </div>
+                <div class="form-group file-upload">
+                    <label for="guidanceFile">Attachment (PDF/JPG/PNG)</label>
+                    <input type="file" id="guidanceFile" name="guidanceFile" accept=".pdf,.jpg,.jpeg,.png">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary cancel-modal">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Guidance</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Download Modal -->
+    <div id="addDownloadModal" class="modal">
+        <div class="modal-content large-modal">
+            <span class="close-modal">&times;</span>
+            <h2>Add Download</h2>
+            <form id="addDownloadForm" class="form-horizontal">
+                <div class="form-group">
+                    <label for="downloadCategory">Category</label>
+                    <select id="downloadCategory" name="downloadCategory" required>
+                        <!-- Populated by JS via categories API -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="downloadTitle">Title</label>
+                    <input type="text" id="downloadTitle" name="downloadTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="downloadDescription">Description</label>
+                    <textarea id="downloadDescription" name="downloadDescription" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="downloadLink">Link (Optional)</label>
+                    <input type="url" id="downloadLink" name="downloadLink" placeholder="https://">
+                </div>
+                <div class="form-group file-upload">
+                    <label for="downloadFile">File (Optional)</label>
+                    <input type="file" id="downloadFile" name="downloadFile" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary cancel-modal">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Download</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Add User Modal -->
     <div id="addUserModal" class="modal">
         <div class="modal-content">
