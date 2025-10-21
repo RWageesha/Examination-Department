@@ -12,6 +12,7 @@ if (!defined('APP_BASE')) define('APP_BASE', '/Examination-Department/');
 define('UPLOADS_DIR', __DIR__ . '/../assets/uploads');
 define('GUIDANCE_UPLOADS', UPLOADS_DIR . '/guidance');
 define('DOWNLOADS_UPLOADS', UPLOADS_DIR . '/downloads');
+define('GALLERY_UPLOADS', UPLOADS_DIR . '/images');
 
 // Max upload size (2MB)
 define('MAX_UPLOAD_BYTES', 2 * 1024 * 1024);
@@ -25,3 +26,4 @@ $ALLOWED_DOC_MIME = [
 @mkdir(UPLOADS_DIR, 0775, true);
 @mkdir(GUIDANCE_UPLOADS, 0775, true);
 @mkdir(DOWNLOADS_UPLOADS, 0775, true);
+@mkdir(GALLERY_UPLOADS, 0775, true);

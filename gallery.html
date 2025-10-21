@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Gallery & About | KDU Examination Division</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+  <div class="parallax-background"></div>
+  <div class="content-wrapper">
+    <header>
+      <a href="index.html" aria-label="Go to home">
+        <img src="./assets/images/LOGO_White.png" alt="KDU Logo" />
+      </a>
+      <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
+      <nav id="primary-nav" class="primary-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="staff.html"><i class="fas fa-users"></i> Staff</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" aria-expanded="false"><i class="fas fa-download"></i> Downloads <i class="fas fa-caret-down" aria-hidden="true"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="downloads-staff.html"><i class="fas fa-user-tie"></i>For Staff</a></li>
+              <li><a href="downloads-students.html"><i class="fas fa-user-graduate"></i>For Students</a></li>
+              <li><a href="downloads-exams.html"><i class="fas fa-calendar-alt"></i> Exam Hall Schedules</a></li>
+            </ul>
+          </li>
+          <li><a href="contactUs.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+          <li><a href="gallery.html" class="active"><i class="fas fa-images"></i> Gallery</a></li>
+        </ul>
+      </nav>
+      <div class="nav-overlay" tabindex="-1" hidden></div>
+    </header>
+
+    <main class="gallery-page">
+      <section class="about-division" id="about">
+        <h1>About The Examination Division</h1>
+        <p>The Examination Division oversees the planning, conduct, evaluation, and certification of all academic assessments across participating faculties. It ensures transparency, academic integrity, and adherence to university regulations while supporting students and academic staff through streamlined processes.</p>
+        <div class="about-grid">
+          <div class="about-card">
+            <i class="fas fa-bullseye"></i>
+            <h3>Our Mission</h3>
+            <p>To maintain a fair, efficient, and student-centered examination system that upholds academic excellence.</p>
+          </div>
+          <div class="about-card">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Integrity</h3>
+            <p>Strict adherence to assessment policies, security of exam materials, and ethical handling of results.</p>
+          </div>
+          <div class="about-card">
+            <i class="fas fa-sync"></i>
+            <h3>Process Efficiency</h3>
+            <p>Digitally supported workflows for scheduling, result processing, and certification.</p>
+          </div>
+          <div class="about-card">
+            <i class="fas fa-user-graduate"></i>
+            <h3>Student Support</h3>
+            <p>Guidance for appeals, transcript requests, and special exam accommodations.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="image-gallery-wrapper" id="gallery">
+        <div class="gallery-header">
+          <h2>Image Gallery</h2>
+          <div class="gallery-filters">
+            <button data-filter="all" class="filter-btn active">All</button>
+            <button data-filter="slider" class="filter-btn">Slider</button>
+            <button data-filter="gallery" class="filter-btn">Gallery</button>
+            <button data-filter="other" class="filter-btn">Other</button>
+          </div>
+        </div>
+        <div class="dynamic-gallery-grid" id="dynamicGallery" aria-live="polite"></div>
+        <div class="gallery-empty" id="galleryEmpty" hidden>No images uploaded yet.</div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="./assets/images/LOGO_White.png" alt="KDU Logo">
+          <p>Examination Department<br>General Sir John Kotelawala Defence University</p>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="staff.html">Staff</a></li>
+            <li><a href="downloads-students.html">Downloads</a></li>
+            <li><a href="contactUs.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h3>Contact Us</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Kandawala Estate, Ratmalana, Sri Lanka</p>
+            <p><i class="fas fa-phone"></i> +94 11 263 8656</p>
+            <p><i class="fas fa-envelope"></i> exams@kdu.ac.lk</p>
+            <div class="footer-social">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 KDU Examination Department. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="./assets/js/public-data.js"></script>
+  <script>
+    // Mobile nav + dropdown reuse from index (lightweight subset)
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('primary-nav');
+      const overlay = document.querySelector('.nav-overlay');
+      const icon = toggle.querySelector('i');
+      function openNav(){toggle.setAttribute('aria-expanded','true');nav.classList.add('open');overlay.hidden=false;document.body.classList.add('no-scroll');icon.classList.replace('fa-bars','fa-times');}
+      function closeNav(){toggle.setAttribute('aria-expanded','false');nav.classList.remove('open');overlay.hidden=true;document.body.classList.remove('no-scroll');icon.classList.replace('fa-times','fa-bars');}
+      toggle.addEventListener('click',()=>{const exp=toggle.getAttribute('aria-expanded')==='true';exp?closeNav():openNav();});
+      overlay.addEventListener('click',closeNav);
+      window.addEventListener('resize',()=>{if(window.innerWidth>1050&&nav.classList.contains('open'))closeNav();});
+      // Active link
+      const current = 'gallery.html';
+      document.querySelectorAll('header nav a').forEach(a=>{ if(a.getAttribute('href')===current) a.classList.add('active'); });
+    });
+
+    // Fetch images
+    async function loadGallery(){
+      try {
+        const res = await fetch('./backend/api/images.php');
+        const data = await res.json();
+        const grid = document.getElementById('dynamicGallery');
+        const empty = document.getElementById('galleryEmpty');
+        grid.innerHTML='';
+        if(!data.data || data.data.length===0){ empty.hidden=false; return; }
+        empty.hidden=true;
+        data.data.forEach(img=>{
+          const card=document.createElement('figure');
+          card.className='gallery-item';
+          card.dataset.category=img.category;
+          card.innerHTML=`<div class="gallery-thumb"><img src="${img.file_path.startsWith('assets')?'./'+img.file_path:'./'+img.file_path}" alt="${escapeHtml(img.title)}"></div><figcaption><h4>${escapeHtml(img.title)}</h4><span class="badge cat-${img.category}">${img.category}</span></figcaption>`;
+          grid.appendChild(card);
+        });
+      } catch(err){ console.error('Failed to load gallery',err); }
+    }
+
+    function escapeHtml(str){return String(str).replace(/[&<>"']/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[s]));}
+
+    // Filter buttons
+    document.addEventListener('click', function(e){
+      const btn = e.target.closest('.filter-btn');
+      if(!btn) return;
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.gallery-item').forEach(item=>{
+        if(filter==='all'|| item.dataset.category===filter) item.style.display=''; else item.style.display='none';
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', loadGallery);
+  </script>
+  <style>
+    .about-division { padding: 40px 6%; }
+    .about-division h1 { margin-bottom: 15px; font-size: 2.2rem; }
+    .about-grid { display:grid; gap:24px; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); margin-top:30px; }
+    .about-card { background:#ffffffdd; padding:18px 16px 20px; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.08); backdrop-filter: blur(3px); position:relative; overflow:hidden; }
+    .about-card i { font-size:2rem; color:#0a4d91; margin-bottom:10px; }
+    .about-card h3 { margin:8px 0 10px; font-size:1.1rem; }
+    .about-card p { font-size:.9rem; line-height:1.35; }
+    .image-gallery-wrapper { padding: 30px 6% 60px; }
+    .image-gallery-wrapper h2 { margin:0 0 15px; font-size:2rem; }
+    .gallery-header { display:flex; flex-wrap:wrap; gap:20px; align-items:center; justify-content:space-between; }
+    .gallery-filters { display:flex; gap:10px; }
+    .filter-btn { background:#0a4d91; color:#fff; border:none; padding:8px 16px; border-radius:30px; cursor:pointer; font-size:.85rem; letter-spacing:.5px; transition:.3s; }
+    .filter-btn:hover, .filter-btn.active { background:#dd7615; }
+    .dynamic-gallery-grid { display:grid; gap:18px; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); }
+    .gallery-item { background:#fff; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,.1); overflow:hidden; position:relative; display:flex; flex-direction:column; }
+    .gallery-thumb { aspect-ratio:4/3; width:100%; overflow:hidden; background:#f0f3f6; }
+    .gallery-thumb img { width:100%; height:100%; object-fit:cover; display:block; transition: transform .5s ease; }
+    .gallery-item:hover .gallery-thumb img { transform:scale(1.08); }
+    .gallery-item figcaption { padding:10px 14px 14px; display:flex; flex-direction:column; gap:6px; }
+    .gallery-item h4 { font-size:1rem; margin:0; font-weight:600; }
+    .badge { display:inline-block; background:#0a4d91; color:#fff; font-size:.65rem; padding:4px 10px; text-transform:uppercase; letter-spacing:1px; border-radius:20px; }
+    .cat-slider { background:#6a3dc4; }
+    .cat-gallery { background:#0a4d91; }
+    .cat-other { background:#666; }
+    .gallery-empty { margin-top:20px; font-style:italic; color:#444; }
+    @media (max-width:700px){ .about-division h1 { font-size:1.8rem; } }
+  </style>
+</body>
+</html>

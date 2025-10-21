@@ -255,6 +255,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         body: new URLSearchParams({ id: String(currentDeleteTargetId) })
                     });
                     await loadDownloads();
+                } else if (currentDeleteTargetType === 'image' && currentDeleteTargetId) {
+                    await apiFetch('../backend/api/images.php', {
+                        method: 'DELETE',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: new URLSearchParams({ id: String(currentDeleteTargetId) })
+                    });
+                    await loadImages();
                 } else {
                     // Image demo: just remove
                     currentDeleteTarget.remove();
@@ -605,60 +612,73 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Upload Images Form
     const uploadImagesForm = document.getElementById('uploadImagesForm');
+    const imageGallery = document.querySelector('.image-gallery');
+
+    async function loadImages() {
+        if (!imageGallery) return;
+        try {
+            const data = await apiFetch('../backend/api/images.php');
+            // Clear existing (excluding static placeholders heading etc.)
+            imageGallery.querySelectorAll('.image-card').forEach(c => c.remove());
+            data.data.forEach(img => {
+                const card = document.createElement('div');
+                card.className = 'image-card';
+                card.dataset.id = img.id;
+                card.dataset.category = img.category;
+                card.innerHTML = `
+                    <div class="image-preview">
+                        <img src="../${escapeAttr(img.file_path)}" alt="${escapeAttr(img.title)}">
+                    </div>
+                    <div class="image-details">
+                        <h4>${escapeHtml(img.title)}</h4>
+                        <p>Used in: ${escapeHtml(img.category)}</p>
+                    </div>
+                    <div class="image-actions">
+                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                    </div>`;
+                imageGallery.appendChild(card);
+            });
+        } catch (err) {
+            console.error('Failed to load images', err);
+        }
+    }
     if (uploadImagesForm) {
-        uploadImagesForm.addEventListener('submit', function(e) {
+        uploadImagesForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            // Get form data
-            const title = document.getElementById('imageTitle').value;
+            const title = document.getElementById('imageTitle').value.trim();
             const category = document.getElementById('imageCategory').value;
             const imageFile = document.getElementById('imageFile').files[0];
-            
-            // In a real app, you would upload the file to the server here
-            // For this demo, we'll just create a new image card
-            
-            if (imageFile) {
-                const imageGallery = document.querySelector('.image-gallery');
-                if (imageGallery) {
-                    const newImageCard = document.createElement('div');
-                    newImageCard.className = 'image-card';
-                    
-                    // Create image URL
-                    const imageUrl = URL.createObjectURL(imageFile);
-                    
-                    newImageCard.innerHTML = `
-                        <div class="image-preview">
-                            <img src="${imageUrl}" alt="${title}">
-                        </div>
-                        <div class="image-details">
-                            <h4>${title}</h4>
-                            <p>Used in: ${category.charAt(0).toUpperCase() + category.slice(1)}</p>
-                        </div>
-                        <div class="image-actions">
-                            <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
-                            <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                        </div>
-                    `;
-                    
-                    // Add event listener to new delete button
-                    const newDeleteBtn = newImageCard.querySelector('.delete');
-                    if (newDeleteBtn) {
-                        newDeleteBtn.addEventListener('click', function() {
-                            currentDeleteTarget = this.closest('.image-card');
-                            openModal(deleteConfirmModal);
-                        });
-                    }
-                    
-                    // Add the card to the gallery
-                    imageGallery.insertBefore(newImageCard, imageGallery.firstChild);
-                    
-                    // Show success message and close modal
-                    alert('Image uploaded successfully!');
-                    closeModal(uploadImagesModal);
-                    uploadImagesForm.reset();
-                    document.getElementById('imagePreview').style.display = 'none';
-                }
+            const descriptionEl = document.getElementById('imageDescription');
+            if (!imageFile) { alert('Please select an image file'); return; }
+            try {
+                const fd = new FormData();
+                fd.append('title', title || 'Untitled');
+                fd.append('category', category);
+                fd.append('image', imageFile);
+                if (descriptionEl && descriptionEl.value.trim()) fd.append('description', descriptionEl.value.trim());
+                await apiFetch('../backend/api/images.php', { method: 'POST', body: fd });
+                alert('Image uploaded successfully!');
+                closeModal(uploadImagesModal);
+                uploadImagesForm.reset();
+                const preview = document.getElementById('imagePreview');
+                if (preview) preview.style.display = 'none';
+                await loadImages();
+            } catch (err) {
+                alert('Upload failed: ' + err.message);
             }
+        });
+    }
+
+    // Delegate delete for images
+    if (imageGallery) {
+        imageGallery.addEventListener('click', function(e) {
+            const btn = e.target.closest('button.delete');
+            if (!btn) return;
+            const card = btn.closest('.image-card');
+            currentDeleteTarget = card;
+            currentDeleteTargetType = 'image';
+            currentDeleteTargetId = Number(card.dataset.id || 0);
+            openModal(deleteConfirmModal);
         });
     }
     
@@ -895,7 +915,8 @@ document.addEventListener('DOMContentLoaded', function() {
             loadNotices(),
             loadUsers(),
             loadGuidance(),
-            loadDownloads()
+            loadDownloads(),
+            loadImages()
         ]);
     })();
 });

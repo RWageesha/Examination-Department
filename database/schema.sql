@@ -76,6 +76,18 @@ INSERT INTO download_categories (slug, name)
 VALUES ('staff', 'For Staff'), ('students', 'For Students'), ('exam_hall_schedules', 'Exam Hall Schedules')
 ON DUPLICATE KEY UPDATE name = VALUES(name);
 
+-- Image gallery table
+CREATE TABLE IF NOT EXISTS images (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(200) NOT NULL,
+  category ENUM('slider','gallery','other') NOT NULL DEFAULT 'gallery',
+  description VARCHAR(500) NULL,
+  file_path VARCHAR(500) NOT NULL,
+  created_by INT NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_images_admins FOREIGN KEY (created_by) REFERENCES admins(id) ON DELETE RESTRICT
+) ENGINE=InnoDB;
+
 -- Create a super admin after importing this file:
 -- 1) Visit http://localhost/Examination-Department/backend/tools/make_password_hash.php?pwd=Admin@123
 -- 2) Copy the result hash and run:
