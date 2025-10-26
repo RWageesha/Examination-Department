@@ -11,15 +11,18 @@ if (session_status() === PHP_SESSION_NONE) {
 $method = $_SERVER['REQUEST_METHOD'];
 
 try {
-    $pdo = get_db();
+    $pdo = db(); // Use db() function
 } catch (Exception $e) {
     json_response(['error' => 'DB connection failed'], 500);
 }
 
-function require_auth() {
-    if (empty($_SESSION['admin_id'])) {
+// Simple auth check for POST/DELETE
+function check_admin_auth() {
+    if (empty($_SESSION['admin_id']) && empty($_SESSION['admin'])) {
         json_response(['error' => 'Unauthorized'], 401);
     }
+    // Return admin_id from either session structure
+    return $_SESSION['admin_id'] ?? $_SESSION['admin']['id'] ?? null;
 }
 
 switch ($method) {
@@ -39,7 +42,7 @@ switch ($method) {
         json_response(['data' => $rows]);
         break;
     case 'POST':
-        require_auth();
+        $admin_id = check_admin_auth();
         if (empty($_FILES['image'])) {
             json_response(['error' => 'image file required'], 400);
         }
@@ -72,11 +75,11 @@ switch ($method) {
         }
         $relPath = 'assets/uploads/images/' . $safeName; // relative for front-end
         $stmt = $pdo->prepare("INSERT INTO images (title, category, description, file_path, created_by) VALUES (?,?,?,?,?)");
-        $stmt->execute([$title, $category, $description, $relPath, $_SESSION['admin_id']]);
+        $stmt->execute([$title, $category, $description, $relPath, $admin_id]);
         json_response(['message' => 'Image added']);
         break;
     case 'DELETE':
-        require_auth();
+        check_admin_auth();
         parse_str(file_get_contents('php://input'), $delVars);
         $id = isset($delVars['id']) ? (int)$delVars['id'] : 0;
         if (!$id) json_response(['error' => 'Missing id'], 400);

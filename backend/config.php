@@ -14,8 +14,8 @@ define('GUIDANCE_UPLOADS', UPLOADS_DIR . '/guidance');
 define('DOWNLOADS_UPLOADS', UPLOADS_DIR . '/downloads');
 define('GALLERY_UPLOADS', UPLOADS_DIR . '/images');
 
-// Max upload size (2MB)
-define('MAX_UPLOAD_BYTES', 2 * 1024 * 1024);
+// Max upload size (20MB) - Increased for larger images
+define('MAX_UPLOAD_BYTES', 20 * 1024 * 1024);
 
 // Allowed MIME types for documents
 $ALLOWED_DOC_MIME = [

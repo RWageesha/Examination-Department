@@ -100,7 +100,7 @@
                             </div>
                             <div class="stat-info">
                                 <h3>Notices</h3>
-                                <p class="stat-number">12</p>
+                                <p class="stat-number" id="noticesCount">0</p>
                                 <p class="stat-desc">Active notices</p>
                             </div>
                         </div>
@@ -110,20 +110,20 @@
                                 <i class="fas fa-file-alt"></i>
                             </div>
                             <div class="stat-info">
-                                <h3>Downloads</h3>
-                                <p class="stat-number">48</p>
-                                <p class="stat-desc">Available files</p>
+                                <h3>Guidance</h3>
+                                <p class="stat-number" id="guidanceCount">0</p>
+                                <p class="stat-desc">Student guidance items</p>
                             </div>
                         </div>
                         
                         <div class="stat-card">
                             <div class="stat-icon orange">
-                                <i class="fas fa-users"></i>
+                                <i class="fas fa-download"></i>
                             </div>
                             <div class="stat-info">
-                                <h3>Users</h3>
-                                <p class="stat-number">5</p>
-                                <p class="stat-desc">Admin users</p>
+                                <h3>Downloads</h3>
+                                <p class="stat-number" id="downloadsCount">0</p>
+                                <p class="stat-desc">Available files</p>
                             </div>
                         </div>
                         
@@ -133,7 +133,7 @@
                             </div>
                             <div class="stat-info">
                                 <h3>Images</h3>
-                                <p class="stat-number">24</p>
+                                <p class="stat-number" id="imagesCount">0</p>
                                 <p class="stat-desc">Uploaded images</p>
                             </div>
                         </div>
@@ -143,42 +143,9 @@
                         <div class="section-header">
                             <h3>Recent Activity</h3>
                         </div>
-                        <ul class="activity-list">
-                            <li class="activity-item">
-                                <div class="activity-icon">
-                                    <i class="fas fa-plus-circle"></i>
-                                </div>
-                                <div class="activity-details">
-                                    <p class="activity-desc">New notice added: "Final Examination Schedule"</p>
-                                    <p class="activity-time">Today, 10:45 AM</p>
-                                </div>
-                            </li>
-                            <li class="activity-item">
-                                <div class="activity-icon">
-                                    <i class="fas fa-edit"></i>
-                                </div>
-                                <div class="activity-details">
-                                    <p class="activity-desc">Edited notice: "Result Publication"</p>
-                                    <p class="activity-time">Yesterday, 3:20 PM</p>
-                                </div>
-                            </li>
-                            <li class="activity-item">
-                                <div class="activity-icon">
-                                    <i class="fas fa-upload"></i>
-                                </div>
-                                <div class="activity-details">
-                                    <p class="activity-desc">Uploaded new images to gallery</p>
-                                    <p class="activity-time">Apr 18, 2025, 9:15 AM</p>
-                                </div>
-                            </li>
-                            <li class="activity-item">
-                                <div class="activity-icon">
-                                    <i class="fas fa-user-plus"></i>
-                                </div>
-                                <div class="activity-details">
-                                    <p class="activity-desc">Added new admin user: "Sarah"</p>
-                                    <p class="activity-time">Apr 16, 2025, 11:30 AM</p>
-                                </div>
+                        <ul class="activity-list" id="activityList">
+                            <li class="activity-item loading">
+                                <i class="fas fa-spinner fa-spin"></i> Loading recent activities...
                             </li>
                         </ul>
                     </div>
@@ -295,62 +262,8 @@
                         </div>
                     </div>
                     
-                    <div class="image-gallery">
-                        <div class="image-card">
-                            <div class="image-preview">
-                                <img src="../assets/images/slide-1.jpg" alt="KDU Campus">
-                            </div>
-                            <div class="image-details">
-                                <h4>KDU Campus</h4>
-                                <p>Used in: Homepage Slider</p>
-                            </div>
-                            <div class="image-actions">
-                                <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
-                                <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                            </div>
-                        </div>
-                        
-                        <div class="image-card">
-                            <div class="image-preview">
-                                <img src="../assets/images/slide-2.jpg" alt="Examination Hall">
-                            </div>
-                            <div class="image-details">
-                                <h4>Examination Hall</h4>
-                                <p>Used in: Homepage Slider</p>
-                            </div>
-                            <div class="image-actions">
-                                <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
-                                <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                            </div>
-                        </div>
-                        
-                        <div class="image-card">
-                            <div class="image-preview">
-                                <img src="../assets/images/slide-3.jpg" alt="Graduation Ceremony">
-                            </div>
-                            <div class="image-details">
-                                <h4>Graduation Ceremony</h4>
-                                <p>Used in: Homepage Slider</p>
-                            </div>
-                            <div class="image-actions">
-                                <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
-                                <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                            </div>
-                        </div>
-                        
-                        <div class="image-card">
-                            <div class="image-preview">
-                                <img src="../assets/images/gallery-1.jpg" alt="Gallery Image">
-                            </div>
-                            <div class="image-details">
-                                <h4>Gallery Image 1</h4>
-                                <p>Used in: Photo Gallery</p>
-                            </div>
-                            <div class="image-actions">
-                                <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
-                                <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                            </div>
-                        </div>
+                    <div class="image-gallery" id="imageGallery">
+                        <!-- Images will be loaded dynamically from the database -->
                     </div>
                 </section>
                 
@@ -376,61 +289,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>admin</td>
-                                    <td>Admin User</td>
-                                    <td>admin@kdu.ac.lk</td>
-                                    <td>Administrator</td>
-                                    <td><span class="status-badge active">Active</span></td>
-                                    <td class="actions">
-                                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>sarah</td>
-                                    <td>Sarah Johnson</td>
-                                    <td>sarah@kdu.ac.lk</td>
-                                    <td>Editor</td>
-                                    <td><span class="status-badge active">Active</span></td>
-                                    <td class="actions">
-                                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>mike</td>
-                                    <td>Mike Peterson</td>
-                                    <td>mike@kdu.ac.lk</td>
-                                    <td>Editor</td>
-                                    <td><span class="status-badge active">Active</span></td>
-                                    <td class="actions">
-                                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>lisa</td>
-                                    <td>Lisa Wong</td>
-                                    <td>lisa@kdu.ac.lk</td>
-                                    <td>Contributor</td>
-                                    <td><span class="status-badge inactive">Inactive</span></td>
-                                    <td class="actions">
-                                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>john</td>
-                                    <td>John Smith</td>
-                                    <td>john@kdu.ac.lk</td>
-                                    <td>Contributor</td>
-                                    <td><span class="status-badge active">Active</span></td>
-                                    <td class="actions">
-                                        <button class="btn-icon edit" title="Edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
+                                <!-- Users will be loaded dynamically from the database -->
                             </tbody>
                         </table>
                     </div>
@@ -483,8 +342,8 @@
                                     <input type="number" id="sliderDelay" name="sliderDelay" value="5" min="1" max="10">
                                 </div>
                                 <div class="form-group">
-                                    <label for="noticesCount">Number of Notices to Show</label>
-                                    <input type="number" id="noticesCount" name="noticesCount" value="3" min="1" max="10">
+                                    <label for="homepageNoticesCount">Number of Notices to Show</label>
+                                    <input type="number" id="homepageNoticesCount" name="homepageNoticesCount" value="3" min="1" max="10">
                                 </div>
                                 <div class="form-group">
                                     <label for="featuredNotice">Featured Notice</label>

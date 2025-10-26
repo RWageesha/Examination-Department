@@ -227,40 +227,55 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!currentDeleteTarget) return;
             try {
                 if (currentDeleteTargetType === 'notice' && currentDeleteTargetId) {
+                    const titleEl = currentDeleteTarget.cells[0];
+                    const noticeTitle = titleEl ? titleEl.textContent : 'Notice';
                     await apiFetch('../backend/api/notices.php', {
                         method: 'DELETE',
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                         body: new URLSearchParams({ id: String(currentDeleteTargetId) })
                     });
+                    await logActivity('delete', 'notice', currentDeleteTargetId, noticeTitle);
                     // Refresh list
                     await loadNotices();
                 } else if (currentDeleteTargetType === 'user' && currentDeleteTargetId) {
+                    const titleEl = currentDeleteTarget.cells[1];
+                    const userName = titleEl ? titleEl.textContent : 'User';
                     await apiFetch('../backend/api/admins.php', {
                         method: 'DELETE',
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                         body: new URLSearchParams({ id: String(currentDeleteTargetId) })
                     });
+                    await logActivity('delete', 'user', currentDeleteTargetId, userName);
                     await loadUsers();
                 } else if (currentDeleteTargetType === 'guidance' && currentDeleteTargetId) {
+                    const titleEl = currentDeleteTarget.cells[0];
+                    const guidanceTitle = titleEl ? titleEl.textContent : 'Guidance';
                     await apiFetch('../backend/api/guidance.php', {
                         method: 'DELETE',
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                         body: new URLSearchParams({ id: String(currentDeleteTargetId) })
                     });
+                    await logActivity('delete', 'guidance', currentDeleteTargetId, guidanceTitle);
                     await loadGuidance();
                 } else if (currentDeleteTargetType === 'download' && currentDeleteTargetId) {
+                    const titleEl = currentDeleteTarget.cells[0];
+                    const downloadTitle = titleEl ? titleEl.textContent : 'Download';
                     await apiFetch('../backend/api/downloads.php', {
                         method: 'DELETE',
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                         body: new URLSearchParams({ id: String(currentDeleteTargetId) })
                     });
+                    await logActivity('delete', 'download', currentDeleteTargetId, downloadTitle);
                     await loadDownloads();
                 } else if (currentDeleteTargetType === 'image' && currentDeleteTargetId) {
+                    const card = currentDeleteTarget;
+                    const imageTitle = card.querySelector('h4') ? card.querySelector('h4').textContent : 'Image';
                     await apiFetch('../backend/api/images.php', {
                         method: 'DELETE',
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                         body: new URLSearchParams({ id: String(currentDeleteTargetId) })
                     });
+                    await logActivity('delete', 'image', currentDeleteTargetId, imageTitle);
                     await loadImages();
                 } else {
                     // Image demo: just remove
@@ -337,6 +352,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         body: new URLSearchParams({ id: String(editingNoticeId), title, description, noticed_date, link_url })
                     });
                     alert('Notice updated successfully!');
+                    await logActivity('update', 'notice', editingNoticeId, title);
                 } else {
                     // Create via POST multipart/form-data
                     const fd = new FormData();
@@ -344,8 +360,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     fd.append('description', description);
                     fd.append('noticed_date', noticed_date);
                     if (link_url) fd.append('link_url', link_url);
-                    await apiFetch('../backend/api/notices.php', { method: 'POST', body: fd });
+                    const result = await apiFetch('../backend/api/notices.php', { method: 'POST', body: fd });
                     alert('Notice added successfully!');
+                    await logActivity('create', 'notice', result.id || null, title);
                 }
                 editingNoticeId = null;
                 const modalTitle = addNoticeModal && addNoticeModal.querySelector('h2');
@@ -453,14 +470,16 @@ document.addEventListener('DOMContentLoaded', function() {
                         body: new URLSearchParams({ id: String(editingGuidanceId), title, description, link_url })
                     });
                     alert('Guidance updated successfully!');
+                    await logActivity('update', 'guidance', editingGuidanceId, title);
                 } else {
                     const fd = new FormData();
                     fd.append('title', title);
                     fd.append('description', description);
                     if (link_url) fd.append('link_url', link_url);
                     if (file) fd.append('attachment', file);
-                    await apiFetch('../backend/api/guidance.php', { method: 'POST', body: fd });
+                    const result = await apiFetch('../backend/api/guidance.php', { method: 'POST', body: fd });
                     alert('Guidance added successfully!');
+                    await logActivity('create', 'guidance', result.id || null, title);
                 }
                 editingGuidanceId = null;
                 closeModal(addGuidanceModal);
@@ -580,8 +599,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 fd.append('description', description);
                 if (link_url) fd.append('link_url', link_url);
                 if (file) fd.append('file', file);
-                await apiFetch('../backend/api/downloads.php', { method: 'POST', body: fd });
+                const result = await apiFetch('../backend/api/downloads.php', { method: 'POST', body: fd });
                 alert('Download added successfully!');
+                await logActivity('create', 'download', result.id || null, title);
                 closeModal(addDownloadModal);
                 addDownloadForm.reset();
                 await loadDownloads();
@@ -656,8 +676,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 fd.append('category', category);
                 fd.append('image', imageFile);
                 if (descriptionEl && descriptionEl.value.trim()) fd.append('description', descriptionEl.value.trim());
-                await apiFetch('../backend/api/images.php', { method: 'POST', body: fd });
+                const result = await apiFetch('../backend/api/images.php', { method: 'POST', body: fd });
                 alert('Image uploaded successfully!');
+                await logActivity('upload', 'image', result.id || null, title || 'Untitled');
                 closeModal(uploadImagesModal);
                 uploadImagesForm.reset();
                 const preview = document.getElementById('imagePreview');
@@ -732,12 +753,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             try {
-                await apiFetch('../backend/api/admins.php', {
+                const result = await apiFetch('../backend/api/admins.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ name: fullName, email, username, password, role })
                 });
                 alert('User added successfully!');
+                await logActivity('create', 'user', result.id || null, fullName);
                 closeModal(addUserModal);
                 addUserForm.reset();
                 await loadUsers();
@@ -769,10 +791,93 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Save Settings
     if (saveSettingsBtn) {
-        saveSettingsBtn.addEventListener('click', function() {
-            // In a real app, you would send this data to the server
-            alert('Settings saved successfully!');
+        saveSettingsBtn.addEventListener('click', async function() {
+            try {
+                // Collect all settings from forms
+                const settings = {
+                    // General Settings
+                    site_name: document.getElementById('siteName')?.value || '',
+                    site_description: document.getElementById('siteDescription')?.value || '',
+                    contact_email: document.getElementById('contactEmail')?.value || '',
+                    contact_phone: document.getElementById('contactPhone')?.value || '',
+                    
+                    // Homepage Settings
+                    slider_autoplay: document.getElementById('sliderAutoplay')?.checked ? '1' : '0',
+                    slider_delay: document.getElementById('sliderDelay')?.value || '5',
+                    notices_display_count: document.getElementById('homepageNoticesCount')?.value || '3',
+                    featured_notice_id: document.getElementById('featuredNotice')?.value || null,
+                    
+                    // Social Media Settings
+                    facebook_url: document.getElementById('facebookUrl')?.value || '',
+                    twitter_url: document.getElementById('twitterUrl')?.value || '',
+                    linkedin_url: document.getElementById('linkedinUrl')?.value || ''
+                };
+
+                await apiFetch('../backend/api/settings.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ settings })
+                });
+
+                alert('Settings saved successfully!');
+                await logActivity('update', 'setting', null, 'Site Settings');
+            } catch (err) {
+                alert('Failed to save settings: ' + err.message);
+            }
         });
+    }
+
+    // Load settings on page load
+    async function loadSettings() {
+        try {
+            const data = await apiFetch('../backend/api/settings.php');
+            const settings = data.settings;
+
+            // Populate General Settings
+            if (settings.site_name) document.getElementById('siteName').value = settings.site_name.value;
+            if (settings.site_description) document.getElementById('siteDescription').value = settings.site_description.value;
+            if (settings.contact_email) document.getElementById('contactEmail').value = settings.contact_email.value;
+            if (settings.contact_phone) document.getElementById('contactPhone').value = settings.contact_phone.value;
+
+            // Populate Homepage Settings
+            if (settings.slider_autoplay) document.getElementById('sliderAutoplay').checked = settings.slider_autoplay.value;
+            if (settings.slider_delay) document.getElementById('sliderDelay').value = settings.slider_delay.value;
+            if (settings.notices_display_count) document.getElementById('homepageNoticesCount').value = settings.notices_display_count.value;
+            
+            // Populate featured notice dropdown with actual notices
+            await populateFeaturedNoticeDropdown(settings.featured_notice_id?.value);
+
+            // Populate Social Media Settings
+            if (settings.facebook_url) document.getElementById('facebookUrl').value = settings.facebook_url.value;
+            if (settings.twitter_url) document.getElementById('twitterUrl').value = settings.twitter_url.value;
+            if (settings.linkedin_url) document.getElementById('linkedinUrl').value = settings.linkedin_url.value;
+
+        } catch (err) {
+            console.error('Failed to load settings:', err);
+        }
+    }
+
+    // Populate featured notice dropdown with actual notices from database
+    async function populateFeaturedNoticeDropdown(selectedId) {
+        try {
+            const data = await apiFetch('../backend/api/notices.php');
+            const select = document.getElementById('featuredNotice');
+            if (!select) return;
+
+            select.innerHTML = '<option value="">-- None --</option>';
+            
+            data.items.forEach(notice => {
+                const option = document.createElement('option');
+                option.value = notice.id;
+                option.textContent = notice.title;
+                if (selectedId && notice.id == selectedId) {
+                    option.selected = true;
+                }
+                select.appendChild(option);
+            });
+        } catch (err) {
+            console.error('Failed to load notices for featured dropdown:', err);
+        }
     }
     
     // Search functionality for notices
@@ -908,6 +1013,111 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Initial load sequence
+    async function updateDashboardStats() {
+        try {
+            // Get counts from different APIs
+            const [noticesData, guidanceData, downloadsData, imagesData] = await Promise.all([
+                apiFetch('../backend/api/notices.php'),
+                apiFetch('../backend/api/guidance.php'),
+                apiFetch('../backend/api/downloads.php'),
+                apiFetch('../backend/api/images.php')
+            ]);
+
+            // Update stat cards
+            const noticesCount = document.getElementById('noticesCount');
+            const guidanceCount = document.getElementById('guidanceCount');
+            const downloadsCount = document.getElementById('downloadsCount');
+            const imagesCount = document.getElementById('imagesCount');
+
+            if (noticesCount) noticesCount.textContent = noticesData.items.length;
+            if (guidanceCount) guidanceCount.textContent = guidanceData.items.length;
+            if (downloadsCount) downloadsCount.textContent = downloadsData.items.length;
+            if (imagesCount) imagesCount.textContent = imagesData.data.length;
+        } catch (err) {
+            console.error('Failed to update dashboard stats:', err);
+        }
+    }
+
+    // Load recent activities
+    async function loadRecentActivities() {
+        const activityList = document.getElementById('activityList');
+        if (!activityList) return;
+
+        try {
+            const data = await apiFetch('../backend/api/activity.php?limit=8');
+            
+            if (data.activities && data.activities.length > 0) {
+                activityList.innerHTML = '';
+                
+                data.activities.forEach(activity => {
+                    const li = document.createElement('li');
+                    li.className = 'activity-item';
+                    
+                    // Choose icon based on action type
+                    let iconClass = 'fa-circle';
+                    let iconColor = 'blue';
+                    
+                    switch(activity.action) {
+                        case 'create':
+                            iconClass = 'fa-plus-circle';
+                            iconColor = 'green';
+                            break;
+                        case 'update':
+                            iconClass = 'fa-edit';
+                            iconColor = 'blue';
+                            break;
+                        case 'delete':
+                            iconClass = 'fa-trash-alt';
+                            iconColor = 'red';
+                            break;
+                        case 'upload':
+                            iconClass = 'fa-upload';
+                            iconColor = 'purple';
+                            break;
+                    }
+                    
+                    li.innerHTML = `
+                        <div class="activity-icon ${iconColor}">
+                            <i class="fas ${iconClass}"></i>
+                        </div>
+                        <div class="activity-details">
+                            <p class="activity-desc">${escapeHtml(activity.description)}</p>
+                            <p class="activity-time">${escapeHtml(activity.time_ago)}</p>
+                        </div>
+                    `;
+                    
+                    activityList.appendChild(li);
+                });
+            } else {
+                activityList.innerHTML = '<li class="activity-item"><p class="activity-desc">No recent activities</p></li>';
+            }
+        } catch (err) {
+            console.error('Failed to load activities:', err);
+            activityList.innerHTML = '<li class="activity-item error"><p class="activity-desc">Failed to load activities</p></li>';
+        }
+    }
+
+    // Log an activity
+    async function logActivity(actionType, entityType, entityId, entityTitle, description = null) {
+        try {
+            await apiFetch('../backend/api/activity.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    action_type: actionType,
+                    entity_type: entityType,
+                    entity_id: entityId,
+                    entity_title: entityTitle,
+                    description: description
+                })
+            });
+            // Refresh activities after logging
+            await loadRecentActivities();
+        } catch (err) {
+            console.error('Failed to log activity:', err);
+        }
+    }
+
     (async function init() {
         await ensureAuth();
         await preloadCategories();
@@ -916,7 +1126,10 @@ document.addEventListener('DOMContentLoaded', function() {
             loadUsers(),
             loadGuidance(),
             loadDownloads(),
-            loadImages()
+            loadImages(),
+            updateDashboardStats(),
+            loadSettings(),
+            loadRecentActivities()
         ]);
     })();
 });

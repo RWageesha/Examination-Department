@@ -11,9 +11,7 @@
   <div class="parallax-background"></div>
   <div class="content-wrapper">
     <header>
-      <a href="index.html" aria-label="Go to home">
-        <img src="./assets/images/LOGO_White.png" alt="KDU Logo" />
-      </a>
+      <img src="./assets/images/LOGO_White.png" alt="KDU Logo" style="height: 80px;">
       <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
         <i class="fas fa-bars" aria-hidden="true"></i>
       </button>
@@ -37,13 +35,26 @@
     </header>
 
     <main class="gallery-page">
+      <!-- Hero Header Section with Image -->
+      <section class="gallery-hero">
+        <div class="hero-image-container">
+          <img src="./assets/images/Gallery_H.jpg" alt="Gallery Header" class="hero-image">
+          <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+          <h1 class="hero-title">Image Gallery</h1>
+          <p class="hero-subtitle">Capturing Moments of Excellence</p>
+          <div class="hero-divider"></div>
+        </div>
+      </section>
+
       <section class="about-division" id="about">
         <h1>About The Examination Division</h1>
         <p>The Examination Division oversees the planning, conduct, evaluation, and certification of all academic assessments across participating faculties. It ensures transparency, academic integrity, and adherence to university regulations while supporting students and academic staff through streamlined processes.</p>
         <div class="about-grid">
           <div class="about-card">
             <i class="fas fa-bullseye"></i>
-            <h3>Our Mission</h3>
+            <h3>Our Goal</h3>
             <p>To maintain a fair, efficient, and student-centered examination system that upholds academic excellence.</p>
           </div>
           <div class="about-card">
@@ -69,7 +80,6 @@
           <h2>Image Gallery</h2>
           <div class="gallery-filters">
             <button data-filter="all" class="filter-btn active">All</button>
-            <button data-filter="slider" class="filter-btn">Slider</button>
             <button data-filter="gallery" class="filter-btn">Gallery</button>
             <button data-filter="other" class="filter-btn">Other</button>
           </div>
@@ -78,6 +88,30 @@
         <div class="gallery-empty" id="galleryEmpty" hidden>No images uploaded yet.</div>
       </section>
     </main>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+      <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close lightbox">
+        <i class="fas fa-times"></i>
+      </button>
+      <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)" aria-label="Previous image">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)" aria-label="Next image">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      <div class="lightbox-content">
+        <img id="lightboxImg" src="" alt="">
+        <div class="lightbox-info">
+          <h3 id="lightboxTitle"></h3>
+          <p id="lightboxDesc"></p>
+          <div class="lightbox-meta">
+            <span id="lightboxCategory" class="badge"></span>
+            <span id="imageCounter" class="counter"></span>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <footer>
       <div class="footer-content">
@@ -97,8 +131,9 @@
         <div class="footer-contact">
           <h3>Contact Us</h3>
             <p><i class="fas fa-map-marker-alt"></i> Kandawala Estate, Ratmalana, Sri Lanka</p>
-            <p><i class="fas fa-phone"></i> +94 11 263 8656</p>
-            <p><i class="fas fa-envelope"></i> exams@kdu.ac.lk</p>
+            <p><i class="fas fa-phone"></i> 071 021 9533 (Hotline: 9:00 AM - 3:30 PM)</p>
+            <p><i class="fas fa-phone"></i> 071 021 9360 (Deputy Registrar)</p>
+            <p><i class="fas fa-envelope"></i> exam.verification@kdu.ac.lk</p>
             <div class="footer-social">
               <a href="#"><i class="fab fa-facebook-f"></i></a>
               <a href="#"><i class="fab fa-twitter"></i></a>
@@ -130,6 +165,9 @@
       document.querySelectorAll('header nav a').forEach(a=>{ if(a.getAttribute('href')===current) a.classList.add('active'); });
     });
 
+    let allImages = [];
+    let currentImageIndex = 0;
+
     // Fetch images
     async function loadGallery(){
       try {
@@ -140,17 +178,69 @@
         grid.innerHTML='';
         if(!data.data || data.data.length===0){ empty.hidden=false; return; }
         empty.hidden=true;
-        data.data.forEach(img=>{
+        allImages = data.data;
+        data.data.forEach((img, index)=>{
           const card=document.createElement('figure');
           card.className='gallery-item';
           card.dataset.category=img.category;
-          card.innerHTML=`<div class="gallery-thumb"><img src="${img.file_path.startsWith('assets')?'./'+img.file_path:'./'+img.file_path}" alt="${escapeHtml(img.title)}"></div><figcaption><h4>${escapeHtml(img.title)}</h4><span class="badge cat-${img.category}">${img.category}</span></figcaption>`;
+          card.dataset.index=index;
+          const imgPath = img.file_path.startsWith('assets')?'./'+img.file_path:'./'+img.file_path;
+          card.innerHTML=`
+            <div class="gallery-thumb">
+              <img src="${imgPath}" alt="${escapeHtml(img.title)}">
+              <div class="gallery-overlay">
+                <button class="preview-btn" onclick="openLightbox(${index})" aria-label="Preview image">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+              </div>
+            </div>
+            <figcaption>
+              <h4>${escapeHtml(img.title)}</h4>
+              <p class="img-description">${escapeHtml(img.description || 'No description available')}</p>
+              <span class="badge cat-${img.category}">${img.category}</span>
+            </figcaption>`;
           grid.appendChild(card);
         });
       } catch(err){ console.error('Failed to load gallery',err); }
     }
 
     function escapeHtml(str){return String(str).replace(/[&<>"']/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[s]));}
+
+    // Lightbox functions
+    function openLightbox(index) {
+      currentImageIndex = index;
+      const img = allImages[index];
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxTitle = document.getElementById('lightboxTitle');
+      const lightboxDesc = document.getElementById('lightboxDesc');
+      const lightboxCategory = document.getElementById('lightboxCategory');
+      const counter = document.getElementById('imageCounter');
+      
+      const imgPath = img.file_path.startsWith('assets')?'./'+img.file_path:'./'+img.file_path;
+      lightboxImg.src = imgPath;
+      lightboxTitle.textContent = img.title;
+      lightboxDesc.textContent = img.description || 'No description available';
+      lightboxCategory.textContent = img.category;
+      lightboxCategory.className = 'badge cat-' + img.category;
+      counter.textContent = `${index + 1} / ${allImages.length}`;
+      
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function navigateLightbox(direction) {
+      currentImageIndex += direction;
+      if (currentImageIndex < 0) currentImageIndex = allImages.length - 1;
+      if (currentImageIndex >= allImages.length) currentImageIndex = 0;
+      openLightbox(currentImageIndex);
+    }
 
     // Filter buttons
     document.addEventListener('click', function(e){
@@ -164,9 +254,142 @@
       });
     });
 
+    // Keyboard navigation for lightbox
+    document.addEventListener('keydown', function(e) {
+      const lightbox = document.getElementById('lightbox');
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigateLightbox(-1);
+      if (e.key === 'ArrowRight') navigateLightbox(1);
+    });
+
     document.addEventListener('DOMContentLoaded', loadGallery);
   </script>
   <style>
+    /* Gallery Hero Header Section */
+    .gallery-hero {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+    
+    .hero-image-container {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      animation: slowZoom 20s ease-in-out infinite alternate;
+    }
+    
+    @keyframes slowZoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(10, 77, 145, 0.85) 0%, rgba(221, 118, 21, 0.75) 100%);
+      mix-blend-mode: multiply;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      color: white;
+    }
+    
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 800;
+      margin: 0 0 15px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      animation: fadeInUp 1s ease-out;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin: 0 0 25px;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+      animation: fadeInUp 1s ease-out 0.2s backwards;
+    }
+    
+    .hero-divider {
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, white, transparent);
+      border-radius: 2px;
+      animation: fadeInUp 1s ease-out 0.4s backwards;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Responsive Hero */
+    @media (max-width: 900px) {
+      .gallery-hero {
+        height: 350px;
+      }
+      
+      .hero-title {
+        font-size: 3rem;
+        letter-spacing: 2px;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.2rem;
+        letter-spacing: 1.5px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .gallery-hero {
+        height: 280px;
+      }
+      
+      .hero-title {
+        font-size: 2.2rem;
+        letter-spacing: 1.5px;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem;
+        letter-spacing: 1px;
+      }
+      
+      .hero-divider {
+        width: 60px;
+        height: 3px;
+      }
+    }
+
     .about-division { padding: 40px 6%; }
     .about-division h1 { margin-bottom: 15px; font-size: 2.2rem; }
     .about-grid { display:grid; gap:24px; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); margin-top:30px; }
@@ -176,23 +399,124 @@
     .about-card p { font-size:.9rem; line-height:1.35; }
     .image-gallery-wrapper { padding: 30px 6% 60px; }
     .image-gallery-wrapper h2 { margin:0 0 15px; font-size:2rem; }
-    .gallery-header { display:flex; flex-wrap:wrap; gap:20px; align-items:center; justify-content:space-between; }
-    .gallery-filters { display:flex; gap:10px; }
-    .filter-btn { background:#0a4d91; color:#fff; border:none; padding:8px 16px; border-radius:30px; cursor:pointer; font-size:.85rem; letter-spacing:.5px; transition:.3s; }
-    .filter-btn:hover, .filter-btn.active { background:#dd7615; }
-    .dynamic-gallery-grid { display:grid; gap:18px; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); }
-    .gallery-item { background:#fff; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,.1); overflow:hidden; position:relative; display:flex; flex-direction:column; }
-    .gallery-thumb { aspect-ratio:4/3; width:100%; overflow:hidden; background:#f0f3f6; }
-    .gallery-thumb img { width:100%; height:100%; object-fit:cover; display:block; transition: transform .5s ease; }
-    .gallery-item:hover .gallery-thumb img { transform:scale(1.08); }
-    .gallery-item figcaption { padding:10px 14px 14px; display:flex; flex-direction:column; gap:6px; }
-    .gallery-item h4 { font-size:1rem; margin:0; font-weight:600; }
-    .badge { display:inline-block; background:#0a4d91; color:#fff; font-size:.65rem; padding:4px 10px; text-transform:uppercase; letter-spacing:1px; border-radius:20px; }
+    .gallery-header { display:flex; flex-wrap:wrap; gap:20px; align-items:center; justify-content:space-between; margin-bottom:30px; }
+    .gallery-filters { display:flex; gap:10px; flex-wrap:wrap; }
+    .filter-btn { background:#0a4d91; color:#fff; border:none; padding:10px 20px; border-radius:30px; cursor:pointer; font-size:.9rem; font-weight:600; letter-spacing:.5px; transition:.3s; }
+    .filter-btn:hover, .filter-btn.active { background:#dd7615; transform:translateY(-2px); box-shadow:0 4px 12px rgba(221,118,21,0.3); }
+    
+    /* Masonry Gallery Grid */
+    .dynamic-gallery-grid { 
+      column-count: 4; 
+      column-gap: 20px; 
+      padding: 0;
+    }
+    .gallery-item { 
+      background:#fff; 
+      border-radius:12px; 
+      box-shadow:0 4px 15px rgba(0,0,0,0.1); 
+      overflow:hidden; 
+      position:relative; 
+      display:inline-block;
+      width: 100%;
+      margin-bottom: 20px;
+      break-inside: avoid;
+      transition:all 0.3s ease; 
+    }
+    .gallery-item:hover { transform:translateY(-5px); box-shadow:0 10px 30px rgba(0,0,0,0.2); }
+    
+    /* Image Container with Overlay */
+    .gallery-thumb { 
+      width:100%; 
+      overflow:hidden; 
+      background:#f0f3f6; 
+      position:relative;
+      display: block;
+    }
+    .gallery-thumb img { 
+      width:100%; 
+      height:auto; 
+      display:block; 
+      transition: transform .5s ease, filter .3s ease; 
+    }
+    .gallery-item:hover .gallery-thumb img { transform:scale(1.08); filter: brightness(0.9); }
+    
+    /* Preview Overlay */
+    .gallery-overlay { 
+      position:absolute; 
+      inset:0; 
+      background:rgba(0,0,0,0.7); 
+      backdrop-filter: blur(2px);
+      display:flex; 
+      align-items:center; 
+      justify-content:center; 
+      opacity:0; 
+      transition:opacity 0.3s ease; 
+    }
+    .gallery-item:hover .gallery-overlay { opacity:1; }
+    .preview-btn { 
+      background:rgba(255,255,255,0.95); 
+      color:#0a4d91; 
+      border:none; 
+      width:55px; 
+      height:55px; 
+      border-radius:50%; 
+      font-size:20px; 
+      cursor:pointer; 
+      display:flex; 
+      align-items:center; 
+      justify-content:center; 
+      transition:all 0.3s ease; 
+      box-shadow:0 4px 20px rgba(0,0,0,0.3); 
+    }
+    .preview-btn:hover { transform:scale(1.2) rotate(90deg); background:#dd7615; color:#fff; }
+    
+    /* Enhanced Caption */
+    .gallery-item figcaption { padding:15px 18px 18px; display:flex; flex-direction:column; gap:8px; background: linear-gradient(to bottom, #fff 0%, #f9fafb 100%); }
+    .gallery-item h4 { font-size:1.05rem; margin:0; font-weight:700; color:#0a4d91; line-height:1.3; }
+    .img-description { margin:0; font-size:0.85rem; color:#666; line-height:1.5; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+    .badge { display:inline-block; background:#0a4d91; color:#fff; font-size:.65rem; padding:4px 10px; text-transform:uppercase; letter-spacing:1px; border-radius:15px; font-weight:600; }
     .cat-slider { background:#6a3dc4; }
     .cat-gallery { background:#0a4d91; }
     .cat-other { background:#666; }
-    .gallery-empty { margin-top:20px; font-style:italic; color:#444; }
-    @media (max-width:700px){ .about-division h1 { font-size:1.8rem; } }
+    .gallery-empty { margin-top:20px; font-style:italic; color:#444; text-align:center; padding:40px; }
+    
+    /* Lightbox Styles */
+    .lightbox { position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:9999; display:none; align-items:center; justify-content:center; opacity:0; transition:opacity 0.3s ease; }
+    .lightbox.active { display:flex; opacity:1; }
+    .lightbox-content { max-width:90vw; max-height:90vh; display:flex; flex-direction:column; gap:20px; }
+    .lightbox-content img { max-width:100%; max-height:70vh; object-fit:contain; border-radius:8px; box-shadow:0 10px 50px rgba(0,0,0,0.5); }
+    .lightbox-info { background:rgba(255,255,255,0.95); padding:20px 25px; border-radius:10px; }
+    .lightbox-info h3 { margin:0 0 10px; font-size:1.5rem; color:#0a4d91; }
+    .lightbox-info p { margin:0 0 15px; color:#333; line-height:1.6; }
+    .lightbox-meta { display:flex; gap:15px; align-items:center; flex-wrap:wrap; }
+    .counter { font-size:0.9rem; color:#666; font-weight:600; }
+    
+    /* Lightbox Controls */
+    .lightbox-close { position:absolute; top:20px; right:20px; background:rgba(255,255,255,0.2); color:#fff; border:none; width:50px; height:50px; border-radius:50%; font-size:24px; cursor:pointer; transition:all 0.3s ease; backdrop-filter:blur(10px); z-index:10000; }
+    .lightbox-close:hover { background:rgba(221,118,21,0.9); transform:rotate(90deg); }
+    .lightbox-nav { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.2); color:#fff; border:none; width:60px; height:60px; border-radius:50%; font-size:28px; cursor:pointer; transition:all 0.3s ease; backdrop-filter:blur(10px); }
+    .lightbox-nav:hover { background:rgba(10,77,145,0.9); transform:translateY(-50%) scale(1.1); }
+    .lightbox-prev { left:30px; }
+    .lightbox-next { right:30px; }
+    
+    @media (max-width:1200px){ 
+      .dynamic-gallery-grid { column-count: 3; column-gap: 18px; }
+    }
+    @media (max-width:900px){ 
+      .dynamic-gallery-grid { column-count: 2; column-gap: 15px; }
+      .gallery-item { margin-bottom: 15px; }
+      .lightbox-nav { width:50px; height:50px; font-size:20px; }
+      .lightbox-prev { left:15px; }
+      .lightbox-next { right:15px; }
+      .lightbox-content { max-width:95vw; }
+    }
+    @media (max-width:700px){ 
+      .about-division h1 { font-size:1.8rem; } 
+      .dynamic-gallery-grid { column-count: 1; }
+      .gallery-item { margin-bottom: 12px; }
+      .lightbox-info { padding:15px 20px; }
+      .lightbox-info h3 { font-size:1.2rem; }
+    }
   </style>
 </body>
 </html>

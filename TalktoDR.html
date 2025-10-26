@@ -14,12 +14,15 @@
     <!-- Header (same as index.html) -->
     <header>
         <img src="./assets/images/LOGO_White.png" alt="KDU Logo" style="height: 80px;">
-        <nav>
+        <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+            <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+        <nav id="primary-nav" class="primary-nav" aria-label="Main navigation">
             <ul>
                 <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="staff.html"><i class="fas fa-users"></i> Staff</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle"><i class="fas fa-download"></i> Downloads <i class="fas fa-caret-down"></i></a>
+                    <a href="#" class="dropdown-toggle" aria-expanded="false"><i class="fas fa-download"></i> Downloads <i class="fas fa-caret-down" aria-hidden="true"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="downloads-staff.html"><i class="fas fa-user-tie"></i>For Staff</a></li>
                         <li><a href="downloads-students.html"><i class="fas fa-user-graduate"></i>For Students</a></li>
@@ -27,8 +30,10 @@
                     </ul>
                 </li>
                 <li><a href="contactUs.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                <li><a href="gallery.html"><i class="fas fa-images"></i> Gallery</a></li>
             </ul>
         </nav>
+        <div class="nav-overlay" tabindex="-1" hidden></div>
     </header>
 
     <main class="talk-ar-main">
@@ -45,9 +50,8 @@
                     <h2>Mr. Champika Gunasekara</h2>
                     <p class="ar-title">Deputy Registrar - Examination</p>
                     <div class="ar-contact-info">
-                        <p><i class="fas fa-envelope"></i> champika.g@kdu.ac.lk</p>
-                        <p><i class="fas fa-phone"></i> +94 11 263 8656</p>
-                        <p><i class="fas fa-clock"></i> Available: Mon-Fri, 9:00 AM - 3:00 PM</p>
+                        <p><i class="fas fa-phone"></i> 071 021 9360</p>
+                        <p><i class="fas fa-envelope"></i> sarexam@kdu.ac.lk</p>
                     </div>
                 </div>
             </div>
@@ -61,11 +65,11 @@
                     </div>
                     <h3>Call Directly</h3>
                     <p>Speak with the Deputy Registrar for urgent matters that require immediate attention.</p>
-                    <a href="tel:+94112638656" class="option-button phone-button">
-                        <i class="fas fa-phone"></i> Call Now
+                    <a href="tel:+94710219360" class="option-button phone-button">
+                        <i class="fas fa-phone"></i> Call 071 021 9360
                     </a>
                     <div class="option-note">
-                        <p><i class="fas fa-info-circle"></i> Available during office hours only</p>
+                        <p><i class="fas fa-info-circle"></i> Available: 8:30 AM - 4:15 PM (Weekdays)</p>
                     </div>
                 </div>
 
@@ -76,7 +80,7 @@
                     <h3>Send Email</h3>
                     <p>Write a detailed message for matters that require documentation or aren't time-sensitive.</p>
                     <div class="email-form">
-                        <form id="arEmailForm">
+                        <form id="arEmailForm" action="mailto:sarexam@kdu.ac.lk" method="post" enctype="text/plain">
                             <div class="form-group">
                                 <label for="name">Your Name <span class="required">*</span></label>
                                 <input type="text" id="name" name="name" required>
@@ -169,8 +173,9 @@
             <div class="footer-contact">
                 <h3>Contact Us</h3>
                 <p><i class="fas fa-map-marker-alt"></i> Kandawala Estate, Ratmalana, Sri Lanka</p>
-                <p><i class="fas fa-phone"></i> +94 11 263 8656</p>
-                <p><i class="fas fa-envelope"></i> exams@kdu.ac.lk</p>
+                <p><i class="fas fa-phone"></i> 071 021 9533 (Hotline: 9:00 AM - 3:30 PM)</p>
+                <p><i class="fas fa-phone"></i> 071 021 9360 (Deputy Registrar)</p>
+                <p><i class="fas fa-envelope"></i> exam.verification@kdu.ac.lk</p>
                 
                 <div class="footer-social">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -191,25 +196,11 @@
             const emailForm = document.getElementById('arEmailForm');
             if (emailForm) {
                 emailForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // In a real implementation, you'd send this to a server
-                    // For demo purposes, we'll just simulate success
-                    const name = document.getElementById('name').value;
-                    const email = document.getElementById('email').value;
-                    
-                    // Create success message
-                    const successMsg = document.createElement('div');
-                    successMsg.className = 'success-message';
-                    successMsg.innerHTML = `
-                        <i class="fas fa-check-circle"></i>
-                        <p>Thank you, ${name}! Your message has been sent to the Assistant Registrar. 
-                        You'll receive a confirmation email at ${email} shortly.</p>
-                    `;
-                    
-                    // Replace form with success message
-                    emailForm.innerHTML = '';
-                    emailForm.appendChild(successMsg);
+                    // Allow the mailto: to work
+                    // Show a helpful message after a brief delay
+                    setTimeout(function() {
+                        alert('Your email client will open to send the message to the Deputy Registrar. If it doesn\'t open automatically, please email directly to sarexam@kdu.ac.lk');
+                    }, 100);
                 });
             }
             
