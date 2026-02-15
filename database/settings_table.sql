@@ -1,7 +1,7 @@
 -- Settings table for KDU Examination Department
 -- Run this to add settings functionality
 
-USE `kdu_exam`;
+USE `if0_40279726_kdu_exam`;
 
 -- Site settings table
 CREATE TABLE IF NOT EXISTS settings (

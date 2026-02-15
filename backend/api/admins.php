@@ -4,6 +4,11 @@ require_once __DIR__ . '/../lib/http.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
+// InfinityFree compatibility: check for method override
+if ($method === 'POST' && isset($_POST['_method'])) {
+  $method = strtoupper($_POST['_method']);
+}
+
 $admin = require_auth();
 if ($admin['role'] !== 'super') {
   json_response(['error' => 'Forbidden'], 403);
@@ -44,8 +49,7 @@ if ($method === 'POST') {
 
 if ($method === 'DELETE') {
   // Soft deactivate admin (except self)
-  parse_str(file_get_contents('php://input'), $payload);
-  $id = (int)($payload['id'] ?? 0);
+  $id = (int)($_POST['id'] ?? 0);
   if ($id <= 0) json_response(['error' => 'Invalid id'], 422);
   if ($id === (int)$admin['id']) json_response(['error' => 'Cannot deactivate yourself'], 422);
   $stmt = db()->prepare('UPDATE admins SET is_active=0 WHERE id=?');

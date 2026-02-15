@@ -1,26 +1,22 @@
 /* Font Declarations */
 @font-face {
-    font-family: 'YourMainFont';
-    src: url('fonts/yourfont.woff2') format('woff2'),
-         url('fonts/yourfont.woff') format('woff'),
-         url('fonts/yourfont.ttf') format('truetype');
+    font-family: 'RobotoCondensed';
+    src: url('../fonts/Roboto_Condensed/RobotoCondensed-VariableFont_wght.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap; /* Ensures text remains visible during font loading */
 }
 
 @font-face {
-    font-family: 'YourHeadingFont';
-    src: url('fonts/headingfont.woff2') format('woff2'),
-         url('fonts/headingfont.woff') format('woff'),
-         url('fonts/headingfont.ttf') format('truetype');
+    font-family: 'RobotoCondensedBold';
+    src: url('../fonts/Roboto_Condensed/RobotoCondensed-VariableFont_wght.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
 /* Parallax Background */
 body {
-    font-family: 'YourMainFont', Arial, sans-serif;
+    font-family: 'RobotoCondensed', Arial, sans-serif;
     color: #333;
     line-height: 1.6;
     margin: 0;
@@ -50,7 +46,7 @@ body {
 }
 
 h1, h2, ul, li, a {
-    font-family: 'YourHeadingFont', Georgia, serif; /* Fallback fonts if custom font fails */
+    font-family: 'RobotoCondensedBold', Georgia, serif; /* Fallback fonts if custom font fails */
     margin: 0;
     padding: 0;
     box-sizing: border-box;

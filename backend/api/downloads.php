@@ -6,6 +6,11 @@ require_once __DIR__ . '/../config.php';
 global $ALLOWED_DOC_MIME;
 $method = $_SERVER['REQUEST_METHOD'];
 
+// InfinityFree compatibility: check for method override
+if ($method === 'POST' && isset($_POST['_method'])) {
+  $method = strtoupper($_POST['_method']);
+}
+
 if ($method === 'GET') {
   $cat = trim($_GET['category'] ?? '');
   if ($cat !== '') {
@@ -47,10 +52,8 @@ if ($method === 'POST') {
   json_response(['ok' => true, 'id' => db()->lastInsertId()], 201);
 }
 
-parse_str(file_get_contents('php://input'), $payload);
-
 if ($method === 'DELETE') {
-  $id = (int)($payload['id'] ?? 0);
+  $id = (int)($_POST['id'] ?? 0);
   if ($id <= 0) json_response(['error' => 'Invalid id'], 422);
   $stmt = db()->prepare('SELECT file_path FROM downloads_files WHERE id=?');
   $stmt->execute([$id]);

@@ -4,17 +4,22 @@
  * Handles site settings CRUD operations
  */
 
-require_once __DIR__ . '/../../config.php';
-require_once __DIR__ . '/../../db.php';
+require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../db.php';
 require_once __DIR__ . '/../lib/http.php';
 
 // Only admins can manage settings
 session_start();
-if (!isset($_SESSION['admin_id'])) {
+if (!isset($_SESSION['admin']) || !isset($_SESSION['admin']['id'])) {
     http_response(401, ['error' => 'Unauthorized']);
 }
 
 $method = $_SERVER['REQUEST_METHOD'];
+
+// Handle method override for InfinityFree compatibility
+if ($method === 'POST' && isset($_POST['_method'])) {
+    $method = strtoupper($_POST['_method']);
+}
 
 try {
     switch ($method) {
@@ -45,7 +50,7 @@ try {
  * Get all settings as key-value pairs
  */
 function getAllSettings() {
-    global $pdo;
+    $pdo = db();
     
     $stmt = $pdo->query("
         SELECT setting_key, setting_value, setting_type, description 
@@ -72,7 +77,7 @@ function getAllSettings() {
  * Get a specific setting by key
  */
 function getSetting($key) {
-    global $pdo;
+    $pdo = db();
     
     $stmt = $pdo->prepare("
         SELECT setting_key, setting_value, setting_type, description 
@@ -101,7 +106,7 @@ function getSetting($key) {
  * Update multiple settings at once
  */
 function updateSettings() {
-    global $pdo;
+    $pdo = db();
     
     // Get JSON data
     $input = file_get_contents('php://input');
@@ -111,7 +116,7 @@ function updateSettings() {
         http_response(400, ['error' => 'Invalid request data']);
     }
     
-    $adminId = $_SESSION['admin_id'];
+    $adminId = $_SESSION['admin']['id'];
     $updatedCount = 0;
     
     $pdo->beginTransaction();

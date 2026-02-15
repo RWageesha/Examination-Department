@@ -1,11 +1,11 @@
 -- KDU Examination Department Backend Schema
 -- Run this in phpMyAdmin or MySQL client
 
-CREATE DATABASE IF NOT EXISTS `kdu_exam`
+CREATE DATABASE IF NOT EXISTS `if0_40279726_kdu_exam`
   DEFAULT CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 
-USE `kdu_exam`;
+USE `if0_40279726_kdu_exam`;
 
 -- Admin accounts (super/admin)
 CREATE TABLE IF NOT EXISTS admins (

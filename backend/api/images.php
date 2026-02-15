@@ -10,6 +10,11 @@ if (session_status() === PHP_SESSION_NONE) {
 
 $method = $_SERVER['REQUEST_METHOD'];
 
+// InfinityFree compatibility: check for method override
+if ($method === 'POST' && isset($_POST['_method'])) {
+    $method = strtoupper($_POST['_method']);
+}
+
 try {
     $pdo = db(); // Use db() function
 } catch (Exception $e) {
@@ -80,8 +85,7 @@ switch ($method) {
         break;
     case 'DELETE':
         check_admin_auth();
-        parse_str(file_get_contents('php://input'), $delVars);
-        $id = isset($delVars['id']) ? (int)$delVars['id'] : 0;
+        $id = isset($_POST['id']) ? (int)$_POST['id'] : 0;
         if (!$id) json_response(['error' => 'Missing id'], 400);
         $stmt = $pdo->prepare("SELECT file_path FROM images WHERE id=?");
         $stmt->execute([$id]);

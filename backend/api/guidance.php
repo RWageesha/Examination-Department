@@ -7,6 +7,11 @@ global $ALLOWED_DOC_MIME;
 
 $method = $_SERVER['REQUEST_METHOD'];
 
+// InfinityFree compatibility: check for method override
+if ($method === 'POST' && isset($_POST['_method'])) {
+  $method = strtoupper($_POST['_method']);
+}
+
 if ($method === 'GET') {
   $stmt = db()->query('SELECT id, title, description, link_url, attachment_path, created_at FROM guidance ORDER BY id DESC');
   json_response(['items' => $stmt->fetchAll()]);
@@ -38,13 +43,11 @@ if ($method === 'POST') {
   json_response(['ok' => true, 'id' => db()->lastInsertId()], 201);
 }
 
-parse_str(file_get_contents('php://input'), $payload);
-
 if ($method === 'PUT') {
-  $id = (int)($payload['id'] ?? 0);
-  $title = trim($payload['title'] ?? '');
-  $description = trim($payload['description'] ?? '');
-  $link_url = trim($payload['link_url'] ?? '') ?: null;
+  $id = (int)($_POST['id'] ?? 0);
+  $title = trim($_POST['title'] ?? '');
+  $description = trim($_POST['description'] ?? '');
+  $link_url = trim($_POST['link_url'] ?? '') ?: null;
   if ($id <= 0 || $title === '' || $description === '') json_response(['error' => 'Invalid input'], 422);
   $stmt = db()->prepare('UPDATE guidance SET title=?, description=?, link_url=? WHERE id=?');
   $stmt->execute([$title, $description, $link_url, $id]);
@@ -52,7 +55,7 @@ if ($method === 'PUT') {
 }
 
 if ($method === 'DELETE') {
-  $id = (int)($payload['id'] ?? 0);
+  $id = (int)($_POST['id'] ?? 0);
   if ($id <= 0) json_response(['error' => 'Invalid id'], 422);
   // Delete file if exists
   $stmt = db()->prepare('SELECT attachment_path FROM guidance WHERE id=?');

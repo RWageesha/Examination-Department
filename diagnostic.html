@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Diagnostic Tool - KDU Exam Department</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #333; margin-bottom: 30px; text-align: center; }
+        .test-section { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .test-section h2 { color: #2c3e50; margin-bottom: 15px; font-size: 20px; }
+        .status { padding: 10px; border-radius: 4px; margin-bottom: 10px; }
+        .status.loading { background: #fff3cd; border-left: 4px solid #ffc107; }
+        .status.success { background: #d4edda; border-left: 4px solid #28a745; }
+        .status.error { background: #f8d7da; border-left: 4px solid #dc3545; }
+        .status.warning { background: #d1ecf1; border-left: 4px solid #17a2b8; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 4px; overflow-x: auto; max-height: 400px; overflow-y: auto; font-size: 12px; }
+        .btn { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; margin: 5px; }
+        .btn:hover { background: #0056b3; }
+        .info-box { background: #e7f3ff; padding: 15px; border-radius: 4px; margin-bottom: 20px; border-left: 4px solid #2196F3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 API Diagnostic Tool</h1>
+        
+        <div class="info-box">
+            <strong>Instructions:</strong> This tool will test all your API endpoints and show you exactly what's wrong.
+            Click "Run All Tests" to start. Look for red error messages.
+        </div>
+
+        <div style="text-align: center; margin-bottom: 30px;">
+            <button class="btn" onclick="runAllTests()">🚀 Run All Tests</button>
+            <button class="btn" onclick="location.reload()">🔄 Refresh Page</button>
+        </div>
+
+        <!-- Database Configuration -->
+        <div class="test-section">
+            <h2>1. Database Configuration</h2>
+            <div id="configStatus" class="status loading">⏳ Not tested yet</div>
+            <pre id="configResult">Click "Run All Tests" to check configuration</pre>
+        </div>
+
+        <!-- Notices API -->
+        <div class="test-section">
+            <h2>2. Notices API</h2>
+            <div id="noticesStatus" class="status loading">⏳ Not tested yet</div>
+            <pre id="noticesResult">Click "Run All Tests" to check notices</pre>
+        </div>
+
+        <!-- Guidance API -->
+        <div class="test-section">
+            <h2>3. Guidance API</h2>
+            <div id="guidanceStatus" class="status loading">⏳ Not tested yet</div>
+            <pre id="guidanceResult">Click "Run All Tests" to check guidance</pre>
+        </div>
+
+        <!-- Downloads API -->
+        <div class="test-section">
+            <h2>4. Downloads API</h2>
+            <div id="downloadsStatus" class="status loading">⏳ Not tested yet</div>
+            <pre id="downloadsResult">Click "Run All Tests" to check downloads</pre>
+        </div>
+
+        <!-- Images API -->
+        <div class="test-section">
+            <h2>5. Images API</h2>
+            <div id="imagesStatus" class="status loading">⏳ Not tested yet</div>
+            <pre id="imagesResult">Click "Run All Tests" to check images</pre>
+        </div>
+
+        <!-- Settings API -->
+        <div class="test-section">
+            <h2>6. Settings API</h2>
+            <div id="settingsStatus" class="status loading">⏳ Not tested yet</div>
+            <pre id="settingsResult">Click "Run All Tests" to check settings</pre>
+        </div>
+
+        <!-- Summary -->
+        <div class="test-section">
+            <h2>Summary</h2>
+            <div id="summaryStatus" class="status loading">⏳ Run tests to see summary</div>
+            <div id="summaryDetails"></div>
+        </div>
+    </div>
+
+    <script>
+        let testResults = {
+            config: null,
+            notices: null,
+            guidance: null,
+            downloads: null,
+            images: null,
+            settings: null
+        };
+
+        async function testAPI(url, name) {
+            try {
+                const response = await fetch(url);
+                const contentType = response.headers.get('content-type');
+                
+                let data;
+                let isJSON = contentType && contentType.includes('application/json');
+                
+                if (isJSON) {
+                    data = await response.json();
+                } else {
+                    data = await response.text();
+                }
+
+                return {
+                    success: response.ok && isJSON,
+                    status: response.status,
+                    statusText: response.statusText,
+                    contentType: contentType,
+                    isJSON: isJSON,
+                    data: data,
+                    url: url
+                };
+            } catch (error) {
+                return {
+                    success: false,
+                    error: error.message,
+                    url: url
+                };
+            }
+        }
+
+        async function testDatabaseConfig() {
+            const result = await testAPI('./backend/test_connection.php', 'Database Config');
+            const statusEl = document.getElementById('configStatus');
+            const resultEl = document.getElementById('configResult');
+
+            if (result.success || (result.status === 200 && result.data)) {
+                statusEl.className = 'status success';
+                statusEl.textContent = '✅ test_connection.php is accessible';
+                resultEl.textContent = typeof result.data === 'string' ? result.data.substring(0, 1000) : JSON.stringify(result.data, null, 2);
+            } else if (result.error) {
+                statusEl.className = 'status error';
+                statusEl.textContent = '❌ Error: ' + result.error;
+                resultEl.textContent = 'Cannot reach test_connection.php\nMake sure the file is uploaded to htdocs/backend/';
+            } else {
+                statusEl.className = 'status warning';
+                statusEl.textContent = '⚠️ Status: ' + result.status + ' - ' + result.statusText;
+                resultEl.textContent = typeof result.data === 'string' ? result.data : JSON.stringify(result.data, null, 2);
+            }
+            testResults.config = result;
+        }
+
+        async function testNotices() {
+            const result = await testAPI('./backend/api/notices.php', 'Notices');
+            const statusEl = document.getElementById('noticesStatus');
+            const resultEl = document.getElementById('noticesResult');
+
+            if (result.success) {
+                const count = result.data.items ? result.data.items.length : 0;
+                statusEl.className = 'status success';
+                statusEl.textContent = `✅ Notices API working! Found ${count} notices`;
+                resultEl.textContent = JSON.stringify(result.data, null, 2);
+            } else if (result.error) {
+                statusEl.className = 'status error';
+                statusEl.textContent = '❌ Error: ' + result.error;
+                resultEl.textContent = 'Cannot connect to notices API';
+            } else if (!result.isJSON) {
+                statusEl.className = 'status error';
+                statusEl.textContent = '❌ API returned HTML instead of JSON (probably PHP error)';
+                resultEl.textContent = 'Content-Type: ' + result.contentType + '\n\n' + 
+                                      (typeof result.data === 'string' ? result.data.substring(0, 2000) : result.data);
+            } else {
+                statusEl.className = 'status error';
+                statusEl.textContent = '❌ Status: ' + result.status + ' - ' + (result.data.error || result.statusText);
+                resultEl.textContent = JSON.stringify(result.data, null, 2);
+            }
+            testResults.notices = result;
+        }
+
+        async function testGuidance() {
+            const result = await testAPI('./backend/api/guidance.php', 'Guidance');
+            const statusEl = document.getElementById('guidanceStatus');
+            const resultEl = document.getElementById('guidanceResult');
+
+            if (result.success) {
+                const count = result.data.items ? result.data.items.length : 0;
+                statusEl.className = 'status success';
+                statusEl.textContent = `✅ Guidance API working! Found ${count} items`;
+                resultEl.textContent = JSON.stringify(result.data, null, 2);
+            } else if (result.error) {
+                statusEl.className = 'status error';
+                statusEl.textContent = '❌ Error: ' + result.error;
+                resultEl.textContent = 'Cannot connect to guidance API';
+            } else if (!result.isJSON) {
+                statusEl.className = 'status error';
+                statusEl.textContent = '❌ API returned HTML instead of JSON';
+                resultEl.textContent = typeof result.data === 'string' ? result.data.substring(0, 2000) : result.data;
+            } else {
+                statusEl.className = 'status error';
+                statusEl.textContent = '❌ Status: ' + result.status + ' - ' + (result.data.error || result.statusText);
+                resultEl.textContent = JSON.stringify(result.data, null, 2);
+            }
+            testResults.guidance = result;
+        }
+
+        async function testDownloads() {
+            const result = await testAPI('./backend/api/downloads.php', 'Downloads');
+            const statusEl = document.getElementById('downloadsStatus');
+            const resultEl = document.getElementById('downloadsResult');
+
+            if (result.success) {
+                const count = result.data.items ? result.data.items.length : 0;
+                statusEl.className = 'status success';
+                statusEl.textContent = `✅ Downloads API working! Found ${count} files`;
+                resultEl.textContent = JSON.stringify(result.data, null, 2);
+            } else if (result.error) {
+                statusEl.className = 'status error';
+                statusEl.textContent = '❌ Error: ' + result.error;
+                resultEl.textContent = 'Cannot connect to downloads API';
+            } else if (!result.isJSON) {
+                statusEl.className = 'status error';
+                statusEl.textContent = '❌ API returned HTML instead of JSON';
+                resultEl.textContent = typeof result.data === 'string' ? result.data.substring(0, 2000) : result.data;
+            } else {
+                statusEl.className = 'status error';
+                statusEl.textContent = '❌ Status: ' + result.status + ' - ' + (result.data.error || result.statusText);
+                resultEl.textContent = JSON.stringify(result.data, null, 2);
+            }
+            testResults.downloads = result;
+        }
+
+        async function testImages() {
+            const result = await testAPI('./backend/api/images.php', 'Images');
+            const statusEl = document.getElementById('imagesStatus');
+            const resultEl = document.getElementById('imagesResult');
+
+            if (result.success) {
+                const count = result.data.items ? result.data.items.length : 0;
+                statusEl.className = 'status success';
+                statusEl.textContent = `✅ Images API working! Found ${count} images`;
+                resultEl.textContent = JSON.stringify(result.data, null, 2);
+            } else if (result.error) {
+                statusEl.className = 'status error';
+                statusEl.textContent = '❌ Error: ' + result.error;
+                resultEl.textContent = 'Cannot connect to images API';
+            } else if (!result.isJSON) {
+                statusEl.className = 'status error';
+                statusEl.textContent = '❌ API returned HTML instead of JSON';
+                resultEl.textContent = typeof result.data === 'string' ? result.data.substring(0, 2000) : result.data;
+            } else {
+                statusEl.className = 'status error';
+                statusEl.textContent = '❌ Status: ' + result.status + ' - ' + (result.data.error || result.statusText);
+                resultEl.textContent = JSON.stringify(result.data, null, 2);
+            }
+            testResults.images = result;
+        }
+
+        async function testSettings() {
+            const result = await testAPI('./backend/api/settings.php', 'Settings');
+            const statusEl = document.getElementById('settingsStatus');
+            const resultEl = document.getElementById('settingsResult');
+
+            if (result.success) {
+                const count = result.data.settings ? Object.keys(result.data.settings).length : 0;
+                statusEl.className = 'status success';
+                statusEl.textContent = `✅ Settings API working! Found ${count} settings`;
+                resultEl.textContent = JSON.stringify(result.data, null, 2);
+            } else if (result.error) {
+                statusEl.className = 'status error';
+                statusEl.textContent = '❌ Error: ' + result.error;
+                resultEl.textContent = 'Cannot connect to settings API';
+            } else if (!result.isJSON) {
+                statusEl.className = 'status error';
+                statusEl.textContent = '❌ API returned HTML instead of JSON';
+                resultEl.textContent = typeof result.data === 'string' ? result.data.substring(0, 2000) : result.data;
+            } else {
+                statusEl.className = 'status error';
+                statusEl.textContent = '❌ Status: ' + result.status + ' - ' + (result.data.error || result.statusText);
+                resultEl.textContent = JSON.stringify(result.data, null, 2);
+            }
+            testResults.settings = result;
+        }
+
+        async function showSummary() {
+            const statusEl = document.getElementById('summaryStatus');
+            const detailsEl = document.getElementById('summaryDetails');
+            
+            const passed = Object.values(testResults).filter(r => r && r.success).length;
+            const failed = Object.values(testResults).filter(r => r && !r.success).length;
+            
+            let html = '<div style="margin-top: 20px;">';
+            html += `<p><strong>Tests Passed:</strong> ${passed} / ${Object.keys(testResults).length}</p>`;
+            html += `<p><strong>Tests Failed:</strong> ${failed}</p><br>`;
+            
+            if (failed === 0) {
+                statusEl.className = 'status success';
+                statusEl.textContent = '✅ All tests passed! Your database is connected correctly.';
+                html += '<p style="color: green;"><strong>✅ Your website should now be loading data from the database!</strong></p>';
+                html += '<p>If the homepage still shows hardcoded content, try clearing your browser cache (Ctrl+Shift+Delete).</p>';
+            } else {
+                statusEl.className = 'status error';
+                statusEl.textContent = `❌ ${failed} test(s) failed. See details above.`;
+                
+                html += '<p style="color: red;"><strong>Common Fixes:</strong></p><ul style="margin-left: 20px;">';
+                
+                if (!testResults.notices?.success || !testResults.guidance?.success) {
+                    html += '<li><strong>Database not connected:</strong> Update backend/config.php with your InfinityFree database credentials</li>';
+                    html += '<li><strong>Tables missing:</strong> Import database/schema.sql in phpMyAdmin</li>';
+                }
+                
+                if (testResults.config && !testResults.config.success) {
+                    html += '<li><strong>test_connection.php missing:</strong> Upload it to htdocs/backend/ folder</li>';
+                }
+                
+                html += '<li><strong>PHP errors:</strong> If APIs return HTML, there are PHP errors. Check error logs in InfinityFree control panel</li>';
+                html += '</ul>';
+            }
+            
+            html += '</div>';
+            detailsEl.innerHTML = html;
+        }
+
+        async function runAllTests() {
+            document.getElementById('summaryStatus').textContent = '⏳ Running tests...';
+            document.getElementById('summaryDetails').innerHTML = '';
+            
+            await testDatabaseConfig();
+            await testNotices();
+            await testGuidance();
+            await testDownloads();
+            await testImages();
+            await testSettings();
+            await showSummary();
+        }
+
+        // Auto-run tests on page load
+        window.addEventListener('load', () => {
+            setTimeout(runAllTests, 500);
+        });
+    </script>
+</body>
+</html>

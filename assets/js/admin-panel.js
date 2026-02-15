@@ -57,8 +57,31 @@ document.addEventListener('DOMContentLoaded', function() {
     // Category cache for downloads (slug -> name)
     const categoryMap = new Map();
 
-    // Simple API helper
+    // Simple API helper with InfinityFree compatibility (converts PUT/DELETE to POST)
     async function apiFetch(url, options = {}) {
+        // InfinityFree doesn't support PUT/DELETE, convert to POST with _method parameter
+        if (options.method === 'PUT' || options.method === 'DELETE') {
+            const originalMethod = options.method;
+            options.method = 'POST';
+            
+            // Add _method parameter to body
+            if (options.body) {
+                if (options.body instanceof FormData) {
+                    options.body.append('_method', originalMethod);
+                } else if (options.body instanceof URLSearchParams) {
+                    // Convert URLSearchParams to string and add _method
+                    options.body = options.body.toString() + '&_method=' + originalMethod;
+                } else if (typeof options.body === 'string') {
+                    // Add _method to string body
+                    options.body += '&_method=' + originalMethod;
+                }
+            } else {
+                options.body = '_method=' + originalMethod;
+                options.headers = options.headers || {};
+                options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+            }
+        }
+        
         const res = await fetch(url, { credentials: 'include', ...options });
         // Try to parse json; if fails, throw fallback
         let data = null;
