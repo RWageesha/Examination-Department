@@ -9,7 +9,7 @@ session_start(); ?>
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.108.0">
-    <link rel="icon" type="image/x-icon" href="../assets/dist/img/kdu_logo.png">
+    <link rel="icon" type="image/x-icon" href="../assets/images/KDU-logo.png">
     <title>KDU Online Registration</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/navbar-static/">

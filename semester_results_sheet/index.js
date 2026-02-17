@@ -175,38 +175,6 @@ $(document).ready(function () {
     });
   }
 
-  function generateTranscriptProofInputs(count) {
-    const container = $("#transcript-proof-container");
-    container.empty();
-    
-    for(let i = 1; i <= count; i++) {
-      const col = $('<div class="col-md-4 mb-3"></div>');
-      const input = $(`
-        <div class="form-group">
-          <label for="transcript_proof_${i}" class="form-label">Transcript Copy ${i} Proof</label>
-          <input class="form-control" type="file" name="transcript_proof[]" id="transcript_proof_${i}" required>
-          <div class="invalid-feedback">Please upload a proof document</div>
-        </div>
-      `);
-      col.append(input);
-      container.append(col);
-    }
-  }
-
-  function toggleProofDiv() {
-    const transcriptChecked = $("#transcript").is(":checked");
-    const copies = parseInt($("#transcript_no_of_copies").val()) || 0;
-    const proofDiv = $(".proof_div");
-    
-    if(transcriptChecked && copies > 0) {
-      proofDiv.show();
-      generateTranscriptProofInputs(copies);
-    } else {
-      proofDiv.hide();
-      $("#transcript-proof-container").empty();
-    }
-  }
-
   function updateCart() {
     var total = 0;
     var cartItems = $("#cart-items");
@@ -224,9 +192,8 @@ $(document).ready(function () {
         transcriptSubsequent = 200;
     } else { // Postgraduate (category == "1")
         copyPrice = 200;
-        transcriptFirst = 2000;
-        transcriptSubsequent = 400;
-        secondCopyPrice = 3000;
+        transcriptFirst = 200;
+        transcriptSubsequent = 200;
     }
 
     // Helper function to add cart items
@@ -270,46 +237,8 @@ $(document).ready(function () {
             var label = category == "2" 
                 ? "Transcript" 
                 : "Transcript (Postgraduate)";
+            total += addCartItem(label, copies, copyPrice);
             
-            if (category == "2") { // Undergraduate pricing
-                if (copies === 1) {
-                    total += addCartItem(label, 1, 400);
-                } else {
-                    var firstCopy = 400;
-                    var subsequentCopies = copies - 1;
-                    var totalPrice = firstCopy + (subsequentCopies * 250);
-                    
-                    cartItems.append(`
-                        <div class="cart-item">
-                            <div class="item-name">${label}</div>
-                            <div class="item-details">
-                                <span>1 x Rs. 400 + ${subsequentCopies} x Rs. 250</span>
-                                <span class="item-price">= Rs. ${totalPrice.toFixed(2)}</span>
-                            </div>
-                        </div>
-                    `);
-                    total += totalPrice;
-                }
-            } else { // Postgraduate pricing
-                if (copies === 1) {
-                    total += addCartItem(label, 1, 2000);
-                } else {
-                    var firstCopy = 2000;
-                    var subsequentCopies = copies - 1;
-                    var totalPrice = firstCopy + (subsequentCopies * 400);
-                    
-                    cartItems.append(`
-                        <div class="cart-item">
-                            <div class="item-name">${label}</div>
-                            <div class="item-details">
-                                <span>1 x Rs. 2000 + ${subsequentCopies} x Rs. 400</span>
-                                <span class="item-price">= Rs. ${totalPrice.toFixed(2)}</span>
-                            </div>
-                        </div>
-                    `);
-                    total += totalPrice;
-                }
-            }
         }
     }
 
@@ -335,39 +264,6 @@ $(document).ready(function () {
   $("input[type='checkbox'], input[type='number']").on("change", updateCart);
 
   handleCertificateExclusivity();
-
-    function generateTranscriptProofInputs(count) {
-      const container = $("#transcript-proof-container");
-      container.empty(); // Clear previous inputs
-      
-      for(let i = 1; i <= count; i++) {
-          const col = $('<div class="col-md-4 mb-3"></div>');
-          const input = $(`
-              <div class="form-group">
-                  <label for="transcript_proof_${i}" class="form-label">Transcript Copy ${i} Proof</label>
-                  <input class="form-control" type="file" name="transcript_proof[]" id="transcript_proof_${i}">
-                  <div class="error-message" id="error-transcript-proof-${i}"></div>
-              </div>
-          `);
-          col.append(input);
-          container.append(col);
-      }
-  }
-
-  // Add this function to toggle proof section visibility
-  function toggleProofDiv() {
-      const transcriptChecked = $("#transcript").is(":checked");
-      const copies = parseInt($("#transcript_no_of_copies").val()) || 0;
-      const proofDiv = $(".proof_div");
-      
-      if(transcriptChecked && copies > 0) {
-          proofDiv.show();
-          generateTranscriptProofInputs(copies);
-      } else {
-          proofDiv.hide();
-          $("#transcript-proof-container").empty();
-      }
-  }
 
   // Event listeners
   $("#transcript").on("change", function() {

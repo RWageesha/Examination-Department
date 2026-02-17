@@ -1342,13 +1342,13 @@ header nav ul li a[href].active-page {
 }
 
 /* Keep the three-buttons-container styling */
-.three-buttons-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin: 40px 0;
+.three-buttons-container{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 24px;
+  align-items: stretch; /* equal height cards */
 }
+
 
 /* Modern Service Buttons - Add to style.css */
 .certificate-button {
@@ -1357,8 +1357,9 @@ header nav ul li a[href].active-page {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 260px;
-    height: 200px;
+    width: 100%;
+    min-height: 220px;
+    height: auto;
     padding: 25px 20px;
     background: linear-gradient(135deg, #004080 0%, #002244 100%);
     color: white;
