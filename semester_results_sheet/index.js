@@ -219,17 +219,13 @@ $(document).ready(function () {
     var detailedPrice, copyPrice, transcriptFirst, transcriptSubsequent, secondCopyPrice;
     
     if (category == "2") { // Undergraduate
-        detailedPrice = 300;
-        copyPrice = 50;
-        transcriptFirst = 400;
-        transcriptSubsequent = 250;
-        secondCopyPrice = 1500;
+        detailedPrice = 200;
+        copyPrice = 200;
+        
     } else { // Postgraduate (category == "1")
-        detailedPrice = 2000;
-        copyPrice = 400;
-        transcriptFirst = 2000;
-        transcriptSubsequent = 400;
-        secondCopyPrice = 3000;
+        detailedPrice = 200;
+        copyPrice = 200;
+        
     }
 
     // Helper function to add cart items
