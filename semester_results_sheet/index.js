@@ -219,14 +219,11 @@ $(document).ready(function () {
     var detailedPrice, copyPrice, transcriptFirst, transcriptSubsequent, secondCopyPrice;
     
     if (category == "2") { // Undergraduate
-        detailedPrice = 300;
-        copyPrice = 50;
-        transcriptFirst = 400;
-        transcriptSubsequent = 250;
-        secondCopyPrice = 1500;
+        copyPrice = 200;
+        transcriptFirst = 200;
+        transcriptSubsequent = 200;
     } else { // Postgraduate (category == "1")
-        detailedPrice = 2000;
-        copyPrice = 400;
+        copyPrice = 200;
         transcriptFirst = 2000;
         transcriptSubsequent = 400;
         secondCopyPrice = 3000;
