@@ -138,6 +138,133 @@ session_start(); ?>
         appearance: auto;        /* Ensures native dropdown behavior */
     }
 
+    /* Terms and Conditions Modal Styles */
+    .terms-link {
+        color: #0d6efd;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .terms-link:hover {
+        color: #0a58ca;
+    }
+
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        z-index: 9998;
+    }
+
+    .modal-overlay.active {
+        display: block;
+    }
+
+    .terms-modal {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        width: 90%;
+        max-width: 900px;
+        max-height: 85vh;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 9999;
+        overflow: hidden;
+    }
+
+    .terms-modal.active {
+        display: block;
+    }
+
+    .terms-modal-header {
+        background-color: #0d6efd;
+        color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .terms-modal-header h3 {
+        margin: 0;
+        font-size: 1.5rem;
+    }
+
+    .modal-close {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 28px;
+        cursor: pointer;
+        padding: 0;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+    }
+
+    .modal-close:hover {
+        opacity: 0.8;
+    }
+
+    .terms-modal-body {
+        padding: 25px;
+        overflow-y: auto;
+        max-height: calc(85vh - 80px);
+    }
+
+    .terms-modal-body h4 {
+        color: #0d6efd;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .terms-modal-body h4:first-child {
+        margin-top: 0;
+    }
+
+    .terms-modal-body ol {
+        padding-left: 20px;
+    }
+
+    .terms-modal-body li {
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+
+    .terms-modal-body table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+    }
+
+    .terms-modal-body table th,
+    .terms-modal-body table td {
+        border: 1px solid #dee2e6;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .terms-modal-body table th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+    }
+
+    .main-blurred {
+        filter: blur(5px);
+    }
+
     
     </style>
 
@@ -805,7 +932,7 @@ session_start(); ?>
                                                     <input class="form-check-input" type="checkbox" value=""
                                                         id="invalidCheck" required>
                                                     <label class="form-check-label" for="invalidCheck">
-                                                        Agree to terms and conditions
+                                                        Agree to <a href="#" class="terms-link" id="termsLink">terms and conditions</a>
                                                     </label>
                                                     <div class="invalid-feedback">
                                                         You must agree before submitting.
@@ -845,7 +972,154 @@ session_start(); ?>
         </div>
     </main>
 
+    <!-- Terms and Conditions Modal -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="terms-modal" id="termsModal">
+        <div class="terms-modal-header">
+            <h3>Terms and Conditions</h3>
+            <button class="modal-close" id="modalClose">&times;</button>
+        </div>
+        <div class="terms-modal-body">
+            <h4>Instructions to Candidates</h4>
+            <ol>
+                <li>All applicants shall apply for the certificates through this online form.</li>
+                <li>An applicant should pay appropriate fee to the Shroff/KDU or Vice Chancellor KDU Bank of Ceylon at Bank of Ceylon – Kotelawala Defence University Branch, (Account No 9405831). Copy of the payment slip or receipt issued by the Accounts Branch should be submitted to the Examination Division along with the application. Incomplete applications and applications without payment receipt will be rejected without further notice.</li>
+                <li>Those who request originals of Degree Certificates / Detailed Degree Certificates should submit a clearance letter issued by Dean FDSS (for undergraduates) or Dean FGS (Degree offered by FGS). Accredited Institutions should ensure that there are no dues from the applicants.</li>
+                <li>Processing time for Detailed Degree Certificates is two weeks. Therefore, applicants are requested to inquire from the examination division prior to collecting certificates. Please bring Clearance letter, when you come to collect the Detailed Degree Certificate.</li>
+                <li>A certificate is issued to an applicant who confirms their identity. If a representative is nominated, a proper letter of request indicating the authority for the representative to receive the certificate on behalf of the applicant should be submitted.</li>
+            </ol>
 
+            <h4>Procedure for requesting certificates to be posted to other institutes</h4>
+            <p><strong>A.</strong> Applicants shall submit requests for Detailed Degree Certificates/Transcripts along with the relevant documents from the Institutes.</p>
+            <p><strong>B.</strong> Applicants shall clearly mention the address of the relevant Institute and any other important details.</p>
+            <p><strong>C.</strong> Payment of Postage.</p>
+            <ol style="list-style-type: lower-alpha; padding-left: 40px;">
+                <li>An applicant can arrange a courier service to pick up the documents at the 'B' Gate of KDU. Sealed document will be handed over to the agents.<br><strong>OR</strong></li>
+                <li>An applicant shall submit an envelope with stamps for appropriate postage to the Examination Division. The envelopes containing the documents are handed over to the KDU Head Quarters for posting.<br><strong>OR</strong></li>
+                <li>An applicant shall pay appropriate postage to the Shroff/KDU or Vice Chancellor KDU Bank of Ceylon at Bank of Ceylon – Kotelawala Defence University Branch, (Account No 9405831). Copy of the payment slip should be submitted to the Examination Division. The documents along with copies of the payment slips are handed over to the KDU Head Quarters for posting.<br><strong>OR</strong></li>
+                <li>An applicant can collect the sealed document after confirming their identity.</li>
+            </ol>
+            <p><strong>D.</strong> If the Head or Official Representative from any Institution requests Certificates/Transcripts of an applicant, the relevant documents should be sent to the Registrar KDU.</p>
+
+            <h4>Prescribed Payment</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Certificate Type</th>
+                        <th>Undergraduate</th>
+                        <th>Postgraduate</th>
+                        <th>Remark</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1. Detailed Degree Certificate – Original</strong></td>
+                        <td>300/-</td>
+                        <td>2000/-</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 20px;">Each Certified Copy</td>
+                        <td>50/-</td>
+                        <td>400/-</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Second Copy of Detailed Degree Certificate</strong></td>
+                        <td>1500/-</td>
+                        <td>3000/-</td>
+                        <td>A duplicate shall not be issued except where satisfactory evidence has been provided to prove that the original certificate has been damaged, destroyed or lost.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Transcript</strong></td>
+                        <td>400/- & Postage</td>
+                        <td>2000/- & Postage</td>
+                        <td>Transcripts will not be given to applicants directly. They will be sent to the institutions on request of an applicant with submission of document to prove the requirement.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 20px;">Each Subsequent Copy</td>
+                        <td>250/- & Postage</td>
+                        <td>400/- & Postage</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. Request for a second copy of a certificate already issued as a result of providing incorrect name by the student</strong></td>
+                        <td>3000/-</td>
+                        <td>4000/-</td>
+                        <td>The second copy will be considered subject to submission of the original certificate. A student cannot hold two certificates for the same degree.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. Verification of Certificates</strong></td>
+                        <td colspan="2">Local – 1500/-<br>Foreign – USD 30</td>
+                        <td>Verification of certificates should be sent to the Registrar KDU</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><strong>* At the date students visit KDU to collect the certificates, it is compulsory to submit KDU Payment Receipt to Examination Division.</strong></p>
+
+            <h4>The dates and times of issuance of Detailed degree certificates are as follows (all working days only)</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sr.No.</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Monday / Friday</td>
+                        <td>0900 Hrs to 1200 Hrs</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Wednesday</td>
+                        <td>0900 Hrs to 1500 Hrs</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Terms and Conditions Modal Handler
+        document.addEventListener('DOMContentLoaded', function() {
+            const termsLink = document.getElementById('termsLink');
+            const modalOverlay = document.getElementById('modalOverlay');
+            const termsModal = document.getElementById('termsModal');
+            const modalClose = document.getElementById('modalClose');
+            const mainContent = document.querySelector('main');
+
+            // Open modal
+            termsLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                modalOverlay.classList.add('active');
+                termsModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            // Close modal function
+            function closeModal() {
+                modalOverlay.classList.remove('active');
+                termsModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            // Close modal on close button click
+            modalClose.addEventListener('click', closeModal);
+
+            // Close modal on overlay click
+            modalOverlay.addEventListener('click', closeModal);
+
+            // Close modal on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && termsModal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
 
     <script src="index.js?v=000001"></script>
 
