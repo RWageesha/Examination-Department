@@ -167,7 +167,7 @@ session_start(); ?>
                 <div class="col-md-12">
                     <div class="card">
                         <h5 class="card-header">
-                            Application for a Semester Results Sheet/Degree Completion Letter
+                            Application for a Detailed Degree Certificate/Transcript
                         </h5>
                         <div class="card-body">
                             <div class="row">
@@ -215,6 +215,19 @@ session_start(); ?>
                                         <div class="row">  <!-- New wrapper row -->
                                             <div class="col-md-8">
                                                 <div class="row mt-1">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group mt-2">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    id="detailed_degree_certificate"
+                                                                    name="detailed_degree_certificate">
+                                                                <label class="form-check-label" for="flexCheckDefault">
+                                                                    Detailed Degree Certificate(Transcript Without Marks)
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="row mt-1">
                                                     <div class="col-md-4">
                                                         <div class="form-group mt-2">
@@ -223,7 +236,7 @@ session_start(); ?>
                                                                     id="is_second_copy_of_detailed_degree_certificate"
                                                                     name="is_second_copy_of_detailed_degree_certificate">
                                                                 <label class="form-check-label" for="flexCheckChecked">
-                                                                    Semester Results Sheet
+                                                                    Certified Copies Of Detailed Degree Certificate(Transcript Without Marks)
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -250,7 +263,7 @@ session_start(); ?>
                                                             <input class="form-check-input" type="checkbox" id="transcript"
                                                                 name="transcript">
                                                             <label class="form-check-label" for="flexCheckChecked">
-                                                                Degree Completion Letter
+                                                                Transcript With Marks
                                                             </label>
                                                         </div>
                                                     </div>
@@ -262,6 +275,21 @@ session_start(); ?>
                                                             placeholder="No Of Copies" value="0">
                                                         <div class="invalid-feedback">
                                                             Please choose number of copies.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mt-1">
+                                                <div class="col-md-5">
+                                                    <div class="form-group mt-2">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="is_second_copy_of_detailed_degree_certificate_already_issued"
+                                                                name="is_second_copy_of_detailed_degree_certificate_already_issued">
+                                                            <label class="form-check-label" for="flexCheckChecked">
+                                                                If lost/damaged, Second Copy Of Detailed Degree Certificate
+                                                            </label>
                                                         </div>
                                                     </div>
                                                 </div>
