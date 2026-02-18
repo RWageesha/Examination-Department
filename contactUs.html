@@ -138,11 +138,6 @@
                         <input type="text" id="studentId" name="studentId">
                     </div>
 
-                    <div class="form-group form-checkbox">
-                        <input type="checkbox" id="consent" name="consent" required>
-                        <label for="consent">I consent to the processing of my personal information in accordance with the <a href="#">privacy policy</a>. <span class="required">*</span></label>
-                    </div>
-
                     <div class="form-buttons">
                         <button type="submit" class="btn-submit">Send Message</button>
                         <button type="reset" class="btn-reset">Clear Form</button>
@@ -275,13 +270,6 @@
             const contactForm = document.getElementById('contactForm');
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
-                    // Allow the mailto: to work, but show a confirmation message
-                    const consent = document.getElementById('consent');
-                    if (!consent.checked) {
-                        e.preventDefault();
-                        alert('Please accept the privacy policy to continue.');
-                        return false;
-                    }
                     
                     // Show success message after a brief delay
                     setTimeout(function() {
