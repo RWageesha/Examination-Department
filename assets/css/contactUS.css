@@ -61,7 +61,7 @@
     border-radius: 18px;
     box-shadow: 0 6px 20px -4px rgba(0,34,68,0.18), 0 2px 8px rgba(0,0,0,0.06);
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     padding: 26px 26px 24px;
     margin-bottom: 26px;
     position: relative;
@@ -163,6 +163,44 @@
     pointer-events: none;
 }
 
+/* FIX: keep the highlight overlay but ensure it sits BEHIND form content */
+.contact-form-container {
+    position: relative;
+    isolation: isolate;  /* creates a clean stacking context */
+}
+
+.contact-form-container::before {
+    z-index: 0;          /* overlay layer */
+}
+
+.contact-form-container > * {
+    position: relative;
+    z-index: 1;          /* all real content above the overlay */
+}
+
+/* Bring back the red/orange required star */
+.contact-form-container label .required {
+    color: #e74c3c !important;
+    -webkit-text-fill-color: #e74c3c !important;
+    opacity: 1 !important;
+}
+
+/* Default selected placeholder (when nothing chosen yet) */
+.form-group select:required:invalid {
+    color: #9ca3af; /* light gray */
+}
+
+/* Once user selects a real value */
+.form-group select {
+    color: #111; /* normal dark text */
+}
+
+/* Optional: keep options normal dark */
+.form-group select option {
+    color: #111;
+}
+
+
 .contact-form-container h2 {
     color: #002244;
     margin-bottom: 30px;
@@ -216,6 +254,17 @@
     -webkit-text-fill-color: initial !important;
     font-weight: 500;
     font-size: 0.95rem;
+}
+
+/* Force labels to be solid black (no gradient / no text-fill tricks) */
+.contact-form-container label {
+    color: #000 !important;
+    background: none !important;
+    background-image: none !important;
+    -webkit-text-fill-color: #000 !important;
+    text-shadow: none !important;
+    filter: none !important;
+    opacity: 1 !important;
 }
 
 /* Inputs */
