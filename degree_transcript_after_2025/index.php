@@ -128,6 +128,7 @@ session_start(); ?>
 
     /* Make the dropdown height match the input and restrict width */
     .country-code-select {
+        flex: 0 0 90px;     /* fixed width */
         max-width: 90px;         /* Controls the width of the dropdown */
         min-width: 80px;
         padding: 0.375rem 0.75rem;
@@ -136,6 +137,13 @@ session_start(); ?>
         /*border-radius: 0.25rem 0 0 0.25rem; /* rounded left corners */
         height: 100%;            /* Ensures it fills the input height */
         appearance: auto;        /* Ensures native dropdown behavior */
+         
+    }
+
+    /* Let the number input take the rest */
+    .input-group .form-control#contact_no_res{
+        flex: 1 1 auto;
+        min-width: 0;        /* IMPORTANT: allows shrinking inside flex */
     }
 
     /* Terms and Conditions Modal Styles */
@@ -349,7 +357,7 @@ session_start(); ?>
                                                                     id="detailed_degree_certificate"
                                                                     name="detailed_degree_certificate">
                                                                 <label class="form-check-label" for="flexCheckDefault">
-                                                                    Transcript Without Marks
+                                                                    Transcript
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -361,9 +369,10 @@ session_start(); ?>
                                                             <div class="form-check">
                                                                 <input class="form-check-input" type="checkbox"
                                                                     id="is_second_copy_of_detailed_degree_certificate"
-                                                                    name="is_second_copy_of_detailed_degree_certificate">
+                                                                    name="is_second_copy_of_detailed_degree_certificate"
+                                                                    >
                                                                 <label class="form-check-label" for="flexCheckChecked">
-                                                                    Certified Copies Of Transcript Without Marks
+                                                                    Certified Copies Of Transcript
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -374,9 +383,14 @@ session_start(); ?>
                                                             <input type="number" class="form-control"
                                                                 id="detailed_degree_certificate_no_of_copies"
                                                                 name="detailed_degree_certificate_no_of_copies"
-                                                                placeholder="No Of Copies" value="0">
+                                                                placeholder="No Of Copies" value="0"
+                                                                min="0"
+                                                                max="100"
+                                                                step="1"
+                                                                value="0"
+                                                                >
                                                             <div class="invalid-feedback">
-                                                                Please choose number of copies.
+                                                                Please choose a valid number of copies.
                                                             </div>
                                                         </div>
                                                     </div>
@@ -399,9 +413,14 @@ session_start(); ?>
                                                     <div class="form-group">
                                                         <input type="number" class="form-control"
                                                             id="transcript_no_of_copies" name="transcript_no_of_copies"
-                                                            placeholder="No Of Copies" value="0">
+                                                            placeholder="No Of Copies" value="0"
+                                                            min="0"
+                                                            max="100"
+                                                            step="1"
+                                                            value="0"
+                                                            >
                                                         <div class="invalid-feedback">
-                                                            Please choose number of copies.
+                                                            Please choose a valid number of copies.
                                                         </div>
                                                     </div>
                                                 </div>
@@ -415,7 +434,7 @@ session_start(); ?>
                                                                 id="is_second_copy_of_detailed_degree_certificate_already_issued"
                                                                 name="is_second_copy_of_detailed_degree_certificate_already_issued">
                                                             <label class="form-check-label" for="flexCheckChecked">
-                                                                If lost/damaged, Second Copy Of Detailed Degree Certificate
+                                                                If lost/damaged, Second Copy Of Transcript
                                                             </label>
                                                         </div>
                                                     </div>
@@ -495,7 +514,7 @@ session_start(); ?>
                                                     name="name_with_initial" placeholder="Name With Initial" value=""
                                                     required>
                                                 <div class="invalid-feedback">
-                                                    Please choose a name with initials.
+                                                    Please provide your name with initials.
                                                 </div>
                                             </div>
                                         </div>
@@ -506,7 +525,7 @@ session_start(); ?>
                                                 <input type="text" class="form-control" id="full_name" name="full_name"
                                                     placeholder="Full Name" value="" required>
                                                 <div class="invalid-feedback">
-                                                    Please choose a name with initials.
+                                                    Please provide your full name.
                                                 </div>
                                             </div>
                                         </div>
@@ -518,7 +537,7 @@ session_start(); ?>
                                                         name="intake_programme" placeholder="Intake/Programme"
                                                         aria-describedby="inputGroupPrepend" required>
                                                     <div class="invalid-feedback">
-                                                        Please choose a intake/programme.
+                                                        Please provide your Intake/Programme.
                                                     </div>
                                                 </div>
                                             </div>
@@ -530,7 +549,7 @@ session_start(); ?>
                                                     name="registration_number" placeholder="Registration Number"
                                                     value="" required>
                                                 <div class="invalid-feedback">
-                                                    Please choose a registration number.
+                                                    Please provide your SVC/Registration number.
                                                 </div>
                                             </div>
                                         </div>
@@ -541,7 +560,7 @@ session_start(); ?>
                                                     name="nic_passport_number" placeholder="NIC/Passport Number"
                                                     value="" required>
                                                 <div class="invalid-feedback">
-                                                    Please choose a NIC/ Passport number.
+                                                    Please provide your NIC/ Passport number.
                                                 </div>
                                             </div>
                                         </div>
@@ -564,7 +583,7 @@ session_start(); ?>
                                                     <option value="ACCT">Accreditied Institutions </option>-->
                                                 </select>
                                                 <div class="invalid-feedback">
-                                                    Please choose a faculty.
+                                                    Please choose your faculty.
                                                 </div>
                                             </div>
                                         </div>
@@ -714,7 +733,7 @@ session_start(); ?>
 
                                                 </select>
                                                 <div class="invalid-feedback">
-                                                    Please choose a degree.
+                                                    Please choose your degree.
                                                 </div>
                                             </div>
                                         </div>
@@ -726,7 +745,7 @@ session_start(); ?>
                                                     <!-- Options will be populated dynamically by JavaScript -->
                                                 </select>
                                                 <div class="invalid-feedback">
-                                                    Please choose a Year of Convocation.
+                                                    Please choose your Year of Convocation.
                                                 </div>
                                             </div>
                                         </div>
