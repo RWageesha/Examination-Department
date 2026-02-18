@@ -212,6 +212,8 @@
     display: block;
     margin-bottom: 8px;
     color: #333;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
     font-weight: 500;
     font-size: 0.95rem;
 }
@@ -221,13 +223,19 @@
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 14px 16px 13px;
+    box-sizing: border-box; 
+    padding: 14px 20px 13px;
     border: 2px solid #d9e3f2;
     border-radius: 14px;
     font-family: inherit;
     font-size: 0.95rem;
     transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
     background: #f9fbfe;
+}
+
+/* Keep Subject looking clean (extra room for dropdown arrow) */
+.form-group select {
+    padding-right: 44px;
 }
 
 .form-group input:focus,
