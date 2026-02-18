@@ -45,8 +45,9 @@
     flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto 40px;
-    gap: 30px;
+    gap: 35px;
     padding: 0 20px;
+    align-items: flex-start; /* Stop columns from stretching to equal height */
 }
 
 /* Contact information styling */
@@ -167,6 +168,7 @@
 .contact-form-container {
     position: relative;
     isolation: isolate;  /* creates a clean stacking context */
+    align-self: flex-start;
 }
 
 .contact-form-container::before {
@@ -229,7 +231,7 @@
     padding: 0;
     display: flex;
     gap: 50px; /* increased to give clearer separation between paired inputs */
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 .form-group {
@@ -301,23 +303,6 @@
     min-height: 140px;
 }
 
-.form-checkbox {
-    display: flex;
-    align-items: flex-start;
-}
-
-.form-checkbox input {
-    width: auto;
-    margin-top: 5px;
-    margin-right: 12px;
-    transform: scale(1.1);
-    accent-color: #0a66c2;
-}
-
-.form-checkbox label {
-    font-size: 0.9rem;
-    margin-bottom: 0;
-}
 
 .required {
     color: #e74c3c;
@@ -326,9 +311,9 @@
 /* Button cluster */
 .form-buttons {
     display: flex;
-    gap: 18px;
+    gap: 30px;
     justify-content: center;
-    margin-top: 32px;
+    margin-top: 70px;
     flex-wrap: wrap;
 }
 
