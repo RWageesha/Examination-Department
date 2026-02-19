@@ -1,0 +1,317 @@
+/* ========================================
+   STUDENT GUIDANCE SECTION - REDESIGNED
+   Professional Timeline Style
+   ======================================== */
+
+/* Section Container */
+#student-guidance {
+    width: 95%;
+    margin: 0 auto 50px;
+    padding: 60px 30px;
+    background: linear-gradient(135deg, #f8f9fb 0%, #ffffff 100%);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+#student-guidance h2 {
+    color: #002244;
+    margin-bottom: 12px;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+/* Section Subtitle */
+.guidance-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 50px;
+    font-weight: 400;
+}
+
+/* Timeline Container */
+.guidance-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Connecting Line (Desktop) */
+.guidance-container::before {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #e0e6ed 10%, 
+        #e0e6ed 90%, 
+        transparent 100%);
+    z-index: 0;
+}
+
+/* Individual Guidance Item */
+.guidance-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e8ecf1;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    z-index: 1;
+}
+
+/* Subtle hover effect - ONLY shadow change, NO icon animation */
+.guidance-item:hover {
+    box-shadow: 0 8px 20px rgba(0, 64, 128, 0.12);
+    transform: translateY(-2px);
+}
+
+/* Step Number */
+.guidance-item::before {
+    content: attr(data-step);
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #004080 0%, #002244 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    box-shadow: 0 3px 10px rgba(0, 64, 128, 0.2);
+    z-index: 2;
+}
+
+/* Icon Styling - STATIC, NO ANIMATIONS */
+.guidance-item i {
+    font-size: 2.5rem;
+    color: #004080;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0, 64, 128, 0.08) 0%, rgba(0, 64, 128, 0.12) 100%);
+    border-radius: 50%;
+    border: 2px solid rgba(0, 64, 128, 0.15);
+    /* NO TRANSITION - Icons remain completely static */
+}
+
+/* Icon remains STATIC on hover - no transform, no rotation, no flip */
+.guidance-item:hover i {
+    /* Only allow subtle color change if needed */
+    color: #003366;
+}
+
+/* Title Styling */
+.guidance-item h3 {
+    font-size: 1.15rem;
+    color: #002244;
+    margin-bottom: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    line-height: 1.4;
+}
+
+/* Description Text */
+.guidance-item p {
+    font-size: 0.9rem;
+    color: #5a6b7f;
+    line-height: 1.65;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Category Label (optional enhancement) */
+.guidance-category {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: #004080;
+    background: rgba(0, 64, 128, 0.08);
+    padding: 4px 12px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablet: 2x2 Grid */
+@media (max-width: 992px) {
+    .guidance-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    
+    /* Remove horizontal connecting line */
+    .guidance-container::before {
+        display: none;
+    }
+    
+    #student-guidance {
+        padding: 50px 25px;
+    }
+    
+    .guidance-item {
+        padding: 25px 18px;
+    }
+    
+    .guidance-item i {
+        width: 80px;
+        height: 80px;
+        font-size: 2.2rem;
+    }
+}
+
+/* Mobile: Vertical Stack with Timeline */
+@media (max-width: 768px) {
+    .guidance-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        position: relative;
+        padding-left: 30px;
+    }
+    
+    /* Vertical connecting line for mobile */
+    .guidance-container::before {
+        display: block;
+        content: '';
+        position: absolute;
+        top: 30px;
+        bottom: 30px;
+        left: 16px;
+        width: 2px;
+        height: auto;
+        right: auto;
+        background: linear-gradient(180deg, 
+            transparent 0%, 
+            #e0e6ed 5%, 
+            #e0e6ed 95%, 
+            transparent 100%);
+    }
+    
+    .guidance-item {
+        text-align: left;
+        align-items: flex-start;
+        padding: 20px 20px 20px 25px;
+    }
+    
+    /* Step number on left for mobile */
+    .guidance-item::before {
+        left: -44px;
+        transform: none;
+        top: 20px;
+    }
+    
+    .guidance-item i {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+    
+    .guidance-item h3 {
+        font-size: 1.1rem;
+    }
+    
+    .guidance-item p {
+        font-size: 0.88rem;
+    }
+    
+    #student-guidance {
+        padding: 40px 20px;
+    }
+    
+    #student-guidance h2 {
+        font-size: 1.75rem;
+    }
+    
+    .guidance-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 40px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 576px) {
+    .guidance-container {
+        padding-left: 25px;
+    }
+    
+    .guidance-item::before {
+        left: -39px;
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+    
+    .guidance-container::before {
+        left: 14px;
+    }
+    
+    .guidance-item {
+        padding: 18px 15px 18px 20px;
+    }
+    
+    .guidance-item i {
+        width: 65px;
+        height: 65px;
+        font-size: 1.8rem;
+    }
+    
+    #student-guidance {
+        padding: 35px 15px;
+    }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+/* Focus states for keyboard navigation */
+.guidance-item:focus-within {
+    outline: 3px solid rgba(0, 64, 128, 0.4);
+    outline-offset: 3px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .guidance-item,
+    .guidance-item i {
+        transition: none !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .guidance-item {
+        border: 2px solid #002244;
+    }
+    
+    .guidance-item i {
+        border: 3px solid #004080;
+    }
+}

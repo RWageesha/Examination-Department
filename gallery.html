@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Image Gallery & About | KDU Examination Division</title>
   <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/sidebar.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
@@ -12,9 +13,11 @@
   <div class="content-wrapper">
     <header>
       <img src="./assets/images/LOGO_White.png" alt="KDU Logo" style="height: 80px;">
-      <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+      <!-- Mobile hamburger button -->
+      <button class="hamburger-btn" aria-controls="sidebar" aria-expanded="false" aria-label="Open navigation">
         <i class="fas fa-bars" aria-hidden="true"></i>
       </button>
+      <!-- Desktop navigation -->
       <nav id="primary-nav" class="primary-nav" aria-label="Main navigation">
         <ul>
           <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
@@ -31,8 +34,36 @@
           <li><a href="gallery.html" class="active"><i class="fas fa-images"></i> Gallery</a></li>
         </ul>
       </nav>
-      <div class="nav-overlay" tabindex="-1" hidden></div>
     </header>
+
+    <!-- Mobile sidebar overlay -->
+    <div class="sidebar-overlay" aria-hidden="true"></div>
+
+    <!-- Mobile sidebar drawer -->
+    <aside id="sidebar" class="sidebar-drawer" aria-hidden="true" role="navigation" aria-label="Mobile navigation">
+      <div class="sidebar-header">
+        <h2>Menu</h2>
+        <button class="sidebar-close" aria-label="Close navigation">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="staff.html"><i class="fas fa-users"></i> Staff</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" aria-expanded="false"><i class="fas fa-download"></i> Downloads <i class="fas fa-caret-down" aria-hidden="true"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="downloads-staff.html"><i class="fas fa-user-tie"></i> For Staff</a></li>
+              <li><a href="downloads-students.html"><i class="fas fa-user-graduate"></i> For Students</a></li>
+              <li><a href="downloads-exams.html"><i class="fas fa-calendar-alt"></i> Exam Hall Schedules</a></li>
+            </ul>
+          </li>
+          <li><a href="contactUs.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+          <li><a href="gallery.html"><i class="fas fa-images"></i> Gallery</a></li>
+        </ul>
+      </nav>
+    </aside>
 
     <main class="gallery-page">
       <!-- Hero Header Section with Image -->
@@ -114,57 +145,46 @@
     </div>
 
     <footer>
-      <div class="footer-content">
-        <div class="footer-logo">
-          <img src="./assets/images/LOGO_White.png" alt="KDU Logo">
-          <p>Examination Department<br>General Sir John Kotelawala Defence University</p>
-        </div>
-        <div class="footer-links">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="staff.html">Staff</a></li>
-            <li><a href="downloads-students.html">Downloads</a></li>
-            <li><a href="contactUs.html">Contact Us</a></li>
-          </ul>
-        </div>
-        <div class="footer-contact">
-          <h3>Contact Us</h3>
-            <p><i class="fas fa-map-marker-alt"></i> Kandawala Estate, Ratmalana, Sri Lanka</p>
-            <p><i class="fas fa-phone"></i> 071 021 9533 (Hotline: 9:00 AM - 3:30 PM)</p>
-            <p><i class="fas fa-phone"></i> 071 021 9360 (Deputy Registrar)</p>
-            <p><i class="fas fa-envelope"></i> exam.verification@kdu.ac.lk</p>
-            <div class="footer-social">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="./assets/images/LOGO_White.png" alt="KDU Logo">
+                    <p>Examination Department<br>General Sir John Kotelawala Defence University</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="staff.html">Staff</a></li>
+                        <li><a href="downloads-students.html">Downloads</a></li>
+                        <li><a href="contactUs.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Kandawala Estate, Ratmalana, Sri Lanka</p>
+                    <p><i class="fas fa-phone"></i> 071 021 9533 (Hotline: 9:00 AM - 3:30 PM)</p>
+                    <p><i class="fas fa-phone"></i> 071 021 9360 (Deputy Registrar)</p>
+                    <p><i class="fas fa-envelope"></i> exam.verification@kdu.ac.lk</p>
+                    
+                    <!-- Social Media Links -->
+                    <!-- <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div> -->
+                </div>
             </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 KDU Examination Department. All rights reserved.</p>
-      </div>
-    </footer>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 KDU Examination Department. All rights reserved.</p>
+            </div>
+        </footer>
   </div>
 
   <script src="./assets/js/public-data.js"></script>
   <script>
-    // Mobile nav + dropdown reuse from index (lightweight subset)
-    document.addEventListener('DOMContentLoaded', function() {
-      const toggle = document.querySelector('.nav-toggle');
-      const nav = document.getElementById('primary-nav');
-      const overlay = document.querySelector('.nav-overlay');
-      const icon = toggle.querySelector('i');
-      function openNav(){toggle.setAttribute('aria-expanded','true');nav.classList.add('open');overlay.hidden=false;document.body.classList.add('no-scroll');icon.classList.replace('fa-bars','fa-times');}
-      function closeNav(){toggle.setAttribute('aria-expanded','false');nav.classList.remove('open');overlay.hidden=true;document.body.classList.remove('no-scroll');icon.classList.replace('fa-times','fa-bars');}
-      toggle.addEventListener('click',()=>{const exp=toggle.getAttribute('aria-expanded')==='true';exp?closeNav():openNav();});
-      overlay.addEventListener('click',closeNav);
-      window.addEventListener('resize',()=>{if(window.innerWidth>1050&&nav.classList.contains('open'))closeNav();});
-      // Active link
-      const current = 'gallery.html';
-      document.querySelectorAll('header nav a').forEach(a=>{ if(a.getAttribute('href')===current) a.classList.add('active'); });
-    });
-
     let allImages = [];
     let currentImageIndex = 0;
 
@@ -518,5 +538,6 @@
       .lightbox-info h3 { font-size:1.2rem; }
     }
   </style>
+  <script src="./assets/js/sidebar.js"></script>
 </body>
 </html>

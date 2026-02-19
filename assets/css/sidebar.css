@@ -1,0 +1,487 @@
+/* ========================================
+   MOBILE SIDEBAR (DRAWER + OVERLAY) - STANDALONE
+   All sidebar styles isolated here to prevent conflicts
+   ======================================== */
+
+/* Ensure box-sizing for all sidebar elements */
+.sidebar-overlay,
+.sidebar-drawer,
+.sidebar-drawer *,
+.sidebar-drawer *::before,
+.sidebar-drawer *::after,
+.hamburger-btn,
+.hamburger-btn * {
+    box-sizing: border-box !important;
+}
+
+/* Body scroll lock when sidebar is open */
+body.no-scroll {
+    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+/* ===== HAMBURGER BUTTON ===== */
+.hamburger-btn {
+    display: none; /* Hidden on desktop by default */
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 24px;
+    padding: 8px 12px;
+    cursor: pointer;
+    z-index: 1600;
+    transition: transform 0.3s ease, color 0.2s ease;
+    position: relative;
+}
+
+/* Ensure hamburger is hidden on desktop screens */
+@media (min-width: 1051px) {
+    .hamburger-btn {
+        display: none !important;
+    }
+}
+
+.hamburger-btn:hover {
+    transform: scale(1.1);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.hamburger-btn:active {
+    transform: scale(0.95);
+}
+
+.hamburger-btn:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.6);
+    outline-offset: 4px;
+}
+
+/* ===== OVERLAY ===== */
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    z-index: 9998; /* Below drawer */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    pointer-events: none;
+}
+
+.sidebar-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* ===== DRAWER (SIDEBAR) ===== */
+.sidebar-drawer {
+    position: fixed;
+    top: 0;
+    right: 0; /* Slides from right */
+    height: 100vh;
+    height: 100dvh; /* Use dvh if supported */
+    width: 320px;
+    max-width: 85vw; /* Safety for small screens */
+    background: linear-gradient(180deg, #002a55 0%, #003a70 90%);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.4);
+    z-index: 9999; /* Above overlay */
+    transform: translateX(100%); /* Off-screen by default */
+    transition: transform 0.45s cubic-bezier(0.4, 1, 0.3, 1);
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    isolation: isolate; /* Create stacking context */
+}
+
+.sidebar-drawer.is-open {
+    transform: translateX(0); /* Slide in */
+}
+
+/* ===== SIDEBAR HEADER ===== */
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* ===== CLOSE BUTTON ===== */
+.sidebar-close {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 28px;
+    line-height: 1;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+    border-radius: 4px;
+    min-width: 36px;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-close:hover {
+    transform: rotate(90deg);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-close:active {
+    transform: scale(0.9);
+}
+
+.sidebar-close:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.6);
+    outline-offset: 2px;
+}
+
+/* ===== SIDEBAR NAVIGATION ===== */
+.sidebar-nav {
+    padding: 24px 18px 40px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sidebar-nav ul li {
+    margin: 0;
+    opacity: 0;
+    transform: translateX(12px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Animation when drawer opens */
+.sidebar-drawer.is-open .sidebar-nav ul li {
+    animation: navItemSlideIn 0.45s forwards;
+    animation-delay: calc(var(--item-index, 0) * 55ms);
+}
+
+@keyframes navItemSlideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.sidebar-nav ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 12px 14px;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.2s ease, transform 0.15s ease;
+    font-size: 15px;
+    font-weight: 500;
+    gap: 10px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sidebar-nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateX(4px);
+}
+
+.sidebar-nav ul li a:active {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.sidebar-nav ul li a:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: -2px;
+}
+
+.sidebar-nav ul li a i {
+    font-size: 16px;
+    flex-shrink: 0;
+    width: 20px;
+    text-align: center;
+}
+
+/* Active navigation link */
+.sidebar-nav ul li a.active {
+    background: rgba(255, 255, 255, 0.2);
+    font-weight: 600;
+}
+
+/* ===== DROPDOWN MENU INSIDE SIDEBAR ===== */
+/* CRITICAL: Override all desktop dropdown styles */
+.sidebar-nav .dropdown {
+    width: 100%;
+    position: relative; /* Not absolute */
+}
+
+.sidebar-nav .dropdown-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    position: relative; /* Ensure no absolute positioning */
+}
+
+.sidebar-nav .dropdown-toggle .fa-caret-down {
+    margin-left: auto;
+    transition: transform 0.4s ease;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.sidebar-nav .dropdown.active > .dropdown-toggle .fa-caret-down {
+    transform: rotate(180deg);
+}
+
+/* CRITICAL FIX: Force dropdown menu to stay in flow, not escape drawer */
+.sidebar-nav .dropdown-menu,
+.sidebar-drawer .dropdown-menu {
+    /* Override any global absolute positioning */
+    position: static !important;
+    float: none !important;
+    transform: none !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    
+    /* Proper containment */
+    width: 100% !important;
+    max-width: 100%;
+    box-sizing: border-box;
+    
+    /* Styling */
+    list-style: none;
+    margin: 6px 0 10px;
+    padding: 2px 0;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    backdrop-filter: blur(2px);
+    
+    /* Collapsible behavior */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    
+    /* Transitions */
+    transition: max-height 0.5s ease, opacity 0.35s ease, visibility 0.35s ease;
+    
+    /* Ensure it stays in drawer's stacking context */
+    z-index: auto;
+}
+
+.sidebar-nav .dropdown.active > .dropdown-menu,
+.sidebar-drawer .dropdown.active > .dropdown-menu {
+    max-height: 500px;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Override any inherited transforms */
+.sidebar-drawer .dropdown-menu::before,
+.sidebar-drawer .dropdown-menu::after {
+    display: none !important; /* Remove any pseudo-element arrows */
+}
+
+.sidebar-nav .dropdown-menu li {
+    opacity: 1 !important; /* Override parent li animation */
+    transform: none !important;
+    animation: none !important;
+    width: 100%;
+}
+
+.sidebar-nav .dropdown-menu li + li a {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-nav .dropdown-menu li a {
+    background: transparent;
+    padding: 10px 16px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+}
+
+.sidebar-nav .dropdown-menu li a:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* ===== MOBILE & TABLET (≤1050px) ===== */
+@media (max-width: 1050px) {
+    /* Show hamburger button on mobile/tablet */
+    .hamburger-btn {
+        display: inline-block !important;
+    }
+}
+
+/* ===== DESKTOP (>1050px) ===== */
+@media (min-width: 1051px) {
+    /* Hide sidebar elements on desktop */
+    .sidebar-overlay,
+    .sidebar-drawer,
+    .hamburger-btn {
+        display: none !important;
+    }
+    
+    /* Ensure body scroll is never locked on desktop */
+    body.no-scroll {
+        overflow: auto;
+        position: static;
+    }
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+/* Skip to main content link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #002a55;
+    color: white;
+    padding: 8px;
+    z-index: 2000;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Focus trap while sidebar is open */
+.sidebar-drawer[aria-hidden="false"] {
+    display: flex;
+}
+
+.sidebar-drawer[aria-hidden="true"] {
+    display: none;
+}
+
+/* Screen reader only text */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 430px) {
+    .sidebar-drawer {
+        width: 300px; /* Slightly smaller on very small screens */
+    }
+    
+    .sidebar-header h2 {
+        font-size: 16px;
+    }
+    
+    .sidebar-nav ul li a {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+}
+
+@media (max-width: 360px) {
+    .sidebar-drawer {
+        width: 280px;
+    }
+}
+
+/* ===== PREVENT HORIZONTAL OVERFLOW ===== */
+.sidebar-drawer,
+.sidebar-nav,
+.sidebar-nav ul,
+.sidebar-nav ul li,
+.sidebar-nav .dropdown,
+.sidebar-nav .dropdown-menu {
+    max-width: 100%;
+    overflow-x: hidden !important;
+}
+
+/* Ensure text doesn't cause overflow */
+.sidebar-nav ul li a,
+.sidebar-nav .dropdown-toggle,
+.sidebar-nav .dropdown-menu li a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ===== CRITICAL: Disable conflicting dropdown styles from other CSS files ===== */
+/* Override Bootstrap, custom dropdowns, and any absolute positioning */
+@media (max-width: 1050px) {
+    /* Force all dropdowns inside sidebar to use static positioning */
+    .sidebar-drawer .dropdown,
+    .sidebar-drawer .dropdown-menu,
+    .sidebar-drawer .dropdown-toggle,
+    .sidebar-drawer [class*="dropdown"],
+    .sidebar-drawer [class*="submenu"],
+    .sidebar-drawer .nav .dropdown-menu,
+    .sidebar-nav .nav .dropdown-menu {
+        position: static !important;
+        float: none !important;
+        transform: none !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    
+    /* Ensure dropdowns don't have Bootstrap's show class behavior */
+    .sidebar-drawer .dropdown-menu.show {
+        position: static !important;
+        display: block;
+        width: 100%;
+    }
+    
+    /* Remove any arrow/caret pseudo-elements from desktop styles */
+    .sidebar-drawer .dropdown-menu::before,
+    .sidebar-drawer .dropdown-menu::after,
+    .sidebar-drawer .dropdown::before,
+    .sidebar-drawer .dropdown::after {
+        display: none !important;
+        content: none !important;
+    }
+}
+
+/* ===== END OVERRIDES ===== */
