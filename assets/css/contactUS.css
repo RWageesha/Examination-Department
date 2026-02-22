@@ -250,7 +250,7 @@
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     color: #333;
     background: none !important;
     -webkit-text-fill-color: initial !important;
@@ -275,7 +275,7 @@
     min-width: 350px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 36px;
     min-width: 0; /* prevents flex overflow */
     width: 100%;
 }
