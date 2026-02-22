@@ -42,63 +42,70 @@
                 <h1>Talk to Deputy Registrar</h1>
                 <p>Get direct assistance from our Deputy Registrar for urgent examination matters</p>
             </div>
+            
             <div class="ar-profile">
                 <div class="ar-image">
                     <img src="./assets/images/DR.jpg" alt="Mr. Champika Gunasekara">
                 </div>
+                
                 <div class="ar-info">
                     <h2>Mr. Champika Gunasekara</h2>
                     <p class="ar-title">Deputy Registrar - Examination</p>
-                    <div class="ar-contact-info">
-                        <p><i class="fas fa-phone"></i> 071 021 9360</p>
-                        <p><i class="fas fa-envelope"></i> sarexam@kdu.ac.lk</p>
+                    <p class="ar-welcome">"For urgent matters requiring immediate attention."</p>
+                </div>
+                
+                <div class="ar-actions">
+                    <div class="action-block">
+                        <i class="fas fa-phone-alt"></i>
+                        <div class="action-text">
+                            <span class="action-label">Call Directly</span>
+                            <a href="tel:+94710219360" class="action-link">071 021 9360</a>
+                            <span class="action-sub">Mon-Fri 8:30 AM - 4:15 PM</span>
+                        </div>
+                    </div>
+                    
+                    <div class="action-block">
+                        <i class="fas fa-envelope"></i>
+                        <div class="action-text">
+                            <span class="action-label">Send Email</span>
+                            <a href="#email-section" class="action-link">sarexam@kdu.ac.lk</a>
+                            <span class="action-sub">For detailed documentation</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="contact-options">
-            <div class="option-container">
-                <div class="option-card phone-option">
-                    <div class="option-icon">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <h3>Call Directly</h3>
-                    <p>Speak with the Deputy Registrar for urgent matters that require immediate attention.</p>
-                    <a href="tel:+94710219360" class="option-button phone-button">
-                        <i class="fas fa-phone"></i> Call 071 021 9360
-                    </a>
-                    <div class="option-note">
-                        <p><i class="fas fa-info-circle"></i> Available: 8:30 AM - 4:15 PM (Weekdays)</p>
-                    </div>
-                </div>
-
+        <section class="contact-options" id="email-section">
+            <div class="option-container centered-form-container">
                 <div class="option-card email-option">
-                    <div class="option-icon">
-                        <i class="fas fa-envelope"></i>
+                    <div class="email-header-text">
+                        <h3>Submit a Detailed Request</h3>
+                        <p>Write a detailed message for matters that require documentation or aren't time-sensitive.</p>
                     </div>
-                    <h3>Send Email</h3>
-                    <p>Write a detailed message for matters that require documentation or aren't time-sensitive.</p>
+                    
                     <div class="email-form">
                         <form id="arEmailForm" action="mailto:sarexam@kdu.ac.lk" method="post" enctype="text/plain">
-                            <div class="form-group">
-                                <label for="name">Your Name <span class="required">*</span></label>
-                                <input type="text" id="name" name="name" required>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Your Name <span class="required">*</span></label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="studentId">Student/Staff ID <span class="required">*</span></label>
+                                    <input type="text" id="studentId" name="studentId" required>
+                                </div>
                             </div>
                             
-                            <div class="form-group">
-                                <label for="email">Your Email <span class="required">*</span></label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="studentId">Student/Staff ID <span class="required">*</span></label>
-                                <input type="text" id="studentId" name="studentId" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="subject">Subject <span class="required">*</span></label>
-                                <input type="text" id="subject" name="subject" required>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Your Email <span class="required">*</span></label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject">Subject <span class="required">*</span></label>
+                                    <input type="text" id="subject" name="subject" required>
+                                </div>
                             </div>
                             
                             <div class="form-group">
@@ -106,15 +113,19 @@
                                 <textarea id="message" name="message" rows="5" required></textarea>
                             </div>
                             
-                            <div class="form-group form-attachment">
-                                <label for="attachment">Attachment (if any)</label>
-                                <input type="file" id="attachment" name="attachment">
-                                <p class="file-note">Max file size: 5MB (PDF, DOC, DOCX, JPG)</p>
+                            <div class="form-row attachment-button-row">
+                                <div class="form-group form-attachment">
+                                    <label for="attachment">Attachment (if any)</label>
+                                    <input type="file" id="attachment" name="attachment">
+                                    <p class="file-note">Max file size: 5MB (PDF, DOC, DOCX, JPG)</p>
+                                </div>
+                                
+                                <div class="form-group submit-group">
+                                    <button type="submit" class="option-button email-button">
+                                        <i class="fas fa-paper-plane"></i> Send Email
+                                    </button>
+                                </div>
                             </div>
-                            
-                            <button type="submit" class="option-button email-button">
-                                <i class="fas fa-paper-plane"></i> Send Email
-                            </button>
                         </form>
                     </div>
                 </div>
