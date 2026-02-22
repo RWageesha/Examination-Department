@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login - KDU Examination Department</title>
+    <title>Admin Login - KDU Examination Division</title>
     <link rel="stylesheet" href="../assets/css/admin-style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
@@ -12,7 +12,7 @@
         <div class="login-header">
             <img src="../assets/images/LOGO_Blue.png" alt="KDU Logo" class="login-logo">
             <h1>Admin Login</h1>
-            <p>KDU Examination Department</p>
+            <p>KDU Examination Division</p>
         </div>
         
         <form id="loginForm" class="login-form">
@@ -36,26 +36,9 @@
             <div id="loginMessage" class="login-message"></div>
             
             <div class="form-footer">
-                <a href="#" id="forgotPassword">Forgot Password?</a>
-                <a href="signup.html" title="Available only before first admin is created">Sign up</a>
                 <a href="../index.html">Back to Website</a>
             </div>
         </form>
-    </div>
-    
-    <div id="forgotPasswordModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Password Recovery</h2>
-            <p>Please enter your email address to receive a password reset link.</p>
-            <form id="forgotPasswordForm">
-                <div class="form-group">
-                    <label for="recoveryEmail"><i class="fas fa-envelope"></i> Email Address</label>
-                    <input type="email" id="recoveryEmail" name="recoveryEmail" required>
-                </div>
-                <button type="submit" class="btn-submit">Send Reset Link</button>
-            </form>
-        </div>
     </div>
 
     <script src="../assets/js/admin-login.js"></script>
