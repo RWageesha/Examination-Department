@@ -40,6 +40,52 @@
 
             form.classList.add("was-validated");
 
+            // Custom validations: contact numbers (digits only, max 15 including country code) and email match
+            var extraInvalid = false;
+
+            var resInput = form.querySelector("#contact_no_res");
+            var resCountry = form.querySelector("#country_code_res");
+            if (resInput) {
+              var resDigits = (resCountry ? resCountry.value.replace(/\D/g,"") : "") + resInput.value.replace(/\D/g,"");
+              if (resDigits.length === 0 || resDigits.length > 15) {
+                resInput.classList.add("is-invalid");
+                extraInvalid = true;
+                toastr.error("Please enter a valid residential contact number (max 15 digits including country code).");
+              } else {
+                resInput.classList.remove("is-invalid");
+              }
+            }
+
+            var mobInput = form.querySelector("#contact_no_mobile");
+            var mobCountry = form.querySelector("#country_code_mobile");
+            if (mobInput) {
+              var mobDigits = (mobCountry ? mobCountry.value.replace(/\D/g,"") : "") + mobInput.value.replace(/\D/g,"");
+              if (mobDigits.length === 0 || mobDigits.length > 15) {
+                mobInput.classList.add("is-invalid");
+                extraInvalid = true;
+                toastr.error("Please enter a valid mobile contact number (max 15 digits including country code).");
+              } else {
+                mobInput.classList.remove("is-invalid");
+              }
+            }
+
+            var email = form.querySelector("#email");
+            var confirm = form.querySelector("#confirm_email");
+            if (email && confirm) {
+              if (email.value !== confirm.value) {
+                confirm.classList.add("is-invalid");
+                extraInvalid = true;
+                toastr.error("Email and Confirm Email do not match.");
+              } else {
+                confirm.classList.remove("is-invalid");
+              }
+            }
+
+            if (extraInvalid) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+
             // If validation passed (no preventDefault so far), redirect to payment instructions
             if (!event.defaultPrevented) {
               event.preventDefault();
@@ -172,6 +218,10 @@ $(document).ready(function () {
     $("#transcript_no_of_copies").on("input", function() {
       updateCart();
       toggleProofDiv();
+    });
+    // Restrict contact number inputs to digits only and max 15 characters
+    $("#contact_no_res, #contact_no_mobile").on("input", function() {
+      this.value = this.value.replace(/\D/g, "").slice(0,15);
     });
   }
 
