@@ -289,92 +289,92 @@
     box-sizing: border-box;
 }
 
-/* Deputy Registrar CTA card — amber/gold theme */
 .dr-cta-box {
     background: linear-gradient(145deg, #fffbf0 0%, #fff3cd 100%);
     border: 2px solid #f5c842;
-    border-radius: 18px;
-    box-shadow: 0 6px 20px -4px rgba(180, 120, 0, 0.18), 0 2px 8px rgba(0,0,0,0.06);
-    padding: 28px 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 28px -8px rgba(180,120,0,0.2), 0 4px 12px rgba(0,0,0,0.08);
+    padding: 28px 32px;
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
-    transition: transform .45s cubic-bezier(.25,1.4,.45,1), box-shadow .45s ease;
+    transition: all .4s cubic-bezier(.25,1.4,.45,1);
 }
 
 .dr-cta-box:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 38px -8px rgba(180,120,0,0.28), 0 4px 14px rgba(0,0,0,0.12);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px -12px rgba(180,120,0,0.3), 0 6px 20px rgba(0,0,0,0.12);
 }
 
-.dr-cta-icon {
-    width: 58px;
-    height: 58px;
-    background: linear-gradient(135deg, #b45309, #d97706);
-    border-radius: 18px;
+.dr-cta-text {
+    text-align: center;  /* ← CENTER ALIGN */
+    padding-right: 0px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    flex-shrink: 0;
-    box-shadow: 0 4px 14px -2px rgba(180,100,0,0.35);
+    gap: 8px; 
 }
 
-.dr-cta-icon i {
-    color: #ffffff;
-    font-size: 1.4rem;
-}
-
-.dr-cta-content h3 {
+.dr-cta-text h3 {
     color: #92400e;
-    font-size: 1.2rem;
-    margin-bottom: 8px;
-    letter-spacing: .4px;
+    font-size: 1.22rem;
+    justify-content: center;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: .3px;
+    line-height: 1.25;
 }
 
-.dr-cta-content p {
-    color: #78350f;
-    font-size: 0.93rem;
-    line-height: 1.6;
-    margin-bottom: 0;
+.dr-cta-text {
+    text-align: center;  
+    padding-right: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* ← THIS IS THE MAGIC FIX */
+    gap: 10px; 
 }
 
 .btn-dr {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 14px;
-    padding: 11px 22px;
+    flex-shrink: 0;
+    width: 200px; /* Fixed width to keep it consistent */
+    text-align: center;
+    padding: 12px 0px;
     background: linear-gradient(135deg, #b45309, #d97706);
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
-    font-size: 0.9rem;
-    font-weight: 600;
-    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: 14px;
     text-decoration: none;
-    box-shadow: 0 4px 14px -3px rgba(180,100,0,0.45);
-    transition: transform 0.35s cubic-bezier(.25,1.4,.45,1), box-shadow 0.35s ease, filter 0.3s;
+    box-shadow: 0 6px 18px -4px rgba(180,100,0,0.5);
+    white-space: nowrap;
+    transition: all .35s cubic-bezier(.25,1.4,.45,1);
 }
 
 .btn-dr:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 28px -6px rgba(180,100,0,0.55);
-    filter: brightness(1.08);
-    color: #ffffff !important;
-    -webkit-text-fill-color: #ffffff !important;
-    text-shadow: none !important;
+    box-shadow: 0 12px 30px -6px rgba(180,100,0,0.65);
+    filter: brightness(1.1);
 }
 
-/* Responsive: stack everything on small screens */
-@media (max-width: 992px) {
-    .contact-right-col {
-        width: 100%;
-        min-width: unset;
-    }
+/* Responsive fix: stack them if the screen gets too narrow */
+@media (max-width: 600px) {
     .dr-cta-box {
         flex-direction: column;
-        align-items: flex-start;
+        text-align: center;
+    }
+    .dr-cta-text {
+        text-align: center;
+        padding-right: 0;
+    }
+    .btn-dr {
+        width: 100%; /* Full width only on mobile for thumb-friendly clicking */
     }
 }
+
 
 
 /* Inputs */
