@@ -72,8 +72,9 @@
             <p>We're here to assist with your examination inquiries and certification needs.</p>
         </section>
 
-        <section class="contact-container">
+       <section class="contact-container">
             <div class="contact-info">
+
                 <div class="info-box">
                     <div class="info-icon">
                         <i class="fas fa-map-marker-alt"></i>
@@ -123,64 +124,75 @@
                         <strong>Deputy Registrar:</strong> <a href="mailto:sarexam@kdu.ac.lk">sarexam@kdu.ac.lk</a></p>
                     </div>
                 </div>
+
             </div>
 
-            <div class="contact-form-container">
-                <h2>Send us a Message</h2>
-                <form id="contactForm" class="contact-form" action="mailto:exam.verification@kdu.ac.lk" method="post" enctype="text/plain">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Full Name <span class="required">*</span></label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject <span class="required">*</span></label>
-                            <select id="subject" name="subject" required>
-                                <option value="" disabled selected>Select a subject</option>
-                                <option value="General Inquiry">General Inquiry</option>
-                                <option value="Examination Schedule">Examination Schedule</option>
-                                <option value="Results & Transcripts">Results & Transcripts</option>
-                                <option value="Certificate Request">Certificate Request</option>
-                                <option value="Special Consideration">Special Consideration</option>
-                                <option value="Verification Request">Verification Request</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                    </div>
+            <!-- RIGHT COLUMN: form + CTA card stacked -->
+            <div class="contact-right-col">
 
-                    <div class="form-group">
-                        <label for="message">Message <span class="required">*</span></label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="studentId">Student/Staff ID (if applicable)</label>
-                        <input type="text" id="studentId" name="studentId">
-                    </div>
+                <div class="contact-form-container">
+                    <h2>Send us a Message</h2>
+                    <form id="contactForm" class="contact-form" action="mailto:exam.verification@kdu.ac.lk" method="post" enctype="text/plain">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name <span class="required">*</span></label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
 
-                    <div class="form-group form-checkbox">
-                        <input type="checkbox" id="consent" name="consent" required>
-                        <label for="consent">I consent to the processing of my personal information in accordance with the <a href="#">privacy policy</a>. <span class="required">*</span></label>
-                    </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject <span class="required">*</span></label>
+                                <select id="subject" name="subject" required>
+                                    <option value="" disabled selected>Select a subject</option>
+                                    <option value="General Inquiry">General Inquiry</option>
+                                    <option value="Examination Schedule">Examination Schedule</option>
+                                    <option value="Results & Transcripts">Results & Transcripts</option>
+                                    <option value="Certificate Request">Certificate Request</option>
+                                    <option value="Special Consideration">Special Consideration</option>
+                                    <option value="Verification Request">Verification Request</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
 
-                    <div class="form-buttons">
-                        <button type="submit" class="btn-submit">Send Message</button>
-                        <button type="reset" class="btn-reset">Clear Form</button>
+                        <div class="form-group">
+                            <label for="message">Message <span class="required">*</span></label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentId">Student/Staff ID (if applicable)</label>
+                            <input type="text" id="studentId" name="studentId">
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="submit" class="btn-submit">Send Message</button>
+                            <button type="reset" class="btn-reset">Clear Form</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- ✅ CTA card sits HERE — below the form, right column -->
+                <div class="dr-cta-box">
+                    <div class="dr-cta-text">
+                        <h3>For Urgent Examination Matters</h3>
+                        <p>Get direct assistance from our Deputy Registrar for urgent matters that require immediate attention.</p>
+                        <a href="TalktoDR.html" class="btn-dr"> Talk to Deputy Registrar</a>
                     </div>
-                </form>
+                </div>
+
             </div>
-        </section>
+    </section>
+
 
         <section class="map-section">
             <h2>Find Us</h2>
@@ -245,42 +257,41 @@
 
     <!-- Footer (same as index.html) -->
     <footer>
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="./assets/images/LOGO_White.png" alt="KDU Logo">
-                    <p>Examination Department<br>General Sir John Kotelawala Defence University</p>
-                </div>
-                
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="staff.html">Staff</a></li>
-                        <li><a href="downloads-students.html">Downloads</a></li>
-                        <li><a href="contactUs.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-contact">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Kandawala Estate, Ratmalana, Sri Lanka</p>
-                    <p><i class="fas fa-phone"></i> 071 021 9533 (Hotline: 9:00 AM - 3:30 PM)</p>
-                    <p><i class="fas fa-phone"></i> 071 021 9360 (Deputy Registrar)</p>
-                    <p><i class="fas fa-envelope"></i> exam.verification@kdu.ac.lk</p>
-                    
-                    <!-- Social Media Links -->
-                    <!-- <div class="footer-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div> -->
-                </div>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="./assets/images/Main-logo.png" alt="KDU Logo">
+                <p>Examination Department<br>General Sir John Kotelawala Defence University</p>
             </div>
             
-            <div class="footer-bottom">
-                <p>&copy; 2025 KDU Examination Department. All rights reserved.</p>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="staff.html">Staff</a></li>
+                    <li><a href="downloads-staff.html">Downloads</a></li>
+                    <li><a href="contactUs.html">Contact Us</a></li>
+                </ul>
             </div>
-        </footer>
+            
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Kandawala Estate, Ratmalana, Sri Lanka</p>
+                <p><i class="fas fa-phone"></i> 071 021 9533 (Hotline: 9:00 AM - 3:30 PM)</p>
+                <p><i class="fas fa-phone"></i> 071 021 9360 (Deputy Registrar)</p>
+                <p><i class="fas fa-envelope"></i> exam.verification@kdu.ac.lk</p>
+                
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 KDU Examination Department. All rights reserved.</p>
+        </div>
+    </footer>
     
     <!-- JavaScript for FAQ toggles -->
     <script>
@@ -307,13 +318,6 @@
             const contactForm = document.getElementById('contactForm');
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
-                    // Allow the mailto: to work, but show a confirmation message
-                    const consent = document.getElementById('consent');
-                    if (!consent.checked) {
-                        e.preventDefault();
-                        alert('Please accept the privacy policy to continue.');
-                        return false;
-                    }
                     
                     // Show success message after a brief delay
                     setTimeout(function() {
