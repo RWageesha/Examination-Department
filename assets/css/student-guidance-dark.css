@@ -1,0 +1,331 @@
+/* ========================================================
+   STUDENT GUIDANCE SECTION - DARK THEME
+   Professional dark background with light floating panels
+   Zero icon animations - static, authoritative design
+   ======================================================== */
+
+/* Dark Section Background */
+#student-guidance {
+    background: linear-gradient(135deg, #1a2a3d 0%, #0d1620 100%);
+    padding: 60px 30px;
+    margin: 0;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Optional decorative element */
+#student-guidance::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(0, 64, 128, 0.5) 20%, 
+        rgba(0, 64, 128, 0.8) 50%, 
+        rgba(0, 64, 128, 0.5) 80%, 
+        transparent 100%
+    );
+}
+
+/* Section Title */
+#student-guidance h2 {
+    color: #ffffff;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 12px 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.5px;
+}
+
+/* Subtitle */
+.guidance-subtitle {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.05rem;
+    text-align: center;
+    margin: 0 auto 40px;
+    max-width: 600px;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* Grid Container */
+.guidance-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Light Floating Panel Cards */
+.guidance-item {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 36px 28px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    border: 1px solid rgba(0, 64, 128, 0.08);
+}
+
+/* Subtle hover effect - NO icon animation */
+.guidance-item:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    transform: translateY(-4px);
+}
+
+/* Icon Container - Subtle Professional Hover Effect */
+.guidance-item i {
+    font-size: 3rem;
+    color: #004080;
+    margin-bottom: 20px;
+    padding: 24px;
+    background: linear-gradient(135deg, 
+        rgba(0, 64, 128, 0.08) 0%, 
+        rgba(0, 64, 128, 0.12) 100%
+    );
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 64, 128, 0.08);
+}
+
+/* Subtle hover effect on icon - professional glow and lift */
+.guidance-item:hover i {
+    transform: translateY(-3px) scale(1.05);
+    background: linear-gradient(135deg, 
+        rgba(0, 64, 128, 0.15) 0%, 
+        rgba(0, 64, 128, 0.22) 100%
+    );
+    box-shadow: 0 6px 20px rgba(0, 64, 128, 0.2);
+    color: #003366;
+}
+
+/* Card Title */
+.guidance-item h3 {
+    font-size: 1.4rem;
+    color: #002244;
+    margin-bottom: 14px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+/* Card Body Text */
+.guidance-item p {
+    color: #555555;
+    line-height: 1.7;
+    font-size: 0.98rem;
+    margin: 0;
+}
+
+/* Optional accent line at top of each card */
+.guidance-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #004080 50%, 
+        transparent 100%
+    );
+    border-radius: 0 0 4px 4px;
+}
+
+/* Responsive - Tablet (2x2 Grid) */
+@media (max-width: 992px) {
+    #student-guidance {
+        padding: 50px 24px;
+    }
+
+    #student-guidance h2 {
+        font-size: 2rem;
+    }
+
+    .guidance-subtitle {
+        font-size: 1rem;
+        margin-bottom: 32px;
+    }
+
+    .guidance-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .guidance-item {
+        padding: 32px 24px;
+    }
+
+    .guidance-item i {
+        font-size: 2.5rem;
+        width: 80px;
+        height: 80px;
+        padding: 20px;
+    }
+
+    .guidance-item h3 {
+        font-size: 1.3rem;
+    }
+
+    .guidance-item p {
+        font-size: 0.95rem;
+    }
+}
+
+/* Responsive - Mobile (Vertical Stack) */
+@media (max-width: 768px) {
+    #student-guidance {
+        padding: 40px 20px;
+    }
+
+    #student-guidance h2 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+
+    .guidance-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 28px;
+    }
+
+    .guidance-container {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .guidance-item {
+        padding: 28px 22px;
+    }
+
+    .guidance-item i {
+        font-size: 2.3rem;
+        width: 75px;
+        height: 75px;
+        padding: 18px;
+        margin-bottom: 16px;
+    }
+
+    .guidance-item h3 {
+        font-size: 1.25rem;
+        margin-bottom: 12px;
+    }
+
+    .guidance-item p {
+        font-size: 0.93rem;
+        line-height: 1.65;
+    }
+}
+
+/* Responsive - Small Mobile */
+@media (max-width: 576px) {
+    #student-guidance {
+        padding: 36px 16px;
+    }
+
+    #student-guidance h2 {
+        font-size: 1.6rem;
+    }
+
+    .guidance-subtitle {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+
+    .guidance-container {
+        gap: 16px;
+    }
+
+    .guidance-item {
+        padding: 24px 20px;
+    }
+
+    .guidance-item i {
+        font-size: 2rem;
+        width: 70px;
+        height: 70px;
+        padding: 16px;
+    }
+
+    .guidance-item h3 {
+        font-size: 1.15rem;
+    }
+
+    .guidance-item p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Accessibility - Focus States */
+.guidance-item:focus-within {
+    outline: 3px solid rgba(0, 64, 128, 0.4);
+    outline-offset: 4px;
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+    .guidance-item,
+    .guidance-item i {
+        transition: none !important;
+    }
+
+    .guidance-item:hover {
+        transform: none;
+    }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    #student-guidance {
+        background: #000000;
+    }
+
+    .guidance-item {
+        border: 2px solid #004080;
+    }
+
+    .guidance-item h3 {
+        color: #000000;
+    }
+
+    .guidance-item p {
+        color: #333333;
+    }
+}
+
+/* Print Styles */
+@media print {
+    #student-guidance {
+        background: #ffffff;
+        color: #000000;
+    }
+
+    #student-guidance h2 {
+        color: #000000;
+    }
+
+    .guidance-subtitle {
+        color: #333333;
+    }
+
+    .guidance-item {
+        box-shadow: none;
+        border: 1px solid #cccccc;
+        page-break-inside: avoid;
+    }
+}

@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../assets/images/KDU-logo.png">
-    <title>KDU Examination Department</title>
+    <title>KDU Examination Division</title>
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/sidebar.css">
+    <link rel="stylesheet" href="./assets/css/services.css?v=2.1">
+    <link rel="stylesheet" href="./assets/css/services-motion.css?v=1.0">
+    <link rel="stylesheet" href="./assets/css/student-guidance-dark.css?v=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/navbar-static/">
 </head>
@@ -15,9 +19,11 @@
     <div class="content-wrapper">
         <header>
             <img src="./assets/images/LOGO_White.png" alt="KDU Logo" style="height: 80px;">
-            <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+            <!-- Mobile hamburger button -->
+            <button class="hamburger-btn" aria-controls="sidebar" aria-expanded="false" aria-label="Open navigation">
                 <i class="fas fa-bars" aria-hidden="true"></i>
             </button>
+            <!-- Desktop navigation -->
             <nav id="primary-nav" class="primary-nav" aria-label="Main navigation">
                 <ul>
                     <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
@@ -34,8 +40,36 @@
                     <li><a href="gallery.html"><i class="fas fa-images"></i> Gallery</a></li>
                 </ul>
             </nav>
-            <div class="nav-overlay" tabindex="-1" hidden></div>
         </header>
+
+        <!-- Mobile sidebar overlay -->
+        <div class="sidebar-overlay" aria-hidden="true"></div>
+
+        <!-- Mobile sidebar drawer -->
+        <aside id="sidebar" class="sidebar-drawer" aria-hidden="true" role="navigation" aria-label="Mobile navigation">
+            <div class="sidebar-header">
+                <h2>Menu</h2>
+                <button class="sidebar-close" aria-label="Close navigation">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="staff.html"><i class="fas fa-users"></i> Staff</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" aria-expanded="false"><i class="fas fa-download"></i> Downloads <i class="fas fa-caret-down" aria-hidden="true"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="downloads-staff.html"><i class="fas fa-user-tie"></i> For Staff</a></li>
+                            <li><a href="downloads-students.html"><i class="fas fa-user-graduate"></i> For Students</a></li>
+                            <li><a href="downloads-exams.html"><i class="fas fa-calendar-alt"></i> Exam Hall Schedules</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contactUs.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                    <li><a href="gallery.html"><i class="fas fa-images"></i> Gallery</a></li>
+                </ul>
+            </nav>
+        </aside>
 
     <main>
             <section class="hero-slider">
@@ -87,11 +121,17 @@
                 <div class="home-content-wrapper">
                     <section id="home">
                         <h2>Welcome to the Examination Division</h2>
-                        <p>The Examination Division of General Sir John Kotelawala Defence University (KDU) is the main authority responsible for conducting examinations, and issuing examination results of candidates from the Faculty of Engineering, Faculty of Law, Faculty of Computing and Faculty of Management, Humanities and Social Sciences. In addition to the above, the Examination Division monitors all examination- related matters of other faculties and affiliated institutions.
-                            The diligent staff of the Division hold the sole responsibility of processing the results submitted by the examiners in accordance with the University by-laws, and conducting the Semester Pre-Results Board and Board of Examinations (BoE). After every BoE, results are sent to the relevant faculties to be published for their students' information. Following this, the results are submitted to the Senate. In addition to semester results, the final Board of Examinations for every batch of students that graduates from KDU and affiliated institutes are also conducted by the Examination Division. Further, Board of Examinations of FGS, FBESS, FASH and FOM are conducted under the direct supervision of the Division, and all examination payments related to the conducting of examinations and marking are prepared by this Division.
-                            Moreover, the Division provides assistance to the Registrar's Office to conduct selection tests for the recruitment of Officers Cadets, Day Scholars, and other staff members.
-                            The Examination Division also issues detailed degree certificates, semester results sheets, and academic transcripts of all faculties and accredited institutions.
-                        </p>
+                        <div class="intro-text-container">
+                            <p>The Examination Division of General Sir John Kotelawala Defence University (KDU) is the main authority responsible for conducting examinations, and issuing examination results of candidates from the Faculty of Engineering, Faculty of Law, Faculty of Computing and Faculty of Management, Humanities and Social Sciences. In addition to the above, the Examination Division monitors all examination- related matters of other faculties and affiliated institutions.
+                                The diligent staff of the Division hold the sole responsibility of processing the results submitted by the examiners in accordance with the University by-laws, and conducting the Semester Pre-Results Board and Board of Examinations (BoE). After every BoE, results are sent to the relevant faculties to be published for their students' information. Following this, the results are submitted to the Senate. In addition to semester results, the final Board of Examinations for every batch of students that graduates from KDU and affiliated institutes are also conducted by the Examination Division. Further, Board of Examinations of FGS, FBESS, FASH and FOM are conducted under the direct supervision of the Division, and all examination payments related to the conducting of examinations and marking are prepared by this Division.
+                                Moreover, the Division provides assistance to the Registrar's Office to conduct selection tests for the recruitment of Officers Cadets, Day Scholars, and other staff members.
+                                The Examination Division also issues detailed degree certificates, semester results sheets, and academic transcripts of all faculties and accredited institutions.
+                            </p>
+                        </div>
+                        <button class="read-more-btn" onclick="toggleReadMore()">
+                            <span class="btn-text">Read More</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
                     </section>
                     
                     <!-- Welcome Image Section (previously Certificate Services) -->
@@ -103,21 +143,52 @@
                 </div>
             </section>
 
-            <!-- Services Section with Modern Buttons -->
+            <!-- Services Section with Modern Cards -->
             <section id="services-section">
                 <h2>Our Services</h2>
-                <div class="three-buttons-container">
-                    <a href="degree_transcript_before_2025/index.php" class="certificate-button">
-                        <i class="fas fa-certificate"></i>
-                        <span>Request Detailed Degree Certificate/ Transcript<br>(Convacation Year: Before 2025)</span>
+                <p class="services-subtitle">Official document requests and certification services</p>
+                
+                <div class="services-grid">
+                    <!-- Service Card 1 -->
+                    <a href="degree_transcript_before_2025/index.php" class="service-card" role="button" tabindex="0">
+                        <div class="service-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="service-content">
+                            <span class="service-label">Detailed Degree / Transcript Request</span>
+                            <h3 class="service-title">Request Detailed Degree Certificate/ Transcript (Convacation Year: Before 2025)</h3>
+                            <span class="service-action">
+                                Request now <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </div>
                     </a>
-                    <a href="degree_transcript_after_2025/index.php" class="certificate-button">
-                        <i class="fas fa-file-alt"></i>
-                        <span>Request Transcript/ Transcript with Marks<br>(Convacation Year: Onwards 2025)</span>
+                    
+                    <!-- Service Card 2 -->
+                    <a href="degree_transcript_after_2025/index.php" class="service-card" role="button" tabindex="0">
+                        <div class="service-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="service-content">
+                            <span class="service-label">Transcript Request</span>
+                            <h3 class="service-title">Request Transcript/ Transcript with Marks (Convacation Year: Onwards 2025)</h3>
+                            <span class="service-action">
+                                Request now <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </div>
                     </a>
-                    <a href="semester_results_sheet/index.php" class="certificate-button">
-                        <i class="fas fa-graduation-cap"></i>
-                        <span>Request Semester Results Sheet/ Degree Completion Letter</span>
+                    
+                    <!-- Service Card 3 -->
+                    <a href="semester_results_sheet/index.php" class="service-card" role="button" tabindex="0">
+                        <div class="service-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="service-content">
+                            <span class="service-label">Results & Certification</span>
+                            <h3 class="service-title">Request Semester Results Sheet/ Degree Completion Letter</h3>
+                            <span class="service-action">
+                                Request now <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </div>
                     </a>
                 </div>
             </section>
@@ -200,24 +271,25 @@
 
             <section id="student-guidance">
                 <h2>Student Guidance</h2>
+                <p class="guidance-subtitle">Essential information for examination procedures and policies</p>
                 <div class="guidance-container">
                     <div class="guidance-item">
-                        <i class="fas fa-calendar-alt"></i>
+                        <i class="fas fa-calendar-check"></i>
                         <h3>Examination Schedule</h3>
                         <p>Check the exam timetable at least two weeks before exam period. Arrive 30 minutes early on exam day.</p>
                     </div>
                     <div class="guidance-item">
-                        <i class="fas fa-clipboard-check"></i>
+                        <i class="fas fa-tasks"></i>
                         <h3>Examination Rules</h3>
                         <p>Bring your student ID card, follow the invigilator's instructions, and adhere to all university examination policies.</p>
                     </div>
                     <div class="guidance-item">
-                        <i class="fas fa-question-circle"></i>
+                        <i class="fas fa-hands-helping"></i>
                         <h3>Special Considerations</h3>
                         <p>If you need special arrangements or face unexpected circumstances, contact the exam office immediately.</p>
                     </div>
                     <div class="guidance-item">
-                        <i class="fas fa-file-alt"></i>
+                        <i class="fas fa-chart-line"></i>
                         <h3>Results & Appeals</h3>
                         <p>Results are published on the student portal. Appeals must be submitted within 14 days of result publication.</p>
                     </div>
@@ -232,17 +304,18 @@
             </a>
         </div>-->
 
-        <!-- Hotline floating button - add this before the closing body tag -->
-        <div class="hotline-button">
-            <a href="tel:+94710219533" class="hotline-link">
-                <div class="hotline-icon">
-                    <i class="fas fa-phone-alt"></i>
-                </div>
-                <div class="hotline-text">
-                    <span class="hotline-label">Exam Division Hotline</span>
-                    <span class="hotline-number">071 021 9533</span>
-                </div>
-            </a>
+            <!-- Hotline floating button -->
+            <div class="hotline-button floating-action-btn">
+                <a href="tel:+94710219533" class="hotline-link">
+                    <div class="hotline-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="hotline-text">
+                        <span class="hotline-label">Exam Division Hotline</span>
+                        <span class="hotline-number">071 021 9533</span>
+                    </div>
+                </a>
+            </div>
         </div>
 
         <footer>
@@ -255,10 +328,10 @@
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#staff">Staff</a></li>
-                        <li><a href="#Downloads">Downloads</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="staff.html">Staff</a></li>
+                        <li><a href="downloads-students.html">Downloads</a></li>
+                        <li><a href="contactUs.html">Contact Us</a></li>
                     </ul>
                 </div>
                 
@@ -269,20 +342,22 @@
                     <p><i class="fas fa-phone"></i> 071 021 9360 (Deputy Registrar)</p>
                     <p><i class="fas fa-envelope"></i> exam.verification@kdu.ac.lk</p>
                     
-                    <div class="footer-social">
+                    <!-- Social Media Links -->
+                    <!-- <div class="footer-social">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 KDU Examination Department. All rights reserved.</p>
+                <p>&copy; 2026 KDU Examination Department. All rights reserved.</p>
             </div>
         </footer>
     </div>
     
+    <script src="./assets/js/sidebar.js"></script>
     <script src="./assets/js/public-data.js"></script>
     <script>
         // Parallax scrolling for background
@@ -469,77 +544,6 @@
             startSlideInterval();
         });
 
-        // Handle dropdown on mobile (inside nav when collapsed) + accessibility
-        document.addEventListener('DOMContentLoaded', function() {
-            const dropdowns = document.querySelectorAll('.dropdown-toggle');
-            dropdowns.forEach(dropdown => {
-                function activate(e){
-                    if (window.innerWidth <= 1050) {
-                        e.preventDefault();
-                        const parent = dropdown.parentElement;
-                        const expanded = dropdown.getAttribute('aria-expanded') === 'true';
-                        dropdown.setAttribute('aria-expanded', String(!expanded));
-                        parent.classList.toggle('active');
-                    }
-                }
-                dropdown.addEventListener('click', activate);
-                dropdown.addEventListener('keydown', (e)=>{
-                    if (e.key === 'Enter' || e.key === ' ') { activate(e); }
-                });
-            });
-        });
-
-        // Mobile navigation toggle (icon-based)
-        document.addEventListener('DOMContentLoaded', function() {
-            const toggle = document.querySelector('.nav-toggle');
-            const nav = document.getElementById('primary-nav');
-            const overlay = document.querySelector('.nav-overlay');
-            const focusableSelectors = 'a, button';
-            let lastFocused = null;
-            const icon = toggle.querySelector('i');
-
-            function openNav() {
-                lastFocused = document.activeElement;
-                toggle.setAttribute('aria-expanded','true');
-                toggle.setAttribute('aria-label','Close navigation');
-                nav.classList.add('open');
-                overlay.hidden = false;
-                document.body.classList.add('no-scroll');
-                if (icon) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); }
-                // Focus first link
-                const firstLink = nav.querySelector('a');
-                if (firstLink) firstLink.focus();
-            }
-            function closeNav() {
-                toggle.setAttribute('aria-expanded','false');
-                toggle.setAttribute('aria-label','Open navigation');
-                nav.classList.remove('open');
-                overlay.hidden = true;
-                document.body.classList.remove('no-scroll');
-                if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
-                if (lastFocused) lastFocused.focus();
-            }
-            toggle.addEventListener('click', () => {
-                const expanded = toggle.getAttribute('aria-expanded') === 'true';
-                expanded ? closeNav() : openNav();
-            });
-            overlay.addEventListener('click', closeNav);
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && nav.classList.contains('open')) closeNav();
-                if (e.key === 'Tab' && nav.classList.contains('open')) {
-                    const focusable = nav.querySelectorAll(focusableSelectors);
-                    if (focusable.length === 0) return;
-                    const first = focusable[0];
-                    const last = focusable[focusable.length -1];
-                    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-                    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-                }
-            });
-            window.addEventListener('resize', () => {
-                if (window.innerWidth > 1050 && nav.classList.contains('open')) closeNav();
-            });
-        });
-
         // Add this to your existing DOMContentLoaded event handler
         document.addEventListener('DOMContentLoaded', function() {
             // Get the current page URL
@@ -565,6 +569,28 @@
         });
 
 
+    </script>
+    
+    <script>
+        // Read More functionality for mobile
+        function toggleReadMore() {
+            const homeSection = document.getElementById('home');
+            const button = document.querySelector('.read-more-btn');
+            const btnText = button.querySelector('.btn-text');
+            const icon = button.querySelector('i');
+            
+            homeSection.classList.toggle('expanded');
+            
+            if (homeSection.classList.contains('expanded')) {
+                btnText.textContent = 'Read Less';
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                btnText.textContent = 'Read More';
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
     </script>
 </body>
 </html>
